@@ -14,8 +14,9 @@
     tools:showIn="@layout/activity_main"
     tools:context="com.sd.rafael.sweetdreams.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <ListView
+        android:id="@+id/list_dreams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
 </RelativeLayout>
