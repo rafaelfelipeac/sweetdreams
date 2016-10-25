@@ -14,14 +14,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
-
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class FormDreamsActivity extends AppCompatActivity {
 
@@ -30,32 +28,39 @@ public class FormDreamsActivity extends AppCompatActivity {
 
     static final int DIALOG_TIME_ID = 1;
     static final int DIALOG_DATE_ID = 2;
-//    int hourX;
-//    int minuteX;
-//    int yearX;
-//    int monthX;
-//    int dayX;
+    int hourX;
+    int minuteX;
+    int yearX;
+    int monthX;
+    int dayX;
 
     protected TimePickerDialog.OnTimeSetListener kTimePickerListener =
             new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    dream.setHour(hourOfDay);
-                    dream.setMinute(minute);
-                    Toast.makeText(FormDreamsActivity.this, dream.getHour() + ":" + dream.getMinute(), Toast.LENGTH_SHORT).show();
+                    hourX = hourOfDay;
+                    minuteX = minute;
+
+                    TextView time = (TextView) findViewById(R.id.form_dreams_time);
+                    time.setText(hourX + "h" + minuteX);
+
+                    Snackbar.make(findViewById(R.id.activity_form_dreams), hourX + "h" + minuteX, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 }
             };
 
-    protected DatePickerDialog.OnDateSetListener kDatePickerListener =
+    private DatePickerDialog.OnDateSetListener dpickerListener =
             new DatePickerDialog.OnDateSetListener() {
 
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    dream.setYear(year);
-                    dream.setMonth(month + 1);
-                    dream.setDay(dayOfMonth);
-                    Snackbar.make(findViewById(R.id.activity_form_dreams), dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                    //Toast.makeText(FormDreamsActivity.this, dayX + "/" + monthX + "/" + yearX, Toast.LENGTH_SHORT).show();
+                    yearX = year;
+                    monthX = month + 1;
+                    dayX = dayOfMonth;
+
+                    TextView date = (TextView) findViewById(R.id.form_dreams_date);
+                    date.setText(dayX + "/" + monthX + "/" + yearX);
+
+                    Snackbar.make(findViewById(R.id.activity_form_dreams), dayX + "/" + monthX + "/" + yearX, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
             };
 
@@ -81,13 +86,11 @@ public class FormDreamsActivity extends AppCompatActivity {
         });
     }
 
-
-
     protected Dialog onCreateDialog(int id) {
         if(id == DIALOG_TIME_ID)
-            return new TimePickerDialog(FormDreamsActivity.this, kTimePickerListener, dream.getHour(), dream.getMinute(), false);
+            return new TimePickerDialog(FormDreamsActivity.this, kTimePickerListener, hourX, minuteX, false);
         if(id == DIALOG_DATE_ID)
-            return new DatePickerDialog(this, kDatePickerListener, dream.getYear(), dream.getMonth(), dream.getDay());
+            return new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
         return null;
     }
 
@@ -98,14 +101,19 @@ public class FormDreamsActivity extends AppCompatActivity {
 
         final Calendar cal = Calendar.getInstance();
 
-        dream.setHour(cal.get(Calendar.HOUR));
-        dream.setMinute(cal.get(Calendar.MINUTE));
-        dream.setYear(cal.get(Calendar.YEAR));
-        dream.setMonth(cal.get(Calendar.MONTH));
-        dream.setDay(cal.get(Calendar.DAY_OF_MONTH));
+        hourX = (cal.get(Calendar.HOUR));
+        minuteX = (cal.get(Calendar.MINUTE));
+        yearX = (cal.get(Calendar.YEAR));
+        monthX = (cal.get(Calendar.MONTH));
+        dayX = (cal.get(Calendar.DAY_OF_MONTH));
 
         showTimePickerDialog();
         showDatePickerDialog();
+
+        TextView time = (TextView) findViewById(R.id.form_dreams_time);
+        time.setText(hourX + "h" + minuteX);
+        TextView date = (TextView) findViewById(R.id.form_dreams_date);
+        date.setText(dayX + "/" + monthX + "/" + yearX);
 
         helper = new FormDreamsHelper(this);
 

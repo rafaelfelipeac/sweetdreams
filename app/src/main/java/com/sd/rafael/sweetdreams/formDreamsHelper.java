@@ -18,8 +18,6 @@ public class FormDreamsHelper {
     private final TextView date;
     private final TextView time;
 
-
-
     private Dream dream;
 
     public FormDreamsHelper(FormDreamsActivity activity) {
@@ -36,7 +34,15 @@ public class FormDreamsHelper {
         dream.setTitle(title.getText().toString());
         dream.setDescription(description.getText().toString());
         dream.setGrade(Double.valueOf(grade.getProgress()));
-        //dream.setHour();
+
+        String[] arDate = date.getText().toString().split("/");
+        dream.setDay(Integer.parseInt(arDate[0]));
+        dream.setMonth(Integer.parseInt(arDate[1]));
+        dream.setYear(Integer.parseInt(arDate[2]));
+
+        String[] arTime = time.getText().toString().split("h");
+        dream.setHour(Integer.parseInt(arTime[0]));
+        dream.setMinute(Integer.parseInt(arTime[1]));
 
         return dream;
     }
@@ -46,6 +52,7 @@ public class FormDreamsHelper {
         description.setText(dream.getDescription());
         grade.setProgress(dream.getGrade().intValue());
         date.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
+        time.setText(dream.getHour() + "h" + dream.getMinute());
 
         this.dream = dream;
     }

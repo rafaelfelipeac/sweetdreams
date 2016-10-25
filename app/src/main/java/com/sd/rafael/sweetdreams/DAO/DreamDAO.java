@@ -23,7 +23,7 @@ public class DreamDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table dreams (id integer primary key, title text, description text, grade real, tags text, date text, time text);";
+        String sql = "create table dreams (id integer primary key, title text, description text, grade real, tags text, hour integer, minute integer, day integer, month integer, year integer);";
         db.execSQL(sql);
     }
 
@@ -52,8 +52,11 @@ public class DreamDAO extends SQLiteOpenHelper {
             dream.setDescription(c.getString(c.getColumnIndex("description")));
             dream.setGrade(c.getDouble(c.getColumnIndex("grade")));
             dream.setTags(c.getString(c.getColumnIndex("tags")));
-            dream.setDate(c.getString(c.getColumnIndex("date")));
-            dream.setTime(c.getString(c.getColumnIndex("time")));
+            dream.setHour(c.getInt(c.getColumnIndex("hour")));
+            dream.setMinute(c.getInt(c.getColumnIndex("minute")));
+            dream.setDay(c.getInt(c.getColumnIndex("day")));
+            dream.setMonth(c.getInt(c.getColumnIndex("month")));
+            dream.setYear(c.getInt(c.getColumnIndex("year")));
 
             dreams.add(dream);
         }
@@ -82,8 +85,11 @@ public class DreamDAO extends SQLiteOpenHelper {
         data.put("description", dream.getDescription());
         data.put("grade", dream.getGrade());
         data.put("tags", dream.getTags());
-        data.put("date", dream.getDate());
-        data.put("time", dream.getTime());
+        data.put("hour", dream.getHour());
+        data.put("minute", dream.getMinute());
+        data.put("day", dream.getDay());
+        data.put("month", dream.getMonth());
+        data.put("year", dream.getYear());
 
         return data;
     }
