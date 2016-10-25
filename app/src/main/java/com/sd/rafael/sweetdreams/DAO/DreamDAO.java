@@ -23,7 +23,7 @@ public class DreamDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table dreams (id integer primary key, title text, description text, grade real);";
+        String sql = "create table dreams (id integer primary key, title text, description text, grade real, tags text, date text, time text);";
         db.execSQL(sql);
     }
 
@@ -51,6 +51,9 @@ public class DreamDAO extends SQLiteOpenHelper {
             dream.setTitle(c.getString(c.getColumnIndex("title")));
             dream.setDescription(c.getString(c.getColumnIndex("description")));
             dream.setGrade(c.getDouble(c.getColumnIndex("grade")));
+            dream.setTags(c.getString(c.getColumnIndex("tags")));
+            dream.setDate(c.getString(c.getColumnIndex("date")));
+            dream.setTime(c.getString(c.getColumnIndex("time")));
 
             dreams.add(dream);
         }
@@ -78,6 +81,10 @@ public class DreamDAO extends SQLiteOpenHelper {
         data.put("title", dream.getTitle());
         data.put("description", dream.getDescription());
         data.put("grade", dream.getGrade());
+        data.put("tags", dream.getTags());
+        data.put("date", dream.getDate());
+        data.put("time", dream.getTime());
+
         return data;
     }
 
