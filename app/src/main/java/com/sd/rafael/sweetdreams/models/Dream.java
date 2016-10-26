@@ -64,7 +64,7 @@ public class Dream implements Serializable{
     }
 
     public void setTags(String tags) {
-        this.tags = tags;
+        this.tags = tags.toLowerCase();
     }
 
     public Double getGrade() {
