@@ -12,13 +12,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.models.Dream;
 
+import java.text.Normalizer;
 import java.util.Calendar;
 
 public class FormDreamsActivity extends AppCompatActivity {
@@ -122,6 +125,20 @@ public class FormDreamsActivity extends AppCompatActivity {
 
         if(dream != null)
             helper.makeDream(dream);
+
+        final LinearLayout ll = (LinearLayout) findViewById(R.id.form_dreams_ll);
+        Button btnNewTag = (Button) findViewById(R.id.form_dreams_btnNewTag);
+        btnNewTag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText newTag = (EditText) findViewById(R.id.form_dreams_tag);
+                CheckBox cb = new CheckBox(FormDreamsActivity.this);
+                cb.setChecked(true);
+                cb.setText(newTag.getText());
+                newTag.setText("");
+                ll.addView(cb);
+            }
+        });
 
     }
 

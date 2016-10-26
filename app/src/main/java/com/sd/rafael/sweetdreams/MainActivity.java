@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,5 +92,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        final Dream dream = (Dream) listDreams.getItemAtPosition(info.position);
+
+        MenuItem delete = menu.add("Delete");
+        delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                DreamDAO dao = new DreamDAO(MainActivity.this);
+                dao.Remove(dream);
+                dao.close();
+                loadList();
+
+                Snackbar.make(findViewById(R.id.activity_main), "Sonho removido", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                return false;
+            }
+        });
     }
 }
