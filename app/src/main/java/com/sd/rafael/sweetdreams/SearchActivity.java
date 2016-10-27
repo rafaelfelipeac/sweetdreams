@@ -51,13 +51,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        //carregar lista
-        //pegar as tags digitadas pelo usuario
-        //procurar por elas na lista
-        //mostrar na tela o resultado
-        //
-        //
-
         registerForContextMenu(listDreams);
     }
 
@@ -77,14 +70,12 @@ public class SearchActivity extends AppCompatActivity {
         for(Dream dream : lst) {
             String[] tag = convertStringToArray(dream.getTags());
 
-            for(int i = 0; i < tag.length; i++)
-            {
+            for(int i = 0; i < tag.length; i++) {
                 String tt = tag[i];
                 tag[i] = tt.replace(" ", "");
             }
 
             for(String str: tag) {
-
                 if(str != "") {
                     String tagUser = tags.getText().toString().toLowerCase();
 
@@ -103,6 +94,5 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //loadListWithTags();
     }
 }
