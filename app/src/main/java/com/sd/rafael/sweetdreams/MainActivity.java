@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listDreams;
     private String separator = ",";
+    private FloatingActionButton fabBtn;
 
 
     @Override
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        fabBtn = (FloatingActionButton)findViewById(R.id.fab);
+
         registerForContextMenu(listDreams);
     }
 
@@ -76,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
         loadList();
     }
 
+//    @Override
+//    public void onBackPressed() {
+//        loadList();
+//    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -84,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) item.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -91,11 +100,22 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                fabBtn.hide();
+                cleanList();
                 loadListWithTags(newText);
 
                 return false;
             }
         });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                loadList();
+                fabBtn.show();
+                return false;
+            }
+        });
+
 
         return true;
     }
@@ -104,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_settings:
+                break;
+            case R.id.menuSearch:
                 break;
         }
 
@@ -163,6 +185,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         DreamAdapter adapter = new DreamAdapter(dreams, this);
+        listDreams.setAdapter(adapter);
+    }
+
+    public void cleanList() {
+        List<Dream> l = new ArrayList<>();
+
+        DreamAdapter adapter = new DreamAdapter(l, this);
         listDreams.setAdapter(adapter);
     }
 }
