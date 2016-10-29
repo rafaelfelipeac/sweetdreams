@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dreams"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.sd.rafael.sweetdreams.DreamsActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dreams_datetime"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="22/05/16 - 8h23"/>
+
+        <TextView
+            android:id="@+id/dreams_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Titulo do sonho"
+            android:textSize="19sp"/>
+
+        <TextView
+            android:id="@+id/dreams_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Hoje, dia 4 de Abril de 2016, depois de ter dado vários sinais de estar chegando sua hora, o fantástico fone de ouvido se foi.
+
+Venho através dessa publicação declarar a todos que sofro. Não apenas por estar sendo obrigado a ouvir minhas músicas em fones lixo que vem junto com os celulares da Samsung. Sofro pela perda de um companheiro. Sofro pelas pessoas que assim como eu sofrem todo dia com isso. Talvez não estejamos nas estatísticas do jornal que seu pai lê ou no perfil engraçadinho de notícias que você segue no Twitter, mas existimos e nossa dor é maior que tudo.
+
+Aonde estiver, Philips SHP2000, saiba que meu coração estará sempre com você e meus ouvidos sentirão falta do seu aconchego nas madrugadas frias de Sorocaba.
+
+Te amei como poucas vezes fui capaz de amar, companheiro. Siga em paz.
+
+Tenho algumas histórias com bicicletas. Na maioria delas alguém sai atropelado e/ou com dentes quebrados (essa segunda parte, geralmente eu). Nos últimos anos estive fora desse mundo de catracas, correntes e borracha (BDSM?), mas quando era criança vivia montado em uma magrela (sim, sua mãe).
+
+Nesse intervalo sem pedalar, percebi que estava sentindo falta da adorável e única sensação que uma pessoa só consegue ao raspar sua própria pele no asfalto. Fiz minhas pesquisas e comprei uma bicicleta. Na verdade, ganhei uma bicicleta. Sim, pois aparentemente voltei a ter 9 anos de idade e meus pais me deram ela de presente de aniversário. O curioso é que lembro muito claramente de minha mãe dizendo que “essa é a última bicicleta que vamos te dar, a próxima você já vai poder comprar com seu dinheiro” em um Natal de alguns bons anos atrás.
+
+Certas coisas nunca mudam, mãe."
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/dreams_tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="#sonho #mulher #estranha #porta #fim #corredor"/>
+
+        <RatingBar
+            android:id="@+id/dreams_grade"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:max="10"
+            android:layout_marginTop="15dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -19,6 +19,8 @@ public class Dream implements Serializable{
     private int hour;
     private int minute;
 
+    private String separator = ",";
+
     public int getDay() {
         return day;
     }
@@ -97,5 +99,25 @@ public class Dream implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String[] tagConvertStringToArray() {
+        String[] array = getTags().split(separator);
+        return array;
+    }
+
+    public String tagConvertArrayToString(String[] array) {;
+        String s = "";
+
+        for(int i = 0; i< array.length; i++) {
+            if(array[i] != null && array[i] != "null") {
+                s += array[i];
+
+                if(i < array.length -1)
+                    s += separator;
+            }
+        }
+
+        return s;
     }
 }

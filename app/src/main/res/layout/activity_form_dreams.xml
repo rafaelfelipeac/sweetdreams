@@ -10,6 +10,7 @@
     tools:context="com.sd.rafael.sweetdreams.FormDreamsActivity"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:id="@+id/activity_form_dreams"
         android:orientation="vertical"

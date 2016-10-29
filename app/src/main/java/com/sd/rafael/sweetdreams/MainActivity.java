@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Dream dream = (Dream) listDreams.getItemAtPosition(position);
 
-                Intent intentForm = new Intent(MainActivity.this, FormDreamsActivity.class);
-                intentForm.putExtra("dream", dream);
-                startActivity(intentForm);
+                Intent intentDream = new Intent(MainActivity.this, DreamsActivity.class);
+                intentDream.putExtra("dream", dream);
+                startActivity(intentDream);
             }
         });
 
@@ -79,11 +79,6 @@ public class MainActivity extends AppCompatActivity {
         loadList();
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        loadList();
-//    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -115,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
 
         return true;
     }
