@@ -52,6 +52,7 @@ public class DreamsActivity extends AppCompatActivity {
                 Intent intentForm = new Intent(DreamsActivity.this, FormDreamsActivity.class);
                 intentForm.putExtra("dream", dream);
                 startActivity(intentForm);
+                finish();
                 break;
             case R.id.menu_dream_delete:
                 DreamDAO dao = new DreamDAO(DreamsActivity.this);
@@ -59,10 +60,10 @@ public class DreamsActivity extends AppCompatActivity {
                 dao.close();
                 Intent intentMain = new Intent(DreamsActivity.this, MainActivity.class);
                 startActivity(intentMain);
+                finish();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 }

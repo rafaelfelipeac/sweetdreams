@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -143,6 +144,15 @@ public class FormDreamsActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+//        Intent intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+//        intentDream.putExtra("dream", dream);
+//        startActivity(intentDream);
+    }
+
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.form_confirm, menu);
@@ -168,7 +178,17 @@ public class FormDreamsActivity extends AppCompatActivity {
                     Snackbar.make(ll, "Sonho adicionado.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 }
                 dao.close();
+                Intent intentDream2 = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                intentDream2.putExtra("dream", dream);
+                startActivity(intentDream2);
 
+                finish();
+                break;
+            case android.R.id.home:
+                dream = helper.getDream();
+                Intent intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                intentDream.putExtra("dream", dream);
+                startActivity(intentDream);
                 finish();
                 break;
         }
