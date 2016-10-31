@@ -162,9 +162,10 @@ public class FormDreamsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Dream dream = helper.getDream();
         switch (item.getItemId()) {
+
             case R.id.menu_form_confirm:
-                Dream dream = helper.getDream();
                 DreamDAO dao = new DreamDAO(this);
 
                 LinearLayout ll = (LinearLayout) findViewById(R.id.activity_form_dreams);
@@ -185,7 +186,6 @@ public class FormDreamsActivity extends AppCompatActivity {
                 finish();
                 break;
             case android.R.id.home:
-                dream = helper.getDream();
                 Intent intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
                 intentDream.putExtra("dream", dream);
                 startActivity(intentDream);

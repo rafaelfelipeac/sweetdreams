@@ -12,27 +12,41 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".FormDreamsActivity"
             android:parentActivityName=".DreamsActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DreamsActivity" />
         </activity>
         <activity
             android:name=".DreamsActivity"
-            android:parentActivityName=".MainActivity"
-            android:launchMode='singleTask'>
+            android:launchMode="singleTask"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".MainNavDrawerActivity"
+            android:label="@string/title_activity_main_nav_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
+
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+
+
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+
         </activity>
     </application>
 
