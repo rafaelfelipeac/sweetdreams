@@ -163,8 +163,8 @@ public class FormDreamsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Dream dream = helper.getDream();
+        Intent intentDream;
         switch (item.getItemId()) {
-
             case R.id.menu_form_confirm:
                 DreamDAO dao = new DreamDAO(this);
 
@@ -179,14 +179,18 @@ public class FormDreamsActivity extends AppCompatActivity {
                     Snackbar.make(ll, "Sonho adicionado.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 }
                 dao.close();
-                Intent intentDream2 = new Intent(FormDreamsActivity.this, DreamsActivity.class);
-                intentDream2.putExtra("dream", dream);
-                startActivity(intentDream2);
+                intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                intentDream.putExtra("dream", dream);
+                startActivity(intentDream);
 
                 finish();
                 break;
             case android.R.id.home:
-                Intent intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                if(dream.getId() == null)
+                    intentDream = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
+                else
+                    intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+
                 intentDream.putExtra("dream", dream);
                 startActivity(intentDream);
                 finish();

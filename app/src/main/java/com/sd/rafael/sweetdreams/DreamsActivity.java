@@ -45,10 +45,10 @@ public class DreamsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Dream dream = helper.getDream();
         switch (item.getItemId())
         {
             case R.id.menu_dream_edit:
-                Dream dream = helper.getDream();
                 Intent intentForm = new Intent(DreamsActivity.this, FormDreamsActivity.class);
                 intentForm.putExtra("dream", dream);
                 startActivity(intentForm);
@@ -56,9 +56,10 @@ public class DreamsActivity extends AppCompatActivity {
                 break;
             case R.id.menu_dream_delete:
                 DreamDAO dao = new DreamDAO(DreamsActivity.this);
-                dao.Remove(this.dream);
+                dao.Read();
+                dao.Remove(dream);
                 dao.close();
-                Intent intentMain = new Intent(DreamsActivity.this, MainActivity.class);
+                Intent intentMain = new Intent(DreamsActivity.this, MainNavDrawerActivity.class);
                 startActivity(intentMain);
                 finish();
                 break;

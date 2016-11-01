@@ -67,6 +67,16 @@ public class DreamDAO extends SQLiteOpenHelper {
 
     public void Remove(Dream dream) {
         SQLiteDatabase db = getWritableDatabase();
+
+        if(dream.getId() == null) {
+            String sql = "select * from dreams";
+            SQLiteDatabase dbR = getReadableDatabase();
+            Cursor c = dbR.rawQuery(sql, null);
+
+            while(c.moveToNext())
+                dream.setId(c.getLong(c.getColumnIndex("id")));
+        }
+
         String[] params = {dream.getId().toString()};
 
         db.delete("dreams", "id = ?", params);

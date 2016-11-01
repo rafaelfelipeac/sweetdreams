@@ -140,8 +140,6 @@ public class MainNavDrawerActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_settings:
-                break;
             case R.id.menuSearch:
                 break;
         }
@@ -152,17 +150,14 @@ public class MainNavDrawerActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+            Intent intentAdd = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
+            startActivity(intentAdd);
+        } else if (id == R.id.nav_settings) {
+            Intent intentSettings = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
+            startActivity(intentSettings);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
