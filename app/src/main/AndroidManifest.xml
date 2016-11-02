@@ -31,7 +31,8 @@
         </activity>
         <activity
             android:name=".MainNavDrawerActivity"
-            android:label="@string/title_activity_main_nav_drawer"
+            android:launchMode="singleTask"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

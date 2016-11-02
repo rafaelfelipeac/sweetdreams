@@ -5,30 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-   <LinearLayout
-       android:orientation="vertical"
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:gravity="center_vertical">
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="2dp">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/item_title"
-           android:text="Titulo"
-           android:textSize="20sp"
-           android:textStyle="bold"
-           android:paddingLeft="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/item_description"
-           android:text="Descrição"
-           android:paddingLeft="10dp"
-           android:paddingTop="8dp"
-           android:textSize="16dp"/>
+            <ImageView
+                android:src="@color/colorAccent"
+                android:layout_width="100dp"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/image"/>
 
-   </LinearLayout>
+            <TextView
+                android:id="@+id/description"
+                android:paddingLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\ndfgsdfgs."
+                android:layout_below="@+id/title"
+                android:layout_toRightOf="@+id/image" />
 
+            <TextView
+                android:id="@+id/title"
+                android:paddingLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="\nTitle"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/image" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

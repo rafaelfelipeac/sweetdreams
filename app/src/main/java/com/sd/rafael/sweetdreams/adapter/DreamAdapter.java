@@ -50,11 +50,11 @@ public class DreamAdapter extends BaseAdapter{
         if(convertView == null)
             view = inflater.inflate(R.layout.list_item, parent, false);
 
-        TextView title = (TextView) view.findViewById(R.id.item_title);
-        title.setText(dream.getTitle());
-
-        TextView description = (TextView) view.findViewById(R.id.item_description);
-        description.setText(dream.getDescription());
+//        TextView title = (TextView) view.findViewById(R.id.item_title);
+//        title.setText(dream.getTitle());
+//
+//        TextView description = (TextView) view.findViewById(R.id.item_description);
+//        description.setText(dream.getDescription());
 
         return view;
     }

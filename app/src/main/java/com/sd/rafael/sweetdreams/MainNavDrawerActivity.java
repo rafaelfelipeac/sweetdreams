@@ -1,10 +1,14 @@
 package com.sd.rafael.sweetdreams;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -18,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.adapter.DreamAdapter;
@@ -27,29 +32,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainNavDrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPosition {
 
-    private ListView listDreams;
     private String separator = ",";
     private FloatingActionButton fabBtn;
+
+
+
+    private RecyclerView listDreams;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nav_drawer);
 
-        listDreams = (ListView) findViewById(R.id.list_dreams);
+        listDreams = (RecyclerView)findViewById(R.id.recyclerview);
+        listDreams.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        listDreams.setLayoutManager(mLayoutManager);
 
-        listDreams.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Dream dream = (Dream) listDreams.getItemAtPosition(position);
-
-                Intent intentDream = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
-                intentDream.putExtra("dream", dream);
-                startActivity(intentDream);
-            }
-        });
+        loadList();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,13 +83,12 @@ public class MainNavDrawerActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
     private void loadList() {
         DreamDAO dao = new DreamDAO(this);
         List<Dream> dreams = dao.Read();
-        dao.close();
-
-        DreamAdapter adapter = new DreamAdapter(dreams, this);
-        listDreams.setAdapter(adapter);
+        mAdapter = new CardViewAdapter(dreams, this);
+        listDreams.setAdapter(mAdapter);
     }
 
     @Override
@@ -170,21 +175,13 @@ public class MainNavDrawerActivity extends AppCompatActivity
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        final Dream dream = (Dream) listDreams.getItemAtPosition(info.position);
+    public void getRecyclerViewAdapterPosition(int position) {
+        Dream dream = new DreamDAO(this).Read().get(position);
 
-        MenuItem delete = menu.add("Delete");
-        delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                DreamDAO dao = new DreamDAO(MainNavDrawerActivity.this);
-                dao.Remove(dream);
-                dao.close();
-                loadList();
-                return false;
-            }
-        });
+        Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
+        intentDreamsActivity.putExtra("dream", dream);
+        startActivity(intentDreamsActivity);
+
     }
 
     public String[] convertStringToArray(String str) {
@@ -219,14 +216,14 @@ public class MainNavDrawerActivity extends AppCompatActivity
             }
         }
 
-        DreamAdapter adapter = new DreamAdapter(dreams, this);
-        listDreams.setAdapter(adapter);
+        mAdapter = new CardViewAdapter(dreams, this);
+        listDreams.setAdapter(mAdapter);
     }
 
     public void cleanList() {
         List<Dream> l = new ArrayList<>();
 
-        DreamAdapter adapter = new DreamAdapter(l, this);
-        listDreams.setAdapter(adapter);
+        mAdapter = new CardViewAdapter(l, this);
+        listDreams.setAdapter(mAdapter);
     }
 }
