@@ -25,7 +25,6 @@ import java.util.List;
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHolder> {
 
     public Dream[] dreams;
-    Context context;
     private static RecyclerViewClickPosition mPositionInterface;
 
     public CardViewAdapter(List<Dream> dreams, RecyclerViewClickPosition positionInterface) {
