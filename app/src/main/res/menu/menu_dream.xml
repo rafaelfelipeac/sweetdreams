@@ -5,10 +5,12 @@
 
     <item android:id="@+id/menu_dream_edit"
         android:title="Edit"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="always" />
 
     <item android:id="@+id/menu_dream_delete"
-        android:title="Delete"/>
+        android:title="Delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="always" />
 
 </menu>
