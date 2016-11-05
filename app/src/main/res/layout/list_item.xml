@@ -23,6 +23,15 @@
             android:id="@+id/image"/>
 
         <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="40dp"
+            android:text="01/1/0001"
+            android:textColor="@color/cardview_light_background"/>
+
+        <TextView
             android:id="@+id/description"
             android:paddingLeft="10dp"
             android:layout_width="match_parent"

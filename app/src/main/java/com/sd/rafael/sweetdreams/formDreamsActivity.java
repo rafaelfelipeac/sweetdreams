@@ -141,6 +141,32 @@ public class FormDreamsActivity extends AppCompatActivity {
             }
         });
 
+        Button btnAdd = (Button) findViewById(R.id.form_dreams_add);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dream dream = helper.getDream();
+                DreamDAO dao = new DreamDAO(FormDreamsActivity.this);
+
+                LinearLayout ll = (LinearLayout) findViewById(R.id.activity_form_dreams);
+
+                if(dream.getId() != null) {
+                    dao.Update(dream);
+                    Snackbar.make(ll, "Sonho editado.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
+                else {
+                    dao.Insert(dream);
+                    Snackbar.make(ll, "Sonho adicionado.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                }
+                dao.close();
+                Intent intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                intentDream.putExtra("dream", dream);
+                startActivity(intentDream);
+
+                finish();
+            }
+        });
+
     }
 
     @Override
@@ -154,8 +180,8 @@ public class FormDreamsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.form_confirm, menu);
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.form_confirm, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -166,25 +192,7 @@ public class FormDreamsActivity extends AppCompatActivity {
         Intent intentDream;
         switch (item.getItemId()) {
             case R.id.menu_form_confirm:
-                DreamDAO dao = new DreamDAO(this);
-
-                LinearLayout ll = (LinearLayout) findViewById(R.id.activity_form_dreams);
-
-                if(dream.getId() != null) {
-                    dao.Update(dream);
-                    Snackbar.make(ll, "Sonho editado.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }
-                else {
-                    dao.Insert(dream);
-                    Snackbar.make(ll, "Sonho adicionado.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-                }
-                dao.close();
-                intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
-                intentDream.putExtra("dream", dream);
-                startActivity(intentDream);
-
-                finish();
-                break;
+                // btnAdd onClick()
             case android.R.id.home:
                 if(dream.getId() == null)
                     intentDream = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
@@ -196,7 +204,6 @@ public class FormDreamsActivity extends AppCompatActivity {
                 finish();
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

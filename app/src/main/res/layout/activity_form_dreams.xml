@@ -133,5 +133,11 @@
             android:numStars="5"
             android:max="10"
             android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/form_dreams_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Adicionar"/>
     </LinearLayout>
 </ScrollView>
