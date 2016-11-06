@@ -52,8 +52,6 @@ public class DreamDAO extends SQLiteOpenHelper {
             dream.setDescription(c.getString(c.getColumnIndex("description")));
             dream.setGrade(c.getDouble(c.getColumnIndex("grade")));
             dream.setTags(c.getString(c.getColumnIndex("tags")));
-            dream.setHour(c.getInt(c.getColumnIndex("hour")));
-            dream.setMinute(c.getInt(c.getColumnIndex("minute")));
             dream.setDay(c.getInt(c.getColumnIndex("day")));
             dream.setMonth(c.getInt(c.getColumnIndex("month")));
             dream.setYear(c.getInt(c.getColumnIndex("year")));
@@ -95,8 +93,6 @@ public class DreamDAO extends SQLiteOpenHelper {
         data.put("description", dream.getDescription());
         data.put("grade", dream.getGrade());
         data.put("tags", dream.getTags());
-        data.put("hour", dream.getHour());
-        data.put("minute", dream.getMinute());
         data.put("day", dream.getDay());
         data.put("month", dream.getMonth());
         data.put("year", dream.getYear());

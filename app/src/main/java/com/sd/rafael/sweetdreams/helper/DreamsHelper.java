@@ -1,8 +1,11 @@
-package com.sd.rafael.sweetdreams;
+package com.sd.rafael.sweetdreams.helper;
 
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.sd.rafael.sweetdreams.CheckMakeSelected;
+import com.sd.rafael.sweetdreams.activity.DreamsActivity;
+import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.models.Dream;
 
 /**
@@ -44,11 +47,6 @@ public class DreamsHelper {
         dream.setMonth(Integer.parseInt(arDate[1]));
         dream.setYear(Integer.parseInt(arDate[2]));
 
-        String[] arTime = datetimeArr[1].toString().split("h");
-        dream.setHour(Integer.parseInt(arTime[0]));
-        dream.setMinute(Integer.parseInt(arTime[1]));
-
-        //String txt = dream.tagConvertArrayToString(cmS.checkSelected());
         dream.setTags(tags.getText().toString());
 
         return dream;
@@ -58,7 +56,7 @@ public class DreamsHelper {
         title.setText(dream.getTitle());
         description.setText(dream.getDescription());
         grade.setProgress(dream.getGrade().intValue());
-        datetime.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear() + " - " + dream.getHour() + "h" + dream.getMinute());
+        datetime.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
         tags.setText(dream.getTags());
 
         this.dream = dream;

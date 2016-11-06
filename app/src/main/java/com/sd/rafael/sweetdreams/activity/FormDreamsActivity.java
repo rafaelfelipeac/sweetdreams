@@ -1,15 +1,12 @@
-package com.sd.rafael.sweetdreams;
+package com.sd.rafael.sweetdreams.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,11 +15,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
+
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
+import com.sd.rafael.sweetdreams.R;
+import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
-import java.text.Normalizer;
 import java.util.Calendar;
 
 public class FormDreamsActivity extends AppCompatActivity {
@@ -32,25 +30,9 @@ public class FormDreamsActivity extends AppCompatActivity {
 
     static final int DIALOG_TIME_ID = 1;
     static final int DIALOG_DATE_ID = 2;
-    int hourX;
-    int minuteX;
     int yearX;
     int monthX;
     int dayX;
-
-    protected TimePickerDialog.OnTimeSetListener kTimePickerListener =
-            new TimePickerDialog.OnTimeSetListener() {
-                @Override
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    hourX = hourOfDay;
-                    minuteX = minute;
-
-                    TextView time = (TextView) findViewById(R.id.form_dreams_time);
-                    time.setText(hourX + "h" + minuteX);
-
-                    Snackbar.make(findViewById(R.id.activity_form_dreams), hourX + "h" + minuteX, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-                }
-            };
 
     private DatePickerDialog.OnDateSetListener dpickerListener =
             new DatePickerDialog.OnDateSetListener() {
@@ -68,17 +50,6 @@ public class FormDreamsActivity extends AppCompatActivity {
                 }
             };
 
-    public void showTimePickerDialog() {
-        Button btnSetTime = (Button) findViewById(R.id.form_dreams_btnSetTime);
-
-        btnSetTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(DIALOG_TIME_ID);
-            }
-        });
-    }
-
     public void showDatePickerDialog() {
         Button btnSetDate = (Button) findViewById(R.id.form_dreams_btnSetDate);
 
@@ -91,8 +62,6 @@ public class FormDreamsActivity extends AppCompatActivity {
     }
 
     protected Dialog onCreateDialog(int id) {
-        if(id == DIALOG_TIME_ID)
-            return new TimePickerDialog(FormDreamsActivity.this, kTimePickerListener, hourX, minuteX, false);
         if(id == DIALOG_DATE_ID)
             return new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
         return null;
@@ -105,17 +74,12 @@ public class FormDreamsActivity extends AppCompatActivity {
 
         final Calendar cal = Calendar.getInstance();
 
-        hourX = (cal.get(Calendar.HOUR));
-        minuteX = (cal.get(Calendar.MINUTE));
         yearX = (cal.get(Calendar.YEAR));
         monthX = (cal.get(Calendar.MONTH));
         dayX = (cal.get(Calendar.DAY_OF_MONTH));
 
-        showTimePickerDialog();
         showDatePickerDialog();
 
-        TextView time = (TextView) findViewById(R.id.form_dreams_time);
-        time.setText(hourX + "h" + minuteX);
         TextView date = (TextView) findViewById(R.id.form_dreams_date);
         date.setText(dayX + "/" + monthX + "/" + yearX);
 
@@ -168,15 +132,6 @@ public class FormDreamsActivity extends AppCompatActivity {
         });
 
     }
-
-    @Override
-    public void onBackPressed() {
-//        Intent intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
-//        intentDream.putExtra("dream", dream);
-//        startActivity(intentDream);
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

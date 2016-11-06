@@ -1,10 +1,13 @@
-package com.sd.rafael.sweetdreams;
+package com.sd.rafael.sweetdreams.helper;
 
 
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.sd.rafael.sweetdreams.CheckMakeSelected;
+import com.sd.rafael.sweetdreams.activity.FormDreamsActivity;
+import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.models.Dream;
 
 /**
@@ -16,7 +19,6 @@ public class FormDreamsHelper {
     private final EditText description;
     private final RatingBar grade;
     private final TextView date;
-    private final TextView time;
     private final CheckMakeSelected cmS;
 
     private Dream dream;
@@ -27,7 +29,6 @@ public class FormDreamsHelper {
         description = (EditText) activity.findViewById(R.id.form_dreams_description);
         grade = (RatingBar) activity.findViewById(R.id.form_dreams_grade);
         date = (TextView) activity.findViewById(R.id.form_dreams_date);
-        time = (TextView) activity.findViewById(R.id.form_dreams_time);
 
         cmS = new CheckMakeSelected(activity);
         dream = new Dream();
@@ -43,10 +44,6 @@ public class FormDreamsHelper {
         dream.setMonth(Integer.parseInt(arDate[1]));
         dream.setYear(Integer.parseInt(arDate[2]));
 
-        String[] arTime = time.getText().toString().split("h");
-        dream.setHour(Integer.parseInt(arTime[0]));
-        dream.setMinute(Integer.parseInt(arTime[1]));
-
         String txt = dream.tagConvertArrayToString(cmS.checkSelected());
         dream.setTags(txt);
 
@@ -58,7 +55,6 @@ public class FormDreamsHelper {
         description.setText(dream.getDescription());
         grade.setProgress(dream.getGrade().intValue());
         date.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
-        time.setText(dream.getHour() + "h" + dream.getMinute());
 
         cmS.makeSelected(dream);
 

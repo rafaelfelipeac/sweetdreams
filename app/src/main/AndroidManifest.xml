@@ -15,22 +15,22 @@
 
         </activity>
         <activity
-            android:name=".FormDreamsActivity"
-            android:parentActivityName=".DreamsActivity">
+            android:name=".activity.FormDreamsActivity"
+            android:parentActivityName=".activity.DreamsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DreamsActivity" />
+                android:value=".activity.DreamsActivity" />
         </activity>
         <activity
-            android:name=".DreamsActivity"
+            android:name=".activity.DreamsActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".MainNavDrawerActivity">
+            android:parentActivityName=".activity.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainNavDrawerActivity" />
+                android:value=".activity.MainNavDrawerActivity" />
         </activity>
         <activity
-            android:name=".MainNavDrawerActivity"
+            android:name=".activity.MainNavDrawerActivity"
             android:launchMode="singleTask"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar">
@@ -41,11 +41,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".MainNavDrawerActivity">
+            android:name=".activity.SettingsActivity"
+            android:parentActivityName=".activity.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainNavDrawerActivity" />
+                android:value=".activity.MainNavDrawerActivity" />
         </activity>
     </application>
 

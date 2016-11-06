@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.sd.rafael.sweetdreams.FormDreamsActivity"
+    tools:context="com.sd.rafael.sweetdreams.activity.FormDreamsActivity"
     android:orientation="vertical">
 
 
@@ -21,27 +21,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/form_dreams_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0h00"
-                    android:layout_gravity="center_horizontal"/>
-
-                <Button
-                    android:id="@+id/form_dreams_btnSetTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="set time"
-                    android:layout_gravity="center_horizontal"/>
-            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
