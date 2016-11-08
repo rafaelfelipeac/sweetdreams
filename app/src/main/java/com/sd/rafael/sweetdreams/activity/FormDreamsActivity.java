@@ -28,7 +28,6 @@ public class FormDreamsActivity extends AppCompatActivity {
     private FormDreamsHelper helper;
     private Dream dream;
 
-    static final int DIALOG_TIME_ID = 1;
     static final int DIALOG_DATE_ID = 2;
     int yearX;
     int monthX;
