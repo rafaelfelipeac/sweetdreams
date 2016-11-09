@@ -54,16 +54,11 @@ public class DreamsActivity extends AppCompatActivity {
                 break;
             case R.id.menu_dream_delete:
                 AlertDialog.Builder alert = new AlertDialog.Builder(DreamsActivity.this);
-                alert.setMessage("Quer deletar mesmo?").setCancelable(false)
-                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                alert.setMessage("Excluir sonho '"+ dream.getTitle()+"'?").setCancelable(false)
+                    .setNegativeButton("Cancelar", null)
+                    .setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
                         Dream dream = helper.getDream();
                         DreamDAO dao = new DreamDAO(DreamsActivity.this);
                         dao.Read();
@@ -75,10 +70,7 @@ public class DreamsActivity extends AppCompatActivity {
                     }
                 });
 
-                AlertDialog alert2 = alert.create();
-                alert2.setTitle("opa");
-                alert2.show();
-
+                alert.show();
                 break;
         }
 

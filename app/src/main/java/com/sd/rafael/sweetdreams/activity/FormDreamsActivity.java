@@ -2,8 +2,10 @@ package com.sd.rafael.sweetdreams.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -148,16 +150,40 @@ public class FormDreamsActivity extends AppCompatActivity {
             case R.id.menu_form_confirm:
                 // btnAdd onClick()
             case android.R.id.home:
-                if(dream.getId() == null)
-                    intentDream = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
-                else
-                    intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                if(emptyDream()) {
+                    if(dream.getId() == null)
+                        intentDream = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
+                    else
+                        intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
 
-                intentDream.putExtra("dream", dream);
-                startActivity(intentDream);
-                finish();
-                break;
+                    intentDream.putExtra("dream", dream);
+                    startActivity(intentDream);
+                    finish();
+                }
+                else {
+                    final Intent intent = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
+                    alert.setMessage("Sair sem salvar o sonho?").setCancelable(false)
+                            .setNegativeButton("Cancelar", null)
+                            .setPositiveButton("Sair", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    startActivity(intent);
+                                }
+                            });
+                    alert.show();
+                }
+
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean emptyDream() {
+        Dream dream = helper.getDream();
+
+        if(dream.getTitle().equals("") && dream.getDescription().equals("") && dream.getTags().equals(""))
+            return true;
+        return false;
     }
 }
