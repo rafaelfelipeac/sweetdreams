@@ -18,7 +18,7 @@
         <ImageView
             android:src="@color/colorAccent"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:scaleType="centerCrop"
             android:id="@+id/image"/>
 
@@ -27,26 +27,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
-            android:paddingTop="40dp"
+            android:paddingTop="20dp"
             android:text="01/1/0001"
             android:textColor="@color/cardview_light_background"/>
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/tags"
             android:paddingLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="\ndfgsdfgs."
+            android:text="dfgsdfgs."
             android:layout_below="@+id/title"
             android:layout_toRightOf="@+id/image" />
 
         <TextView
             android:id="@+id/title"
             android:paddingLeft="10dp"
+            android:paddingTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="\nTitle"
+            android:text="Title"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/image" />

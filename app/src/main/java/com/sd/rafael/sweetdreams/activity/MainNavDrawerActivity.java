@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.sd.rafael.sweetdreams.AppPreferences;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.RecyclerViewClickPosition;
@@ -173,7 +174,6 @@ public class MainNavDrawerActivity extends AppCompatActivity
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
         startActivity(intentDreamsActivity);
-
     }
 
     public String[] convertStringToArray(String str) {
@@ -191,16 +191,16 @@ public class MainNavDrawerActivity extends AppCompatActivity
         for(Dream dream : lst) {
             String[] tag = convertStringToArray(dream.getTags());
 
-            for(int i = 0; i < tag.length; i++) {
-                String tt = tag[i];
-                tag[i] = tt.replace(" ", "");
-            }
+            for(int i = 0; i < tag.length; i++)
+                tag[i].replace(" ", "");
 
             for(String str: tag) {
                 if(str != "") {
-                    String tagUser = query.toLowerCase();
+                    String tagUser = query.toLowerCase().replace(" ", "");
+                    str = str.toLowerCase().replaceAll(" ", "");
 
-                    if (tagUser.contains(str.replace(" ", ""))) {
+
+                    if (str.equals(tagUser)) {
                         dreams.add(dream);
                         break;
                     }

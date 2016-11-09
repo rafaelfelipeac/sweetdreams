@@ -17,7 +17,7 @@ public class Dream implements Serializable{
     private int month;
     private int year;
 
-    private String separator = ",";
+    private String separator = ", ";
 
     public int getDay() {
         return day;
@@ -93,8 +93,10 @@ public class Dream implements Serializable{
 
         for(int i = 0; i< array.length; i++) {
             if(array[i] != null && array[i] != "null") {
-                s += array[i];
+                if(array[i].endsWith(" "))
+                    array[i] = array[i].substring(0, array[i].length() -1);
 
+                s += array[i];
                 if(i < array.length -1)
                     s += separator;
             }

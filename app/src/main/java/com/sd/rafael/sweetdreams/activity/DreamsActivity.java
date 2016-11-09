@@ -1,6 +1,8 @@
 package com.sd.rafael.sweetdreams.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,13 +53,32 @@ public class DreamsActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.menu_dream_delete:
-                DreamDAO dao = new DreamDAO(DreamsActivity.this);
-                dao.Read();
-                dao.Remove(dream);
-                dao.close();
-                Intent intentMain = new Intent(DreamsActivity.this, MainNavDrawerActivity.class);
-                startActivity(intentMain);
-                finish();
+                AlertDialog.Builder alert = new AlertDialog.Builder(DreamsActivity.this);
+                alert.setMessage("Quer deletar mesmo?").setCancelable(false)
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dream dream = helper.getDream();
+                        DreamDAO dao = new DreamDAO(DreamsActivity.this);
+                        dao.Read();
+                        dao.Remove(dream);
+                        dao.close();
+                        Intent intentMain = new Intent(DreamsActivity.this, MainNavDrawerActivity.class);
+                        startActivity(intentMain);
+                        finish();
+                    }
+                });
+
+                AlertDialog alert2 = alert.create();
+                alert2.setTitle("opa");
+                alert2.show();
+
                 break;
         }
 

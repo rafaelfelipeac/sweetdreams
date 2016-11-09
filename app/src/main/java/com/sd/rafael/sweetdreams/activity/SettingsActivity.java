@@ -12,7 +12,11 @@ import android.view.View;
 
 import com.sd.rafael.sweetdreams.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SettingsActivity extends PreferenceActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
