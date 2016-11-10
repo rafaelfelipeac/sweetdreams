@@ -32,18 +32,9 @@
             android:textColor="@color/cardview_light_background"/>
 
         <TextView
-            android:id="@+id/tags"
-            android:paddingLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="ZZZZ"
-            android:layout_below="@+id/title"
-            android:layout_toRightOf="@+id/image" />
-
-        <TextView
             android:id="@+id/title"
             android:paddingLeft="10dp"
-            android:paddingTop="2dp"
+            android:paddingTop="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"

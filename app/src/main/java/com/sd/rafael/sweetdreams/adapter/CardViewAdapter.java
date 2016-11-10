@@ -38,7 +38,6 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         viewHolder.title.setText(dreams[position].getTitle());
-        viewHolder.tags.setText(dreams[position].getTags());
         viewHolder.date.setText(dreams[position].getDay() + "/" + dreams[position].getMonth() + "/" + dreams[position].getYear());
     }
 
@@ -50,7 +49,6 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView title;
-        public TextView tags;
         public TextView date;
 
         public ViewHolder(View itemLayoutView) {
@@ -59,7 +57,6 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
             itemLayoutView.setOnClickListener(this);
 
             title = (TextView) itemLayoutView.findViewById(R.id.title);
-            tags = (TextView) itemLayoutView.findViewById(R.id.tags);
             date = (TextView) itemLayoutView.findViewById(R.id.date);
         }
 
