@@ -17,7 +17,7 @@ import com.sd.rafael.sweetdreams.models.Dream;
 public class FormDreamsHelper {
     private final EditText title;
     private final EditText description;
-    private final RatingBar grade;
+    //private final RatingBar grade;
     private final TextView date;
     private final CheckMakeSelected cmS;
 
@@ -27,7 +27,7 @@ public class FormDreamsHelper {
     public FormDreamsHelper(FormDreamsActivity activity) {
         title = (EditText) activity.findViewById(R.id.form_dreams_title);
         description = (EditText) activity.findViewById(R.id.form_dreams_description);
-        grade = (RatingBar) activity.findViewById(R.id.form_dreams_grade);
+        //grade = (RatingBar) activity.findViewById(R.id.form_dreams_grade);
         date = (TextView) activity.findViewById(R.id.form_dreams_date);
 
         cmS = new CheckMakeSelected(activity);
@@ -37,7 +37,7 @@ public class FormDreamsHelper {
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
         dream.setDescription(description.getText().toString());
-        dream.setGrade(Double.valueOf(grade.getProgress()));
+        //dream.setGrade(Double.valueOf(grade.getProgress()));
 
         String[] arDate = date.getText().toString().split("/");
         dream.setDay(Integer.parseInt(arDate[0]));
@@ -53,7 +53,7 @@ public class FormDreamsHelper {
     public void makeDream(Dream dream) {
         title.setText(dream.getTitle());
         description.setText(dream.getDescription());
-        grade.setProgress(dream.getGrade().intValue());
+        //grade.setProgress(dream.getGrade().intValue());
         date.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
 
         cmS.makeSelected(dream);

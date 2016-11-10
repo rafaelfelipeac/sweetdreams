@@ -17,7 +17,7 @@ public class DreamsHelper {
     private TextView title;
     private TextView description;
     private TextView tags;
-    private RatingBar grade;
+    //private RatingBar grade;
 
     private CheckMakeSelected cmS;
 
@@ -28,7 +28,7 @@ public class DreamsHelper {
         title = (TextView) activity.findViewById(R.id.dreams_title);
         description = (TextView) activity.findViewById(R.id.dreams_description);
         tags = (TextView) activity.findViewById(R.id.dreams_tags);
-        grade = (RatingBar) activity.findViewById(R.id.dreams_grade);
+//        grade = (RatingBar) activity.findViewById(R.id.dreams_grade);
 
 
         dream = new Dream();
@@ -38,7 +38,7 @@ public class DreamsHelper {
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
         dream.setDescription(description.getText().toString());
-        dream.setGrade(Double.valueOf(grade.getProgress()));
+        //dream.setGrade(Double.valueOf(grade.getProgress()));
 
         String[] datetimeArr = datetime.getText().toString().split(" - ");
 
@@ -55,7 +55,7 @@ public class DreamsHelper {
     public void makeDream(Dream dream) {
         title.setText(dream.getTitle());
         description.setText(dream.getDescription());
-        grade.setProgress(dream.getGrade().intValue());
+        //grade.setProgress(dream.getGrade().intValue());
         datetime.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
         tags.setText(dream.getTags());
 

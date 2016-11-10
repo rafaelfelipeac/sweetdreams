@@ -150,16 +150,9 @@ public class MainNavDrawerActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_add) {
             Intent intentAdd = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
             startActivity(intentAdd);
-        } else if (id == R.id.nav_settings) {
-            Intent intentSettings = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
-            startActivity(intentSettings);
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -36,7 +36,7 @@
             android:paddingLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="dfgsdfgs."
+            android:text="ZZZZ"
             android:layout_below="@+id/title"
             android:layout_toRightOf="@+id/image" />
 

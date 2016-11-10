@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,7 @@ import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class FormDreamsActivity extends AppCompatActivity {
 
@@ -82,7 +84,7 @@ public class FormDreamsActivity extends AppCompatActivity {
         showDatePickerDialog();
 
         TextView date = (TextView) findViewById(R.id.form_dreams_date);
-        date.setText(dayX + "/" + monthX + "/" + yearX);
+        date.setText(dayX + "/" + (monthX+1) + "/" + yearX);
 
         helper = new FormDreamsHelper(this);
 
@@ -105,39 +107,12 @@ public class FormDreamsActivity extends AppCompatActivity {
                 ll.addView(cb);
             }
         });
-
-        Button btnAdd = (Button) findViewById(R.id.form_dreams_add);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dream dream = helper.getDream();
-                DreamDAO dao = new DreamDAO(FormDreamsActivity.this);
-
-                LinearLayout ll = (LinearLayout) findViewById(R.id.activity_form_dreams);
-
-                if(dream.getId() != null) {
-                    dao.Update(dream);
-                    Snackbar.make(ll, "Sonho editado.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }
-                else {
-                    dao.Insert(dream);
-                    Snackbar.make(ll, "Sonho adicionado.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-                }
-                dao.close();
-                Intent intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
-                intentDream.putExtra("dream", dream);
-                startActivity(intentDream);
-
-                finish();
-            }
-        });
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.form_confirm, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.form_confirm, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -148,9 +123,43 @@ public class FormDreamsActivity extends AppCompatActivity {
         Intent intentDream;
         switch (item.getItemId()) {
             case R.id.menu_form_confirm:
-                // btnAdd onClick()
+                if(emptyDream(2)) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
+                    alert.setMessage("Necessário que o sonho tenha um título e uma descrição.").setCancelable(false)
+                            .setPositiveButton("OK", null);
+                    alert.show();
+                }
+                else {
+                    DreamDAO dao = new DreamDAO(FormDreamsActivity.this);
+
+                    LinearLayout ll = (LinearLayout) findViewById(R.id.activity_form_dreams);
+
+                    if(dream.getId() != null) {
+                        dao.Update(dream);
+                        Snackbar.make(ll, "Sonho editado.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    }
+                    else {
+                        dao.Insert(dream);
+                        Snackbar.make(ll, "Sonho adicionado.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                    }
+                    dao.close();
+                    intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                    intentDream.putExtra("dream", dream);
+                    startActivity(intentDream);
+
+                    finish();
+                }
+                break;
             case android.R.id.home:
-                if(emptyDream()) {
+                DreamDAO dao = new DreamDAO(this);
+                List<Dream> dreams = dao.Read();
+                Dream originalDream = new Dream();
+                for(Dream d : dreams) {
+                    if(d.getId().equals(this.dream.getId()))
+                        originalDream = d;
+                }
+
+                if(emptyDream(1) || (compareDreams(originalDream, dream))) {
                     if(dream.getId() == null)
                         intentDream = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
                     else
@@ -161,14 +170,14 @@ public class FormDreamsActivity extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    final Intent intent = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
+                    final Intent intentA = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
                     AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
                     alert.setMessage("Sair sem salvar o sonho?").setCancelable(false)
                             .setNegativeButton("Cancelar", null)
                             .setPositiveButton("Sair", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    startActivity(intent);
+                                    startActivity(intentA);
                                 }
                             });
                     alert.show();
@@ -179,11 +188,22 @@ public class FormDreamsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public boolean emptyDream() {
+    public boolean emptyDream(int n) {
         Dream dream = helper.getDream();
 
-        if(dream.getTitle().equals("") && dream.getDescription().equals("") && dream.getTags().equals(""))
-            return true;
+        switch(n) {
+            case 1:
+                return dream.getTitle().equals("") && dream.getDescription().equals("") && dream.getTitle().equals(" ") && dream.getDescription().equals(" ");
+            case 2:
+                return dream.getTitle().equals("") || dream.getDescription().equals("") || dream.getTitle().equals(" ") || dream.getDescription().equals(" ");
+
+        }
         return false;
+    }
+
+    public boolean compareDreams(Dream dream, Dream dream2) {
+        return dream.getTitle().equals(dream2.getTitle()) &&
+                dream.getDescription().equals(dream2.getDescription()) &&
+                dream.getTags().equals(dream2.getTags());
     }
 }

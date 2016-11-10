@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.sd.rafael.sweetdreams.MainActivity" >
     <item android:id="@+id/menuSearch"
-        android:title="Search"
+        android:title="pesquisar"
         android:icon="@android:drawable/ic_menu_search"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always" />
