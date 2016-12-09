@@ -154,6 +154,10 @@ public class MainNavDrawerActivity extends AppCompatActivity
             Intent intentAdd = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
             startActivity(intentAdd);
         }
+        if(id == R.id.nav_calendar) {
+            Intent intentCalendar = new Intent(MainNavDrawerActivity.this, CalendarActivity.class);
+            startActivity(intentCalendar);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

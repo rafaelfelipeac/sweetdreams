@@ -6,5 +6,10 @@
             android:id="@+id/nav_add"
             android:icon="@android:drawable/ic_input_add"
             android:title="Adicionar"/>
+
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="Calendário"/>
     </group>
 </menu>

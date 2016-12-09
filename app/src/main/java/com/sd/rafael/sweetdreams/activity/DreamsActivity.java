@@ -73,7 +73,6 @@ public class DreamsActivity extends AppCompatActivity {
                 alert.show();
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

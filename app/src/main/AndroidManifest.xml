@@ -43,7 +43,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainNavDrawerActivity" />
         </activity>
-        <activity android:name=".AppPreferences"></activity>
+        <activity android:name=".AppPreferences" />
+        <activity
+            android:name=".activity.CalendarActivity"
+            android:label=""
+            android:parentActivityName=".activity.MainNavDrawerActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainNavDrawerActivity" />
+        </activity>
     </application>
 
 </manifest>
