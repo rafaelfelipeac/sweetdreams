@@ -6,6 +6,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
@@ -35,6 +37,8 @@ public class CalendarActivity extends AppCompatActivity {
 
         final DreamDAO dao = new DreamDAO(this);
         final List<Dream> dreams = dao.Read();
+        final Button btnPreviousMonth = (Button) findViewById(R.id.btnPreviousMonth);
+        final Button btnNextMonth = (Button) findViewById(R.id.btnNextMonth);
 
         calendar = (CompactCalendarView) findViewById(R.id.compactCalendarView);
         calendar.setShouldShowMondayAsFirstDay(false);
@@ -66,10 +70,17 @@ public class CalendarActivity extends AppCompatActivity {
                             for (Dream dream : dreams) {
                                 String dateA = sdf.format(dateClicked);
                                 String dateB;
+
                                 if(dream.getDay() < 10)
-                                    dateB = "0" + dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear();
+                                    dateB = "0" + dream.getDay() + "/";
                                 else
-                                    dateB = dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear();
+                                    dateB = dream.getDay() + "/";
+
+                                if(dream.getMonth() < 10)
+                                    dateB += "0" + dream.getMonth() + "/" + dream.getYear();
+                                else
+                                    dateB += dream.getMonth() + "/" + dream.getYear();
+
 
                                 if (dateA.equals(dateB)) {
                                     Intent intentDreamsActivity = new Intent(CalendarActivity.this, DreamsActivity.class);
@@ -87,8 +98,22 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 textView.setText(dateFormatForMonth.format(firstDayOfNewMonth));
-
             }
         });
+
+        btnPreviousMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar.showPreviousMonth();
+            }
+        });
+
+        btnNextMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar.showNextMonth();
+            }
+        });
+
     }
 }
