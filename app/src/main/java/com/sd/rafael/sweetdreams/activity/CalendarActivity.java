@@ -1,5 +1,6 @@
 package com.sd.rafael.sweetdreams.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
@@ -24,23 +25,25 @@ public class CalendarActivity extends AppCompatActivity {
 
     CompactCalendarView calendar;
     TextView textView;
-    private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMM - yyyy", Locale.getDefault());
+    SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMM - yyyy", Locale.getDefault());
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        DreamDAO dao = new DreamDAO(this);
+        final DreamDAO dao = new DreamDAO(this);
         final List<Dream> dreams = dao.Read();
-
-        textView = (TextView) findViewById(R.id.textViewCalendar);
 
         calendar = (CompactCalendarView) findViewById(R.id.compactCalendarView);
         calendar.setShouldShowMondayAsFirstDay(false);
 
+        textView = (TextView) findViewById(R.id.textViewCalendar);
+        textView.setText(dateFormatForMonth.format(calendar.getFirstDayOfCurrentMonth()));
+
         for(Dream dream : dreams) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
             Date date = null;
             try {
                 date = sdf.parse(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
@@ -55,12 +58,34 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onDayClick(Date dateClicked) {
                 textView.setText(dateFormatForMonth.format(dateClicked));
-                Snackbar.make(calendar, dateClicked.toString(), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
+                List<Event> events = calendar.getEvents(dateClicked);
+                if(events.size() > 0) {
+                    for(Event event : events) {
+                        if (event.getTimeInMillis() == dateClicked.getTime()) {
+                            for (Dream dream : dreams) {
+                                String dateA = sdf.format(dateClicked);
+                                String dateB;
+                                if(dream.getDay() < 10)
+                                    dateB = "0" + dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear();
+                                else
+                                    dateB = dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear();
+
+                                if (dateA.equals(dateB)) {
+                                    Intent intentDreamsActivity = new Intent(CalendarActivity.this, DreamsActivity.class);
+                                    intentDreamsActivity.putExtra("dream", dream);
+                                    startActivity(intentDreamsActivity);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                    Snackbar.make(calendar, "Não há sonhos salvos nesse dia.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                //toolbar.setTitle(dateFormatForMonth.format(firstDayOfNewMonth));
                 textView.setText(dateFormatForMonth.format(firstDayOfNewMonth));
 
             }
