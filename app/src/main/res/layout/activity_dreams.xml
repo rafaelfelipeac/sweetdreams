@@ -61,13 +61,11 @@
             android:text="Descrição do sonho"
             android:textSize="16sp"/>
 
-        <TextView
-            android:id="@+id/dreams_tags"
-            android:gravity="center"
+        <com.cunoraz.tagview.TagView
+            android:id="@+id/tag_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="#sonho #mulher #estranha #porta #fim #corredor"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"/>
 
 
     </LinearLayout>

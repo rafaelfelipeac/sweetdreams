@@ -1,12 +1,18 @@
 package com.sd.rafael.sweetdreams.helper;
 
+import android.graphics.Color;
+import android.nfc.Tag;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.cunoraz.tagview.TagView;
 import com.sd.rafael.sweetdreams.CheckMakeSelected;
 import com.sd.rafael.sweetdreams.activity.DreamsActivity;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.models.Dream;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by rafae on 28/10/2016.
@@ -16,8 +22,7 @@ public class DreamsHelper {
     private TextView datetime;
     private TextView title;
     private TextView description;
-    private TextView tags;
-    //private RatingBar grade;
+    private TagView tagGroup;
 
     private CheckMakeSelected cmS;
 
@@ -27,9 +32,7 @@ public class DreamsHelper {
         datetime = (TextView) activity.findViewById(R.id.dreams_datetime);
         title = (TextView) activity.findViewById(R.id.dreams_title);
         description = (TextView) activity.findViewById(R.id.dreams_description);
-        tags = (TextView) activity.findViewById(R.id.dreams_tags);
-//        grade = (RatingBar) activity.findViewById(R.id.dreams_grade);
-
+        tagGroup = (TagView) activity.findViewById(R.id.tag_group);
 
         dream = new Dream();
         cmS = new CheckMakeSelected(activity);
@@ -38,7 +41,6 @@ public class DreamsHelper {
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
         dream.setDescription(description.getText().toString());
-        //dream.setGrade(Double.valueOf(grade.getProgress()));
 
         String[] datetimeArr = datetime.getText().toString().split(" - ");
 
@@ -47,7 +49,14 @@ public class DreamsHelper {
         dream.setMonth(Integer.parseInt(arDate[1]));
         dream.setYear(Integer.parseInt(arDate[2]));
 
-        dream.setTags(tags.getText().toString());
+        List<com.cunoraz.tagview.Tag> tags = tagGroup.getTags();
+        String lstTags = "";
+
+        for(com.cunoraz.tagview.Tag tag : tags) {
+           lstTags += tag.text + ", ";
+        }
+
+        dream.setTags(lstTags);
 
         return dream;
     }
@@ -55,9 +64,19 @@ public class DreamsHelper {
     public void makeDream(Dream dream) {
         title.setText(dream.getTitle());
         description.setText(dream.getDescription());
-        //grade.setProgress(dream.getGrade().intValue());
         datetime.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
-        tags.setText(dream.getTags());
+
+        List<com.cunoraz.tagview.Tag> tags = new ArrayList<>(dream.tagConvertStringToArray().length);
+        String[] lstTags = dream.tagConvertStringToArray();
+
+        for(String s : lstTags) {
+            com.cunoraz.tagview.Tag tag = new com.cunoraz.tagview.Tag(s);
+            tag.radius = 10f;
+            tag.layoutColor = Color.rgb(0, 149, 255);
+            tags.add(tag);
+        }
+
+        tagGroup.addTags(tags);
 
         this.dream = dream;
     }

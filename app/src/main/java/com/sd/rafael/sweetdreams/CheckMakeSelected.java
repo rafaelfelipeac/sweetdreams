@@ -17,7 +17,7 @@ public class CheckMakeSelected {
         this.activity = activity;
     }
 
-    public String[] checkSelected() {
+    /*public String[] checkSelected() {
         final LinearLayout ll = (LinearLayout) activity.findViewById(R.id.form_dreams_ll);
         String[] array = new String[ll.getChildCount()];
         int cont = 0;
@@ -52,5 +52,5 @@ public class CheckMakeSelected {
                 }
             }
         }
-    }
+    }*/
 }

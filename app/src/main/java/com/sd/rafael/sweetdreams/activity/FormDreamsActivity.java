@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,11 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.cunoraz.tagview.Tag;
+import com.cunoraz.tagview.TagView;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
@@ -31,6 +35,8 @@ public class FormDreamsActivity extends AppCompatActivity {
 
     private FormDreamsHelper helper;
     private Dream dream;
+    private TagView tagGroup;
+    private ScrollView sv;
 
     static final int DIALOG_DATE_ID = 2;
     int yearX;
@@ -77,6 +83,9 @@ public class FormDreamsActivity extends AppCompatActivity {
 
         final Calendar cal = Calendar.getInstance();
 
+        sv = (ScrollView) findViewById(R.id.form_dreams);
+        tagGroup = (TagView) findViewById(R.id.tag_group_form);
+
         yearX = (cal.get(Calendar.YEAR));
         monthX = (cal.get(Calendar.MONTH));
         dayX = (cal.get(Calendar.DAY_OF_MONTH));
@@ -94,17 +103,46 @@ public class FormDreamsActivity extends AppCompatActivity {
         if(dream != null)
             helper.makeDream(dream);
 
-        final LinearLayout ll = (LinearLayout) findViewById(R.id.form_dreams_ll);
+        tagGroup.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
+            @Override
+            public void onTagLongClick(com.cunoraz.tagview.Tag tag, int position) {
+                Snackbar.make(sv, "Long Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
+
+        tagGroup.setOnTagClickListener(new TagView.OnTagClickListener() {
+            @Override
+            public void onTagClick(com.cunoraz.tagview.Tag tag, int position) {
+                Snackbar.make(sv, "Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
+
+        tagGroup.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
+
+            @Override
+            public void onTagDeleted(final TagView view, com.cunoraz.tagview.Tag tag, final int position) {
+                view.remove(position);
+                Snackbar.make(sv, "Delete Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
+
         Button btnNewTag = (Button) findViewById(R.id.form_dreams_btnNewTag);
         btnNewTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText newTag = (EditText) findViewById(R.id.form_dreams_tag);
-                CheckBox cb = new CheckBox(FormDreamsActivity.this);
-                cb.setChecked(true);
-                cb.setText(newTag.getText());
-                newTag.setText("");
-                ll.addView(cb);
+
+                if(!newTag.getText().toString().isEmpty() && !newTag.getText().toString().equals(" ")) {
+                    com.cunoraz.tagview.Tag tag = new Tag(newTag.getText().toString());
+                    tag.radius = 10f;
+                    tag.layoutColor = Color.rgb(0, 149, 255);
+                    tag.isDeletable = true;
+                    newTag.setText("");
+                    tagGroup.addTag(tag);
+                }
+                else
+                    Snackbar.make(sv, "Tag vazia.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
             }
         });
     }

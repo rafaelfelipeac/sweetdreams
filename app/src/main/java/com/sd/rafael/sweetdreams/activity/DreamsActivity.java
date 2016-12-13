@@ -2,13 +2,18 @@ package com.sd.rafael.sweetdreams.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.Tag;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
+import com.cunoraz.tagview.TagView;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.helper.DreamsHelper;
@@ -18,6 +23,9 @@ public class DreamsActivity extends AppCompatActivity {
 
     private DreamsHelper helper;
     private Dream dream;
+    private TagView tagGroup;
+    private ScrollView sv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,31 @@ public class DreamsActivity extends AppCompatActivity {
 
         if(dream != null)
             helper.makeDream(dream);
+
+        sv = (ScrollView) findViewById(R.id.activity_dreams);
+        tagGroup = (TagView) findViewById(R.id.tag_group);
+
+        tagGroup.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
+            @Override
+            public void onTagLongClick(com.cunoraz.tagview.Tag tag, int position) {
+                Snackbar.make(sv, "Long Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
+
+        tagGroup.setOnTagClickListener(new TagView.OnTagClickListener() {
+            @Override
+            public void onTagClick(com.cunoraz.tagview.Tag tag, int position) {
+                Snackbar.make(sv, "Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
+
+        tagGroup.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
+
+            @Override
+            public void onTagDeleted(final TagView view, com.cunoraz.tagview.Tag tag, final int position) {
+                Snackbar.make(sv, "Delete Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
     }
 
     @Override
