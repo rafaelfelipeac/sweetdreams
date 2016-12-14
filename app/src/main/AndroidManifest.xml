@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.FormDreamsActivity"
-            android:label=""
+            android:label="Novo sonho"
             android:parentActivityName=".activity.DreamsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -22,7 +22,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -46,7 +47,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -78,32 +78,38 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tags: ">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/form_dreams_tag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Tags: ">
 
-            </android.support.design.widget.TextInputLayout>
+                    <EditText
+                        android:id="@+id/form_dreams_tag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/form_dreams_btnNewTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Adicionar tag"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/form_dreams_btnNewTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Add"/>
+            </LinearLayout>
 
             <com.cunoraz.tagview.TagView
                 android:id="@+id/tag_group_form"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"/>
-
-
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
