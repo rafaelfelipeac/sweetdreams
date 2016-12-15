@@ -45,7 +45,15 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
 
     @Override
     public void getRecyclerViewAdapterPosition(int position) {
-        Dream dream = new DreamDAO(this).Read().get(position);
+        DreamDAO dao = new DreamDAO(this);
+        List<Dream> dreams = dao.Read();
+        List<Dream> dreamsFavorite = new ArrayList<>(dreams.size());
+
+        for(Dream dream : dreams)
+            if(dream.getFavorite())
+                dreamsFavorite.add(dream);
+
+        Dream dream = dreamsFavorite.get(position);
 
         Intent intentDreamsActivity = new Intent(FavoriteActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);

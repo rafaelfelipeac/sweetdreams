@@ -52,7 +52,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainNavDrawerActivity" />
         </activity>
-        <activity android:name=".activity.FavoriteActivity"></activity>
+        <activity
+            android:name=".activity.FavoriteActivity"
+            android:label="Favoritos"
+            android:parentActivityName=".activity.MainNavDrawerActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainNavDrawerActivity" />
+        </activity>
     </application>
 
 </manifest>
