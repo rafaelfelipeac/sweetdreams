@@ -23,6 +23,7 @@ public class DreamsHelper {
     private TextView title;
     private TextView description;
     private TagView tagGroup;
+    private RatingBar ratingBar;
 
     private CheckMakeSelected cmS;
 
@@ -33,6 +34,7 @@ public class DreamsHelper {
         title = (TextView) activity.findViewById(R.id.dreams_title);
         description = (TextView) activity.findViewById(R.id.dreams_description);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group);
+        ratingBar = (RatingBar) activity.findViewById(R.id.favorite_dreams);
 
         dream = new Dream();
         cmS = new CheckMakeSelected(activity);
@@ -41,6 +43,8 @@ public class DreamsHelper {
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
         dream.setDescription(description.getText().toString());
+
+        dream.setFavorite((ratingBar.getRating() == 1) ? true : false);
 
         String[] datetimeArr = datetime.getText().toString().split(" - ");
 
@@ -66,6 +70,8 @@ public class DreamsHelper {
         description.setText(dream.getDescription());
         datetime.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
 
+        ratingBar.setRating((dream.getFavorite()) ? 1 : 0);
+
         List<com.cunoraz.tagview.Tag> tags = new ArrayList<>(dream.tagConvertStringToArray().length);
         String[] lstTags = dream.tagConvertStringToArray();
 
@@ -80,7 +86,4 @@ public class DreamsHelper {
 
         this.dream = dream;
     }
-
-
-
 }

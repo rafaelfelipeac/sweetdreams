@@ -11,13 +11,21 @@ public class Dream implements Serializable{
     private Long id;
     private String title;
     private String description;
-    private Double grade;
     private String tags;
     private int day;
     private int month;
     private int year;
+    private boolean favorite;
 
     private String separator = ", ";
+
+    public boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
 
     public int getDay() {
         return day;
@@ -49,14 +57,6 @@ public class Dream implements Serializable{
 
     public void setTags(String tags) {
         this.tags = tags.toLowerCase();
-    }
-
-    public Double getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Double grade) {
-        this.grade = grade;
     }
 
     public Long getId() {

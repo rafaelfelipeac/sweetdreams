@@ -23,7 +23,7 @@ public class DreamDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table dreams (id integer primary key, title text, description text, grade real, tags text, hour integer, minute integer, day integer, month integer, year integer);";
+        String sql = "create table dreams (id integer primary key, title text, description text, favorite integer, tags text, day integer, month integer, year integer);";
         db.execSQL(sql);
     }
 
@@ -50,7 +50,13 @@ public class DreamDAO extends SQLiteOpenHelper {
             dream.setId(c.getLong(c.getColumnIndex("id")));
             dream.setTitle(c.getString(c.getColumnIndex("title")));
             dream.setDescription(c.getString(c.getColumnIndex("description")));
-            dream.setGrade(c.getDouble(c.getColumnIndex("grade")));
+
+            int favorite = c.getInt(c.getColumnIndex("favorite"));
+            if(favorite == 1)
+                dream.setFavorite(true);
+            else
+                dream.setFavorite(false);
+
             dream.setTags(c.getString(c.getColumnIndex("tags")));
             dream.setDay(c.getInt(c.getColumnIndex("day")));
             dream.setMonth(c.getInt(c.getColumnIndex("month")));
@@ -91,7 +97,7 @@ public class DreamDAO extends SQLiteOpenHelper {
         ContentValues data = new ContentValues();
         data.put("title", dream.getTitle());
         data.put("description", dream.getDescription());
-        data.put("grade", dream.getGrade());
+        data.put("favorite", dream.getFavorite());
         data.put("tags", dream.getTags());
         data.put("day", dream.getDay());
         data.put("month", dream.getMonth());

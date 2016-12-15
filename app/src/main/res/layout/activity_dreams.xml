@@ -54,6 +54,7 @@
                 android:text="22/05/16" />
 
             <RatingBar
+                android:id="@+id/favorite_dreams"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="1"

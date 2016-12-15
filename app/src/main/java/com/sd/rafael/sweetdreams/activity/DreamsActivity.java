@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -25,12 +26,14 @@ public class DreamsActivity extends AppCompatActivity {
     private Dream dream;
     private TagView tagGroup;
     private ScrollView sv;
-
-
+    private RatingBar ratingBar;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dreams);
+
+        final DreamDAO dao = new DreamDAO(this);
 
         helper = new DreamsHelper(this);
 
@@ -42,6 +45,24 @@ public class DreamsActivity extends AppCompatActivity {
 
         sv = (ScrollView) findViewById(R.id.activity_dreams);
         tagGroup = (TagView) findViewById(R.id.tag_group);
+        ratingBar = (RatingBar) findViewById(R.id.favorite_dreams);
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                if(dream.getFavorite())
+                    dream.setFavorite(false);
+                else
+                    dream.setFavorite(true);
+
+                if(dream.getId() == null) {
+                    dao.Remove(dream);
+                    dao.Insert(dream);
+                }
+                else
+                    dao.Update(dream);
+            }
+        });
 
         tagGroup.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
             @Override

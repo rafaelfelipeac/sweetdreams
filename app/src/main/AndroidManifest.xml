@@ -52,6 +52,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainNavDrawerActivity" />
         </activity>
+        <activity android:name=".activity.FavoriteActivity"></activity>
     </application>
 
 </manifest>
