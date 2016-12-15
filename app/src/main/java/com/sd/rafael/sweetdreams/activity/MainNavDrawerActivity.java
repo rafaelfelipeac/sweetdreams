@@ -36,8 +36,6 @@ public class MainNavDrawerActivity extends AppCompatActivity
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,9 +197,8 @@ public class MainNavDrawerActivity extends AppCompatActivity
                 if(str != "") {
                     String tagUser = query.toLowerCase().replace(" ", "");
                     str = str.toLowerCase().replaceAll(" ", "");
-
-
-                    if (str.equals(tagUser)) {
+                    
+                    if (str.startsWith(tagUser)) {
                         dreams.add(dream);
                         break;
                     }

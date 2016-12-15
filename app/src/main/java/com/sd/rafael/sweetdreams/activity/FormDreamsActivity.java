@@ -132,7 +132,7 @@ public class FormDreamsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText newTag = (EditText) findViewById(R.id.form_dreams_tag);
 
-                if(!newTag.getText().toString().isEmpty() && !newTag.getText().toString().equals(" ")) {
+                if(!newTag.getText().toString().isEmpty() && newTag.getText().toString().trim().length() > 0) {
                     com.cunoraz.tagview.Tag tag = new Tag(newTag.getText().toString());
                     tag.radius = 10f;
                     tag.layoutColor = Color.rgb(0, 149, 255);
