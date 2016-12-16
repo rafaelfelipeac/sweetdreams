@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="30dp"
-                    android:text="Titulo do sonho"
+                    android:text="@string/dreams_title"
                     android:textSize="30sp"
                     android:textColor="#ddd"/>
 
@@ -51,7 +51,7 @@
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="160dp"
                 android:textSize="17dp"
-                android:text="22/05/16" />
+                android:text="@string/dreams_date" />
 
             <RatingBar
                 android:id="@+id/favorite_dreams"
@@ -71,7 +71,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Descrição do sonho"
+            android:text="@string/dreams_description"
             android:textSize="16sp"/>
 
         <com.cunoraz.tagview.TagView

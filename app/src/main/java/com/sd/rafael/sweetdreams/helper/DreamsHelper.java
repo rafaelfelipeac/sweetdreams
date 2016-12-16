@@ -1,12 +1,10 @@
 package com.sd.rafael.sweetdreams.helper;
 
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.cunoraz.tagview.TagView;
-import com.sd.rafael.sweetdreams.CheckMakeSelected;
 import com.sd.rafael.sweetdreams.activity.DreamsActivity;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.models.Dream;
@@ -25,8 +23,6 @@ public class DreamsHelper {
     private TagView tagGroup;
     private RatingBar ratingBar;
 
-    private CheckMakeSelected cmS;
-
     private Dream dream;
 
     public DreamsHelper(DreamsActivity activity) {
@@ -37,7 +33,6 @@ public class DreamsHelper {
         ratingBar = (RatingBar) activity.findViewById(R.id.favorite_dreams);
 
         dream = new Dream();
-        cmS = new CheckMakeSelected(activity);
     }
 
     public Dream getDream() {

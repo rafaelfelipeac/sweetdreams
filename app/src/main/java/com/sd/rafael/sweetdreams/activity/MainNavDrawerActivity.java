@@ -1,7 +1,11 @@
 package com.sd.rafael.sweetdreams.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +21,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.sd.rafael.sweetdreams.AppPreferences;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.RecyclerViewClickPosition;
@@ -26,6 +29,7 @@ import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainNavDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPosition {
@@ -39,6 +43,22 @@ public class MainNavDrawerActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Resources res = getResources();
+        Configuration config = res.getConfiguration();
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String locale = SP.getString("language", "en");
+
+        switch (locale) {
+            case "PT-BR":
+                config.locale = new Locale("pt", "BR");
+                break;
+            default:
+                config.locale = Locale.ENGLISH;
+                break;
+        }
+        res.updateConfiguration(config, res.getDisplayMetrics());
+
         setContentView(R.layout.activity_main_nav_drawer);
 
         listDreams = (RecyclerView)findViewById(R.id.recyclerview);
@@ -85,6 +105,8 @@ public class MainNavDrawerActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+
+
         loadList();
     }
 
@@ -160,6 +182,10 @@ public class MainNavDrawerActivity extends AppCompatActivity
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, FavoriteActivity.class);
             startActivity(intentFavorite);
         }
+        if(id == R.id.nav_settings) {
+            Intent intentFavorite = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
+            startActivity(intentFavorite);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -197,7 +223,7 @@ public class MainNavDrawerActivity extends AppCompatActivity
                 if(str != "") {
                     String tagUser = query.toLowerCase().replace(" ", "");
                     str = str.toLowerCase().replaceAll(" ", "");
-                    
+
                     if (str.startsWith(tagUser)) {
                         dreams.add(dream);
                         break;

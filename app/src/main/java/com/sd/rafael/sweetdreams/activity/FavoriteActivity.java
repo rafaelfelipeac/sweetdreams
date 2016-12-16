@@ -1,6 +1,10 @@
 package com.sd.rafael.sweetdreams.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +21,7 @@ import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class FavoriteActivity extends AppCompatActivity implements RecyclerViewClickPosition {
 
@@ -27,6 +32,22 @@ public class FavoriteActivity extends AppCompatActivity implements RecyclerViewC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Resources res = getResources();
+        Configuration config = res.getConfiguration();
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String locale = SP.getString("language", "en");
+
+        switch (locale) {
+            case "PT-BR":
+                config.locale = new Locale("pt", "BR");
+                break;
+            default:
+                config.locale = Locale.ENGLISH;
+                break;
+        }
+        res.updateConfiguration(config, res.getDisplayMetrics());
+
         setContentView(R.layout.activity_favorite);
 
         listDreams = (RecyclerView)findViewById(R.id.recyclerview_favorite);

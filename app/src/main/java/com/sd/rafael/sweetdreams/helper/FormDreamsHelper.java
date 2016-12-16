@@ -3,12 +3,10 @@ package com.sd.rafael.sweetdreams.helper;
 
 import android.graphics.Color;
 import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
-import com.sd.rafael.sweetdreams.CheckMakeSelected;
 import com.sd.rafael.sweetdreams.activity.FormDreamsActivity;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.models.Dream;
@@ -24,7 +22,6 @@ public class FormDreamsHelper {
     private final EditText title;
     private final EditText description;
     private final TextView date;
-    private final CheckMakeSelected cmS;
 
     private TagView tagGroup;
 
@@ -37,7 +34,6 @@ public class FormDreamsHelper {
         date = (TextView) activity.findViewById(R.id.form_dreams_date);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group_form);
 
-        cmS = new CheckMakeSelected(activity);
         dream = new Dream();
     }
 
@@ -67,7 +63,6 @@ public class FormDreamsHelper {
         description.setText(dream.getDescription());
         date.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
 
-        //cmS.makeSelected(dream);
         List<com.cunoraz.tagview.Tag> tags = new ArrayList<>(dream.tagConvertStringToArray().length);
         String[] lstTags = dream.tagConvertStringToArray();
 

@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingTop="20dp"
-            android:text="01/1/0001"
+            android:text="@string/list_date"
             android:textColor="@color/cardview_light_background"/>
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Title"
+            android:text="@string/list_title"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/image" />

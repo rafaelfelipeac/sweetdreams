@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">sweetdreams</string>
+    <string name="app_description">O seu diário de sonhos</string>
+    <string name="action_save">Salvar</string>
+    <string name="action_settings">Configuração</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_delete">Deletar</string>
+    <string name="action_search">pesquisar</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_nd">NDActivity</string>
+
+    <string name="add">Adicionar</string>
+    <string name="calendar">Calendário</string>
+    <string name="favorite">Favoritos</string>
+    <string name="settings">Configurações</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
+    <string name="title_activity_main_nav_drawer">MainNavDrawerActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="left_arrow">&lt;</string>
+    <string name="right_arrow">&gt;</string>
+
+    <string name="dreams_title">Titulo</string>
+    <string name="dreams_date">00/00/00</string>
+    <string name="dreams_description">Descrição</string>
+
+    <string name="form_date">00/00/00</string>
+    <string name="form_change_date">Alterar data</string>
+    <string name="form_title">Título</string>
+    <string name="form_description">Descrição</string>
+    <string name="form_tags">Tags</string>
+    <string name="form_add">Adicionar</string>
+
+    <string name="list_date">00/00/0000</string>
+    <string name="list_title">Título</string>
+
+    <string name="language_portuguese">Português</string>
+    <string name="language_english">Inglês</string>
+
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_summary">Escolha o idioma</string>
+</resources>

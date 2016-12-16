@@ -26,7 +26,7 @@
                 android:id="@+id/btnPreviousMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/left"
+                android:text="@string/left_arrow"
                 android:textColor="#fff"
                 android:textSize="15dp"
                 android:background="@android:color/transparent"/>
@@ -45,7 +45,7 @@
                 android:id="@+id/btnNextMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/right"
+                android:text="@string/right_arrow"
                 android:textColor="#fff"
                 android:textSize="15dp"
                 android:background="@android:color/transparent"/>

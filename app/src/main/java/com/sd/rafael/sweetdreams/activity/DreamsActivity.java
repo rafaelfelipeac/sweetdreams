@@ -2,7 +2,11 @@ package com.sd.rafael.sweetdreams.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.nfc.Tag;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +24,8 @@ import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.helper.DreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
+import java.util.Locale;
+
 public class DreamsActivity extends AppCompatActivity {
 
     private DreamsHelper helper;
@@ -31,6 +37,22 @@ public class DreamsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Resources res = getResources();
+        Configuration config = res.getConfiguration();
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String locale = SP.getString("language", "en");
+
+        switch (locale) {
+            case "PT-BR":
+                config.locale = new Locale("pt", "BR");
+                break;
+            default:
+                config.locale = Locale.ENGLISH;
+                break;
+        }
+        res.updateConfiguration(config, res.getDisplayMetrics());
+
         setContentView(R.layout.activity_dreams);
 
         final DreamDAO dao = new DreamDAO(this);

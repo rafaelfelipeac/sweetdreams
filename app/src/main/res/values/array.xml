@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="Language">
-        <item>English</item>
-        <item>Portuguese</item>
+    <string-array name="language">
+        <item>@string/language_portuguese</item>
+        <item>@string/language_english</item>
     </string-array>
 
     <string-array name="LanguageAlias">
-        <item>en-US</item>
         <item>PT-BR</item>
+        <item>en-US</item>
     </string-array>
-
 </resources>

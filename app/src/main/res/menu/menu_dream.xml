@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_dream_edit"
-        android:title="Edit"
+        android:title="@string/action_edit"
         android:icon="@android:drawable/ic_menu_edit"
         app:showAsAction="always" />
 
     <item android:id="@+id/menu_dream_delete"
-        android:title="Delete"
+        android:title="@string/action_delete"
         android:icon="@android:drawable/ic_menu_delete"
         app:showAsAction="always" />
 
