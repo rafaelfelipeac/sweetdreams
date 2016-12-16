@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.FormDreamsActivity"
-            android:label="Novo sonho"
+            android:label="@string/form_activity"
             android:parentActivityName=".activity.DreamsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".activity.MainNavDrawerActivity"
-            android:label="Sweetdreams"
+            android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -38,7 +38,7 @@
         </activity>
         <activity
             android:name=".activity.SettingsActivity"
-            android:label=""
+            android:label="@string/settings_activity"
             android:parentActivityName=".activity.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,7 +54,7 @@
         </activity>
         <activity
             android:name=".activity.FavoriteActivity"
-            android:label="Favoritos"
+            android:label="@string/favorite_activity"
             android:parentActivityName=".activity.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

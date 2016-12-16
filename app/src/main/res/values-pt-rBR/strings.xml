@@ -43,4 +43,8 @@
 
     <string name="settings_language">Idioma</string>
     <string name="settings_language_summary">Escolha o idioma</string>
+
+    <string name="favorite_activity">Favoritos</string>
+    <string name="form_activity">Novo sonho</string>
+    <string name="settings_activity">Configurações</string>
 </resources>
