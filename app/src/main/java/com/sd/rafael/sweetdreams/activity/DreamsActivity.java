@@ -26,7 +26,7 @@ import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.Locale;
 
-public class DreamsActivity extends AppCompatActivity {
+public class DreamsActivity extends BaseActivity  {
 
     private DreamsHelper helper;
     private Dream dream;
@@ -37,22 +37,6 @@ public class DreamsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Resources res = getResources();
-        Configuration config = res.getConfiguration();
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String locale = SP.getString("language", "en");
-
-        switch (locale) {
-            case "PT-BR":
-                config.locale = new Locale("pt", "BR");
-                break;
-            default:
-                config.locale = Locale.ENGLISH;
-                break;
-        }
-        res.updateConfiguration(config, res.getDisplayMetrics());
-
         setContentView(R.layout.activity_dreams);
 
         final DreamDAO dao = new DreamDAO(this);

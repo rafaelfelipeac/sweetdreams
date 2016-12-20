@@ -36,7 +36,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class FormDreamsActivity extends AppCompatActivity {
+public class FormDreamsActivity extends BaseActivity  {
 
     private FormDreamsHelper helper;
     private Dream dream;
@@ -84,22 +84,6 @@ public class FormDreamsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Resources res = getResources();
-        Configuration config = res.getConfiguration();
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String locale = SP.getString("language", "en");
-
-        switch (locale) {
-            case "PT-BR":
-                config.locale = new Locale("pt", "BR");
-                break;
-            default:
-                config.locale = Locale.ENGLISH;
-                break;
-        }
-        res.updateConfiguration(config, res.getDisplayMetrics());
-
         setContentView(R.layout.activity_form_dreams);
 
         final Calendar cal = Calendar.getInstance();

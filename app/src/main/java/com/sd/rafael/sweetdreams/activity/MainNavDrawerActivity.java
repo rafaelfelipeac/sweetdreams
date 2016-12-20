@@ -1,5 +1,6 @@
 package com.sd.rafael.sweetdreams.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -31,8 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainNavDrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPosition {
+public class MainNavDrawerActivity extends BaseActivity
+implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPosition {
 
     private String separator = ",";
     private FloatingActionButton fabBtn;
@@ -43,22 +44,6 @@ public class MainNavDrawerActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Resources res = getResources();
-        Configuration config = res.getConfiguration();
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String locale = SP.getString("language", "en");
-
-        switch (locale) {
-            case "PT-BR":
-                config.locale = new Locale("pt", "BR");
-                break;
-            default:
-                config.locale = Locale.ENGLISH;
-                break;
-        }
-        res.updateConfiguration(config, res.getDisplayMetrics());
-
         setContentView(R.layout.activity_main_nav_drawer);
 
         listDreams = (RecyclerView)findViewById(R.id.recyclerview);
@@ -105,8 +90,6 @@ public class MainNavDrawerActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-
-
         loadList();
     }
 
@@ -115,9 +98,8 @@ public class MainNavDrawerActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        } else
             super.onBackPressed();
-        }
     }
 
     @Override
@@ -185,6 +167,7 @@ public class MainNavDrawerActivity extends AppCompatActivity
         if(id == R.id.nav_settings) {
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
             startActivity(intentFavorite);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
