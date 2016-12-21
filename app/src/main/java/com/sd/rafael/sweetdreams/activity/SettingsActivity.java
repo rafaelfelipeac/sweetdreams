@@ -36,9 +36,11 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         switch (locale) {
             case "PT-BR":
                 config.locale = new Locale("pt", "BR");
+                actionBar.setTitle("Configurações");
                 break;
             default:
                 config.locale = Locale.ENGLISH;
+                actionBar.setTitle("Settings");
                 break;
         }
         res.updateConfiguration(config, res.getDisplayMetrics());
@@ -74,6 +76,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
             Intent intent = getIntent();
             finish();
             startActivity(intent);
+
         }
     }
 

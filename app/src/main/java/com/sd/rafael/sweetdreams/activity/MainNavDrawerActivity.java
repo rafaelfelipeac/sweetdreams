@@ -30,7 +30,7 @@ import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
 
 public class MainNavDrawerActivity extends BaseActivity
 implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPosition {
@@ -40,6 +40,7 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
     private RecyclerView listDreams;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private String newTextTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,22 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
         listDreams.setLayoutManager(mLayoutManager);
 
         loadList();
+
+        listDreams.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 || dy < 0 && fabBtn.isShown())
+                    fabBtn.hide();
+                super.onScrolled(recyclerView, dx, dy);
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+                    fabBtn.show();
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -113,6 +130,8 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+                fabBtn.hide();
+
                 return false;
             }
 
@@ -120,11 +139,20 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             public boolean onQueryTextChange(String newText) {
                 fabBtn.hide();
                 cleanList();
+                newTextTag = newText;
                 loadListWithTags(newText);
 
                 return false;
             }
         });
+
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fabBtn.hide();
+            }
+        });
+
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -177,7 +205,15 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
     @Override
     public void getRecyclerViewAdapterPosition(int position) {
-        Dream dream = new DreamDAO(this).Read().get(position);
+        List<Dream> dreams = new DreamDAO(this).Read();
+        List<Dream> dreamsWT = new ArrayList<>();
+
+        for(Dream d : dreams) {
+            if(d.getTags().contains(newTextTag))
+                dreamsWT.add(d);
+        }
+
+        Dream dream = dreamsWT.get(position);
 
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
