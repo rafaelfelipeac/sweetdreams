@@ -1,27 +1,32 @@
 package com.sd.rafael.sweetdreams.activity;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.media.audiofx.PresetReverb;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatDelegate;
+import android.view.MenuItem;
+
 
 import com.sd.rafael.sweetdreams.R;
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private AppCompatDelegate mDelegate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        android.support.v7.app.ActionBar actionBar = getDelegate().getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
 
         Resources res = getResources();
         Configuration config = res.getConfiguration();
@@ -42,6 +47,17 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intentMain = new Intent(SettingsActivity.this, MainNavDrawerActivity.class);
+                startActivity(intentMain);
+                return true;
+        }
+
+        return false;
     }
 
     @Override
@@ -69,5 +85,12 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.app_preferences);
         }
+    }
+
+    private AppCompatDelegate getDelegate() {
+        if (mDelegate == null) {
+            mDelegate = AppCompatDelegate.create(this, null);
+        }
+        return mDelegate;
     }
 }
