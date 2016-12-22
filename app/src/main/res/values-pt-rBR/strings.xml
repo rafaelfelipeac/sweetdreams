@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">sweetdreams</string>
+    <string name="app_name">Sweetdreams</string>
     <string name="app_description">O seu diário de sonhos</string>
     <string name="action_save">Salvar</string>
     <string name="action_settings">Configuração</string>
@@ -46,5 +46,6 @@
 
     <string name="favorite_activity">Favoritos</string>
     <string name="form_activity">Novo sonho</string>
+    <string name="form_edit_activity">Editar Sonho</string>
     <string name="settings_activity">Configurações</string>
 </resources>

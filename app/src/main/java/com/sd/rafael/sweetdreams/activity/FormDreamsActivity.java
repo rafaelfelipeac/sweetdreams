@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class FormDreamsActivity extends BaseActivity  {
     private Dream dream;
     private TagView tagGroup;
     private ScrollView sv;
+    private ActionBar toolbar;
 
     static final int DIALOG_DATE_ID = 2;
     int yearX;
@@ -91,6 +93,8 @@ public class FormDreamsActivity extends BaseActivity  {
 
         final Calendar cal = Calendar.getInstance();
 
+        toolbar = getSupportActionBar();
+
         sv = (ScrollView) findViewById(R.id.form_dreams);
         tagGroup = (TagView) findViewById(R.id.tag_group_form);
 
@@ -108,8 +112,12 @@ public class FormDreamsActivity extends BaseActivity  {
         Intent intent = getIntent();
         dream = (Dream) intent.getSerializableExtra("dream");
 
-        if(dream != null)
+        if(dream != null) {
             helper.makeDream(dream);
+            toolbar.setTitle(R.string.form_edit_activity);
+        }
+        else
+            toolbar.setTitle(R.string.form_activity);
 
         tagGroup.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
             @Override
