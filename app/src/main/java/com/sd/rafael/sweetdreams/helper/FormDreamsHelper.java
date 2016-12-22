@@ -70,7 +70,7 @@ public class FormDreamsHelper {
             if(!s.equals("")) {
                 com.cunoraz.tagview.Tag tag = new com.cunoraz.tagview.Tag(s);
                 tag.radius = 10f;
-                tag.layoutColor = Color.rgb(0, 149, 255);
+                tag.layoutColor = Color.rgb(95, 170, 223);
                 tag.isDeletable = true;
                 tags.add(tag);
             }

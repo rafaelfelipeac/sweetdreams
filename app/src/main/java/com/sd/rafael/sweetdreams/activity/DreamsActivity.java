@@ -102,10 +102,18 @@ public class DreamsActivity extends BaseActivity  {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Dream dream = helper.getDream();
         switch (item.getItemId())
         {
+            case android.R.id.home:
+                finish();
+                return true;
             case R.id.menu_dream_edit:
                 Intent intentForm = new Intent(DreamsActivity.this, FormDreamsActivity.class);
                 intentForm.putExtra("dream", dream);

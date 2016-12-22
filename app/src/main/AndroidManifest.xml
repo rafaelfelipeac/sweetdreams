@@ -67,10 +67,10 @@
         <activity
             android:name=".activity.SameDayActivity"
             android:label=""
-            android:parentActivityName=".activity.MainNavDrawerActivity">
+            android:parentActivityName=".activity.CalendarActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainNavDrawerActivity" />
+                android:value=".activity.CalendarActivity" />
 
         </activity>
     </application>

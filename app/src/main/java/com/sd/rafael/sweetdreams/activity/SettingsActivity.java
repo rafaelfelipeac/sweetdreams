@@ -76,7 +76,6 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
             Intent intent = getIntent();
             finish();
             startActivity(intent);
-
         }
     }
 

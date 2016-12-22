@@ -143,7 +143,7 @@ public class FormDreamsActivity extends BaseActivity  {
                 if(!newTag.getText().toString().isEmpty() && newTag.getText().toString().trim().length() > 0) {
                     com.cunoraz.tagview.Tag tag = new Tag(newTag.getText().toString());
                     tag.radius = 10f;
-                    tag.layoutColor = Color.rgb(0, 149, 255);
+                    tag.layoutColor = Color.rgb(95, 170, 223);
                     tag.isDeletable = true;
                     newTag.setText("");
                     tagGroup.addTag(tag);
@@ -197,7 +197,6 @@ public class FormDreamsActivity extends BaseActivity  {
                 }
                 break;
             case android.R.id.home:
-
                 DreamDAO dao = new DreamDAO(this);
                 List<Dream> dreams = dao.Read();
                 Dream originalDream = new Dream();
@@ -218,9 +217,8 @@ public class FormDreamsActivity extends BaseActivity  {
                     startActivity(intentDream);
                     finish();
                 }
-                else {
+                else
                     showDialogExitSave();
-                }
 
                 return true;
         }
