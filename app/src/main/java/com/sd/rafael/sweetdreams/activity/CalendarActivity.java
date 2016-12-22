@@ -19,6 +19,7 @@ import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -59,11 +60,15 @@ public class CalendarActivity extends BaseActivity {
         }
 
         calendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+
+            ArrayList<Dream> dreamsSameDay;
+
             @Override
             public void onDayClick(Date dateClicked) {
                 textView.setText(dateFormatForMonth.format(dateClicked));
 
                 List<Event> events = calendar.getEvents(dateClicked);
+                dreamsSameDay = new ArrayList<Dream>(events.size());
                 if(events.size() > 0) {
                     for(Event event : events) {
                         if (event.getTimeInMillis() == dateClicked.getTime()) {
@@ -81,18 +86,23 @@ public class CalendarActivity extends BaseActivity {
                                 else
                                     dateB += dream.getMonth() + "/" + dream.getYear();
 
-
-                                if (dateA.equals(dateB)) {
-                                    Intent intentDreamsActivity = new Intent(CalendarActivity.this, DreamsActivity.class);
-                                    intentDreamsActivity.putExtra("dream", dream);
-                                    startActivity(intentDreamsActivity);
-                                }
+                                if (dateA.equals(dateB))
+                                    dreamsSameDay.add(dream);
                             }
                         }
+                        break;
                     }
+
+                    Intent intentDreamsActivity;
+                    if(dreamsSameDay.size() > 1)
+                        intentDreamsActivity = new Intent(CalendarActivity.this, SameDayActivity.class);
+                    else
+                        intentDreamsActivity = new Intent(CalendarActivity.this, DreamsActivity.class);
+                    intentDreamsActivity.putExtra("dreams", dreamsSameDay);
+                    startActivity(intentDreamsActivity);
                 }
-                else
-                    Snackbar.make(calendar, "Não há sonhos salvos nesse dia.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                else Snackbar.make(calendar, "Não há sonhos salvos nesse dia.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
             }
 
             @Override

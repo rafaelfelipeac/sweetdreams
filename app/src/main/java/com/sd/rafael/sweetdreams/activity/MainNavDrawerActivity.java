@@ -17,7 +17,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -131,7 +130,6 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             @Override
             public boolean onQueryTextSubmit(String query) {
                 fabBtn.hide();
-
                 return false;
             }
 
@@ -205,15 +203,22 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
     @Override
     public void getRecyclerViewAdapterPosition(int position) {
-        List<Dream> dreams = new DreamDAO(this).Read();
-        List<Dream> dreamsWT = new ArrayList<>();
+        Dream dream;
 
-        for(Dream d : dreams) {
-            if(d.getTags().contains(newTextTag))
-                dreamsWT.add(d);
+        if(newTextTag != null) {
+            List<Dream> dreams = new DreamDAO(this).Read();
+            List<Dream> dreamsWT = new ArrayList<>();
+
+            for(Dream d : dreams) {
+                if(d.getTags().contains(newTextTag))
+                    dreamsWT.add(d);
+            }
+
+            dream = dreamsWT.get(position);
         }
+        else
+            dream = new DreamDAO(this).Read().get(position);
 
-        Dream dream = dreamsWT.get(position);
 
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);

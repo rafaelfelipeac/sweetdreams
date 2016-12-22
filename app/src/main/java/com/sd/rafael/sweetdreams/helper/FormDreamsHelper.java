@@ -67,11 +67,13 @@ public class FormDreamsHelper {
         String[] lstTags = dream.tagConvertStringToArray();
 
         for(String s : lstTags) {
-            com.cunoraz.tagview.Tag tag = new com.cunoraz.tagview.Tag(s);
-            tag.radius = 10f;
-            tag.layoutColor = Color.rgb(0, 149, 255);
-            tag.isDeletable = true;
-            tags.add(tag);
+            if(!s.equals("")) {
+                com.cunoraz.tagview.Tag tag = new com.cunoraz.tagview.Tag(s);
+                tag.radius = 10f;
+                tag.layoutColor = Color.rgb(0, 149, 255);
+                tag.isDeletable = true;
+                tags.add(tag);
+            }
         }
 
         tagGroup.addTags(tags);

@@ -63,7 +63,16 @@
         <activity
             android:name=".activity.BaseActivity"
             android:label="@string/title_activity_base"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.SameDayActivity"
+            android:label=""
+            android:parentActivityName=".activity.MainNavDrawerActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainNavDrawerActivity" />
+
+        </activity>
     </application>
 
 </manifest>

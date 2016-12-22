@@ -76,8 +76,11 @@ public class FormDreamsActivity extends BaseActivity  {
     }
 
     protected Dialog onCreateDialog(int id) {
-        if(id == DIALOG_DATE_ID)
-            return new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
+        if(id == DIALOG_DATE_ID) {
+            DatePickerDialog dpd = new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
+            dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+            return dpd;
+        }
         return null;
     }
 
