@@ -5,12 +5,12 @@
 
     <item android:id="@+id/menu_dream_edit"
         android:title="@string/action_edit"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@mipmap/ic_mode_edit_white_24dp"
         app:showAsAction="always" />
 
     <item android:id="@+id/menu_dream_delete"
         android:title="@string/action_delete"
-        android:icon="@android:drawable/ic_menu_delete"
+        android:icon="@mipmap/ic_delete_white_24dp"
         app:showAsAction="always" />
 
 </menu>

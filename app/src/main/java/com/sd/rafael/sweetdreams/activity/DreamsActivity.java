@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.nfc.Tag;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
@@ -46,12 +49,17 @@ public class DreamsActivity extends BaseActivity  {
         Intent intent = getIntent();
         dream = (Dream) intent.getSerializableExtra("dream");
 
-        if(dream != null)
-            helper.makeDream(dream);
-
         sv = (ScrollView) findViewById(R.id.activity_dreams);
         tagGroup = (TagView) findViewById(R.id.tag_group);
         ratingBar = (RatingBar) findViewById(R.id.favorite_dreams);
+
+        /*if(ratingBar.getRating() == 0) {
+            Drawable drawable = ratingBar.getProgressDrawable();
+            drawable.setColorFilter(Color.parseColor("#aaaaaa"), PorterDuff.Mode.SRC_ATOP);
+        }*/
+
+        if(dream != null)
+            helper.makeDream(dream);
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override

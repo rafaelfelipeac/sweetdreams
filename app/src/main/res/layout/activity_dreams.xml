@@ -60,7 +60,7 @@
                 android:numStars="1"
                 android:layout_marginLeft="300dp"
                 android:layout_marginTop="145dp"
-                android:stepSize="1" />
+                android:stepSize="1"/>
 
         </RelativeLayout>
 

@@ -4,19 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <PreferenceCategory>
-
-        <ListPreference
-            android:key="language"
-            android:title="@string/settings_language"
-            android:summary="@string/settings_language_summary"
-            android:entries="@array/language"
-            android:entryValues="@array/LanguageAlias" />
-
-        <EditTextPreference
-            android:title="Your Name"
-            android:key="username"
-            android:summary="Please provide your username"></EditTextPreference>
-
-    </PreferenceCategory>
+    <ListPreference
+        android:key="language"
+        android:title="@string/settings_language"
+        android:summary="@string/settings_language_summary"
+        android:entries="@array/language"
+        android:entryValues="@array/LanguageAlias" />
 </PreferenceScreen>
