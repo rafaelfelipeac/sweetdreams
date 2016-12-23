@@ -48,4 +48,18 @@
     <string name="form_activity">Novo sonho</string>
     <string name="form_edit_activity">Editar Sonho</string>
     <string name="settings_activity">Configurações</string>
+    <string name="calendar_activity">Calendário</string>
+    <string name="calendar_without_dreams">Nenhum sonho cadastrado nesse dia.</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_same_day">SameDayActivity</string>
+
+    <string name="dreams_favorite">Adicionado aos favoritos.</string>
+
+    <string name="form_dreams_save">Um sonho precisa ter um título e uma descrição.</string>
+    <string name="form_dreams_without_save">Sair sem salvar o sonho?</string>
+    <string name="form_dreams_cancel">Cancelar</string>
+    <string name="form_dreams_exit">Sair</string>
+    <string name="form_dreams_ok">OK</string>
+    <string name="form_dreams_empty_tag">Tag vazia.</string>
+
 </resources>

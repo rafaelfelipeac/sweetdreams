@@ -3,6 +3,7 @@ package com.sd.rafael.sweetdreams.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class CalendarActivity extends BaseActivity {
     TextView textView;
     SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMM - yyyy", Locale.getDefault());
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private ActionBar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,9 @@ public class CalendarActivity extends BaseActivity {
         final List<Dream> dreams = dao.Read();
         final Button btnPreviousMonth = (Button) findViewById(R.id.btnPreviousMonth);
         final Button btnNextMonth = (Button) findViewById(R.id.btnNextMonth);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.calendar_activity);
 
         calendar = (CompactCalendarView) findViewById(R.id.compactCalendarView);
         calendar.setShouldShowMondayAsFirstDay(false);
@@ -94,14 +99,18 @@ public class CalendarActivity extends BaseActivity {
                     }
 
                     Intent intentDreamsActivity;
-                    if(dreamsSameDay.size() > 1)
+                    if(dreamsSameDay.size() > 1) {
                         intentDreamsActivity = new Intent(CalendarActivity.this, SameDayActivity.class);
-                    else
+                        intentDreamsActivity.putExtra("dreams", dreamsSameDay);
+                        startActivity(intentDreamsActivity);
+                    }
+                    else {
                         intentDreamsActivity = new Intent(CalendarActivity.this, DreamsActivity.class);
-                    intentDreamsActivity.putExtra("dreams", dreamsSameDay);
-                    startActivity(intentDreamsActivity);
+                        intentDreamsActivity.putExtra("dream", dreamsSameDay.get(0));
+                        startActivity(intentDreamsActivity);
+                    }
                 }
-                else Snackbar.make(calendar, "Não há sonhos salvos nesse dia.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                else Snackbar.make(calendar, R.string.calendar_without_dreams, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
 
             }
 

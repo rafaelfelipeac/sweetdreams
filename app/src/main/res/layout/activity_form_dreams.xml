@@ -23,12 +23,13 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="15dp">
+            android:paddingTop="5dp">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="15dp"
                 android:layout_weight="1">
 
                 <TextView
@@ -36,14 +37,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/form_date"
+                    android:textSize="18dp"
                     android:layout_gravity="center_horizontal"/>
 
                 <Button
                     android:id="@+id/form_dreams_btnSetDate"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:text="@string/form_change_date"
-                    android:layout_gravity="center_horizontal"/>
+                    android:background="@null"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="20dp"/>
+
             </LinearLayout>
 
         </LinearLayout>

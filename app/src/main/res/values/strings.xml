@@ -29,7 +29,7 @@
     <string name="dreams_description">Description</string>
 
     <string name="form_date">00/00/00</string>
-    <string name="form_change_date">Change date</string>
+    <string name="form_change_date">Set date</string>
     <string name="form_title">Title</string>
     <string name="form_description">Description</string>
     <string name="form_tags">Tags</string>
@@ -44,10 +44,21 @@
     <string name="settings_language">Language</string>
     <string name="settings_language_summary">Choose the language</string>
 
-    <string name="favorite_activity">Favorite</string>
+    <string name="favorite_activity">Favorites</string>
     <string name="form_activity">New Dream</string>
     <string name="form_edit_activity">Edit Dream</string>
     <string name="settings_activity">Settings</string>
+    <string name="calendar_activity">Calendar</string>
+    <string name="calendar_without_dreams">No dreams registered on that day.</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_same_day">SameDayActivity</string>
+
+    <string name="dreams_favorite">Added to favorites.</string>
+
+    <string name="form_dreams_save">A dream must have a title and a description.</string>
+    <string name="form_dreams_without_save">Leave without saving dream?</string>
+    <string name="form_dreams_cancel">Cancel</string>
+    <string name="form_dreams_exit">Exit</string>
+    <string name="form_dreams_ok">OK</string>
+    <string name="form_dreams_empty_tag">Empty tag.</string>
 </resources>

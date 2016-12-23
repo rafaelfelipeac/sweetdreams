@@ -46,7 +46,7 @@
         </activity>
         <activity
             android:name=".activity.CalendarActivity"
-            android:label=""
+            android:label="@string/calendar_activity"
             android:parentActivityName=".activity.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

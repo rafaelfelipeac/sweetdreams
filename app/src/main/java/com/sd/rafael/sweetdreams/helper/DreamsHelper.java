@@ -5,6 +5,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.cunoraz.tagview.TagView;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 import com.sd.rafael.sweetdreams.activity.DreamsActivity;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.models.Dream;
@@ -16,21 +18,21 @@ import java.util.List;
  * Created by rafae on 28/10/2016.
  */
 
-public class DreamsHelper {
+public class DreamsHelper implements OnLikeListener {
     private TextView datetime;
     private TextView title;
     private TextView description;
     private TagView tagGroup;
-    private RatingBar ratingBar;
+    private LikeButton likeButton;
 
     private Dream dream;
 
-    public DreamsHelper(DreamsActivity activity) {
+    public DreamsHelper(DreamsActivity activity)  {
         datetime = (TextView) activity.findViewById(R.id.dreams_datetime);
         title = (TextView) activity.findViewById(R.id.dreams_title);
         description = (TextView) activity.findViewById(R.id.dreams_description);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group);
-        ratingBar = (RatingBar) activity.findViewById(R.id.favorite_dreams);
+        likeButton = (LikeButton) activity.findViewById(R.id.favorite_dreams);
 
         dream = new Dream();
     }
@@ -38,8 +40,6 @@ public class DreamsHelper {
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
         dream.setDescription(description.getText().toString());
-
-        dream.setFavorite((ratingBar.getRating() == 1) ? true : false);
 
         String[] datetimeArr = datetime.getText().toString().split(" - ");
 
@@ -65,7 +65,7 @@ public class DreamsHelper {
         description.setText(dream.getDescription());
         datetime.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
 
-        ratingBar.setRating((dream.getFavorite()) ? 1 : 0);
+        likeButton.setLiked((dream.getFavorite()));
 
         List<com.cunoraz.tagview.Tag> tags = new ArrayList<>(dream.tagConvertStringToArray().length);
         String[] lstTags = dream.tagConvertStringToArray();
@@ -82,5 +82,15 @@ public class DreamsHelper {
         tagGroup.addTags(tags);
 
         this.dream = dream;
+    }
+
+    @Override
+    public void liked(LikeButton likeButton) {
+        dream.setFavorite(true);
+    }
+
+    @Override
+    public void unLiked(LikeButton likeButton) {
+        dream.setFavorite(false);
     }
 }

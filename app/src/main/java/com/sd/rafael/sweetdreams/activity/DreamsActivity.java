@@ -22,6 +22,8 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.cunoraz.tagview.TagView;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.helper.DreamsHelper;
@@ -35,7 +37,7 @@ public class DreamsActivity extends BaseActivity  {
     private Dream dream;
     private TagView tagGroup;
     private ScrollView sv;
-    private RatingBar ratingBar;
+    private LikeButton likeButton;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,23 +53,16 @@ public class DreamsActivity extends BaseActivity  {
 
         sv = (ScrollView) findViewById(R.id.activity_dreams);
         tagGroup = (TagView) findViewById(R.id.tag_group);
-        ratingBar = (RatingBar) findViewById(R.id.favorite_dreams);
-
-        /*if(ratingBar.getRating() == 0) {
-            Drawable drawable = ratingBar.getProgressDrawable();
-            drawable.setColorFilter(Color.parseColor("#aaaaaa"), PorterDuff.Mode.SRC_ATOP);
-        }*/
+        likeButton = (LikeButton) findViewById(R.id.favorite_dreams);
 
         if(dream != null)
             helper.makeDream(dream);
 
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        likeButton.setOnLikeListener(new OnLikeListener() {
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                if(dream.getFavorite())
-                    dream.setFavorite(false);
-                else
-                    dream.setFavorite(true);
+            public void liked(LikeButton likeButton) {
+                dream.setFavorite(true);
+                Snackbar.make(findViewById(R.id.activity_dreams), R.string.dreams_favorite, Snackbar.LENGTH_SHORT).show();
 
                 if(dream.getId() == null) {
                     dao.Remove(dream);
@@ -76,27 +71,17 @@ public class DreamsActivity extends BaseActivity  {
                 else
                     dao.Update(dream);
             }
-        });
-
-        tagGroup.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
-            @Override
-            public void onTagLongClick(com.cunoraz.tagview.Tag tag, int position) {
-                Snackbar.make(sv, "Long Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-            }
-        });
-
-        tagGroup.setOnTagClickListener(new TagView.OnTagClickListener() {
-            @Override
-            public void onTagClick(com.cunoraz.tagview.Tag tag, int position) {
-                Snackbar.make(sv, "Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-            }
-        });
-
-        tagGroup.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
 
             @Override
-            public void onTagDeleted(final TagView view, com.cunoraz.tagview.Tag tag, final int position) {
-                Snackbar.make(sv, "Delete Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            public void unLiked(LikeButton likeButton) {
+                dream.setFavorite(false);
+
+                if(dream.getId() == null) {
+                    dao.Remove(dream);
+                    dao.Insert(dream);
+                }
+                else
+                    dao.Update(dream);
             }
         });
     }
