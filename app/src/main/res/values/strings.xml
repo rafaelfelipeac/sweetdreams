@@ -61,4 +61,9 @@
     <string name="form_dreams_exit">Exit</string>
     <string name="form_dreams_ok">OK</string>
     <string name="form_dreams_empty_tag">Empty tag.</string>
+
+    <string name="dreams_cancel">Cancel</string>
+    <string name="dreams_delete">Delete</string>
+    <string name="dreams_delete_message">Delete dream?</string>
+
 </resources>

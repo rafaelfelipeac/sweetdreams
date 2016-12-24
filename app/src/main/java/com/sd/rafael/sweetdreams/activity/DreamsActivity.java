@@ -115,9 +115,10 @@ public class DreamsActivity extends BaseActivity  {
                 break;
             case R.id.menu_dream_delete:
                 AlertDialog.Builder alert = new AlertDialog.Builder(DreamsActivity.this);
-                alert.setMessage("Excluir sonho '"+ dream.getTitle()+"'?").setCancelable(false)
-                    .setNegativeButton("Cancelar", null)
-                    .setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+                //alert.setMessage(" " + R.string.dreams_delete_message + " '" + dream.getTitle()+"'?").setCancelable(false)
+                alert.setMessage(R.string.dreams_delete_message).setCancelable(false)
+                    .setNegativeButton(R.string.dreams_cancel , null)
+                    .setPositiveButton(R.string.dreams_delete, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                         Dream dream = helper.getDream();

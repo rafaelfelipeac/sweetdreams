@@ -62,4 +62,8 @@
     <string name="form_dreams_ok">OK</string>
     <string name="form_dreams_empty_tag">Tag vazia.</string>
 
+    <string name="dreams_cancel">Cancelar</string>
+    <string name="dreams_delete">Excluir</string>
+    <string name="dreams_delete_message">Excluir sonho?</string>
+
 </resources>

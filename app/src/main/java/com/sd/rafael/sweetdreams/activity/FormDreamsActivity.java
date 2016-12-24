@@ -240,9 +240,9 @@ public class FormDreamsActivity extends BaseActivity  {
 
         switch(n) {
             case 1:
-                return (dream.getTitle().equals("") && dream.getDescription().equals("")) || (dream.getTitle().equals(" ") && dream.getDescription().equals(" "));
+                return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0);
             case 2:
-                return (dream.getTitle().equals("") || dream.getDescription().equals("")) || (dream.getTitle().equals(" ") || dream.getDescription().equals(" "));
+                return (dream.getTitle().trim().length() == 0 || dream.getDescription().trim().length() == 0);
 
         }
         return false;
