@@ -61,8 +61,6 @@ public class FormDreamsActivity extends BaseActivity  {
 
                     TextView date = (TextView) findViewById(R.id.form_dreams_date);
                     date.setText(dayX + "/" + monthX + "/" + yearX);
-
-                    Snackbar.make(findViewById(R.id.activity_form_dreams), dayX + "/" + monthX + "/" + yearX, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
             };
 
@@ -125,26 +123,11 @@ public class FormDreamsActivity extends BaseActivity  {
         else
             toolbar.setTitle(R.string.form_activity);
 
-        tagGroup.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
-            @Override
-            public void onTagLongClick(com.cunoraz.tagview.Tag tag, int position) {
-                Snackbar.make(sv, "Long Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-            }
-        });
-
-        tagGroup.setOnTagClickListener(new TagView.OnTagClickListener() {
-            @Override
-            public void onTagClick(com.cunoraz.tagview.Tag tag, int position) {
-                Snackbar.make(sv, "Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-            }
-        });
-
         tagGroup.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
 
             @Override
             public void onTagDeleted(final TagView view, com.cunoraz.tagview.Tag tag, final int position) {
                 view.remove(position);
-                Snackbar.make(sv, "Delete Click: " + tag.text, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         });
 
@@ -163,7 +146,7 @@ public class FormDreamsActivity extends BaseActivity  {
                     tagGroup.addTag(tag);
                 }
                 else
-                    Snackbar.make(sv, "Tag vazia.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                    Snackbar.make(sv, R.string.form_dreams_empty_tag, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
 
             }
         });
@@ -185,23 +168,22 @@ public class FormDreamsActivity extends BaseActivity  {
             case R.id.menu_form_confirm:
                 if(emptyDream(2)) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
-                    alert.setMessage("Necessário que o sonho tenha um título e uma descrição.").setCancelable(false)
-                            .setPositiveButton("OK", null);
+                    alert.setMessage(R.string.form_dreams_save).setCancelable(false)
+                            .setPositiveButton(R.string.form_dreams_ok, null);
                     alert.show();
                 }
                 else {
                     DreamDAO dao = new DreamDAO(FormDreamsActivity.this);
 
-                    LinearLayout ll = (LinearLayout) findViewById(R.id.activity_form_dreams);
-
-                    if(dream.getId() != null) {
+                    if(dream.getId() != null)
                         dao.Update(dream);
-                        Snackbar.make(ll, "Sonho editado.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                    }
                     else {
                         dao.Insert(dream);
-                        Snackbar.make(ll, "Sonho adicionado.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
+                        List<Dream> lst = dao.Read();
+                        dream = lst.get(lst.size()-1);
                     }
+
                     dao.close();
                     intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
                     intentDream.putExtra("dream", dream);
@@ -242,9 +224,9 @@ public class FormDreamsActivity extends BaseActivity  {
     private void showDialogExitSave() {
         final Intent intentA = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
         AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
-        alert.setMessage("Sair sem salvar o sonho?").setCancelable(false)
-                .setNegativeButton("Cancelar", null)
-                .setPositiveButton("Sair", new DialogInterface.OnClickListener() {
+        alert.setMessage(R.string.form_dreams_without_save).setCancelable(false)
+                .setNegativeButton(R.string.form_dreams_cancel, null)
+                .setPositiveButton(R.string.form_dreams_exit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         startActivity(intentA);
