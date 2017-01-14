@@ -17,6 +17,16 @@ public class Dream implements Serializable{
     private int year;
     private boolean favorite;
 
+    public String getAudioPath() {
+        return audioPath;
+    }
+
+    public void setAudioPath(String audioPath) {
+        this.audioPath = audioPath;
+    }
+
+    private String audioPath;
+
     private String separator = ", ";
 
     public boolean getFavorite() {

@@ -78,7 +78,6 @@ public class FormDreamsHelper {
 
         tagGroup.addTags(tags);
 
-
         this.dream = dream;
     }
 

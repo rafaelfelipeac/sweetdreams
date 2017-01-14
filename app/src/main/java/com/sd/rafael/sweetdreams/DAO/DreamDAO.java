@@ -18,18 +18,25 @@ import java.util.List;
 public class DreamDAO extends SQLiteOpenHelper {
 
     public DreamDAO(Context context) {
-        super(context, "SweetDreams", null, 1);
+        super(context, "SweetDreams", null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table dreams (id integer primary key, title text, description text, favorite integer, tags text, day integer, month integer, year integer);";
+        String sql = "create table dreams (id integer primary key, title text, description text, favorite integer, tags text, day integer, month integer, year integer, audiopath text);";
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String sql;
+        switch (oldVersion) {
+            case 1:
+                sql = "alter table dreams add column audiopath text";
+                db.execSQL(sql);
+                break;
 
+        }
     }
 
     public void Insert(Dream dream) {
@@ -61,6 +68,8 @@ public class DreamDAO extends SQLiteOpenHelper {
             dream.setDay(c.getInt(c.getColumnIndex("day")));
             dream.setMonth(c.getInt(c.getColumnIndex("month")));
             dream.setYear(c.getInt(c.getColumnIndex("year")));
+
+            dream.setAudioPath(c.getString(c.getColumnIndex("audiopath")));
 
             dreams.add(dream);
         }
@@ -102,6 +111,7 @@ public class DreamDAO extends SQLiteOpenHelper {
         data.put("day", dream.getDay());
         data.put("month", dream.getMonth());
         data.put("year", dream.getYear());
+        data.put("audiopath", dream.getAudioPath());
 
         return data;
     }
