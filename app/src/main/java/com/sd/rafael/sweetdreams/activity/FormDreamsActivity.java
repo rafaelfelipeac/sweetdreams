@@ -4,33 +4,23 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
@@ -39,14 +29,13 @@ import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
-import java.io.IOException;
-import java.text.Normalizer;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
-import static android.Manifest.permission.RECORD_AUDIO;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import cafe.adriel.androidaudiorecorder.AndroidAudioRecorder;
+import cafe.adriel.androidaudiorecorder.model.AudioChannel;
+import cafe.adriel.androidaudiorecorder.model.AudioSampleRate;
+import cafe.adriel.androidaudiorecorder.model.AudioSource;
 
 public class FormDreamsActivity extends BaseActivity  {
 
@@ -56,119 +45,16 @@ public class FormDreamsActivity extends BaseActivity  {
     private ScrollView sv;
     private ActionBar toolbar;
 
-    private Button btnPlay;
-    private Button btnStop;
-    private Button btnRecord;
-    private String audioFilePath;
-    private boolean isRecording = false;
-    private MediaRecorder mediaRecorder;
-    private MediaPlayer mediaPlayer;
-    public static final int RequestPermissionCode = 1;
-
-    static final int DIALOG_DATE_ID = 2;
     int yearX;
     int monthX;
     int dayX;
 
-    public void recordAudio(View view) {
-        isRecording = true;
-        btnStop.setEnabled(true);
-        btnPlay.setEnabled(false);
-        btnRecord.setEnabled(false);
+    private Button audioRecord;
 
-        try {
-            mediaRecorder = new MediaRecorder();
-            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            mediaRecorder.setOutputFile(audioFilePath);
-            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-            mediaRecorder.prepare();
-            mediaRecorder.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    public void stopAudio(View view) {
-        btnStop.setEnabled(false);
-        btnPlay.setEnabled(true);
-
-        if(isRecording) {
-            try {
-                btnRecord.setEnabled(false);
-                mediaRecorder.stop();
-                mediaRecorder.release();
-                mediaRecorder = null;
-                isRecording = false;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            mediaPlayer.release();
-            mediaPlayer = null;
-            btnRecord.setEnabled(true);
-        }
-    }
-
-    public void playAudio(View view) {
-        btnPlay.setEnabled(false);
-        btnRecord.setEnabled(false);
-        btnStop.setEnabled(true);
-
-        mediaPlayer = new MediaPlayer();
-        try {
-            mediaPlayer.setDataSource(audioFilePath);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //btnPlay.setEnabled(true);
-        //btnStop.setEnabled(true);
-    }
-
-    private DatePickerDialog.OnDateSetListener dpickerListener =
-            new DatePickerDialog.OnDateSetListener() {
-
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    yearX = year;
-                    monthX = month + 1;
-                    dayX = dayOfMonth;
-
-                    TextView date = (TextView) findViewById(R.id.form_dreams_date);
-                    date.setText(dayX + "/" + monthX + "/" + yearX);
-                }
-            };
-
-    public void showDatePickerDialog() {
-        Button btnSetDate = (Button) findViewById(R.id.form_dreams_btnSetDate);
-
-        btnSetDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(DIALOG_DATE_ID);
-            }
-        });
-    }
-
-    protected Dialog onCreateDialog(int id) {
-        if(id == DIALOG_DATE_ID) {
-            DatePickerDialog dpd;
-
-            if(dream == null)
-                dpd = new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
-            else
-                dpd = new DatePickerDialog(this, dpickerListener, dream.getYear(), dream.getMonth() - 1, dream.getDay());
-            dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-            return dpd;
-        }
-        return null;
-    }
+    private final int DIALOG_DATE_ID = 0;
+    private static final int REQUEST_RECORD_AUDIO = 0;
+    private static final String AUDIO_FILE_PATH =
+            Environment.getExternalStorageDirectory().getPath() + "/recorded_audio.wav";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,42 +65,14 @@ public class FormDreamsActivity extends BaseActivity  {
 
         toolbar = getSupportActionBar();
 
-        btnPlay = (Button) findViewById(R.id.form_dreams_btnPlay);
-        btnStop = (Button) findViewById(R.id.form_dreams_btnStop);
-        btnRecord = (Button) findViewById(R.id.form_dreams_btnRecord);
+        audioRecord = (Button) findViewById(R.id.form_dreams_audio_record);
 
-
-
-        btnPlay.setOnClickListener(new View.OnClickListener() {
+        audioRecord.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(checkPermission()) {
-                    playAudio(view);
-                }
-                else {
-                    requestPermission();
-                }
+            public void onClick(View v) {
+                recordAudio(v);
             }
         });
-
-        btnRecord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recordAudio(view);
-            }
-        });
-
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopAudio(view);
-            }
-        });
-
-        btnPlay.setEnabled(false);
-        btnStop.setEnabled(false);
-
-        audioFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/audio.3gp";
 
         sv = (ScrollView) findViewById(R.id.form_dreams);
         tagGroup = (TagView) findViewById(R.id.tag_group_form);
@@ -269,8 +127,75 @@ public class FormDreamsActivity extends BaseActivity  {
         });
     }
 
-    private void requestPermission() {
-        ActivityCompat.requestPermissions(FormDreamsActivity.this, new String[]{WRITE_EXTERNAL_STORAGE, RECORD_AUDIO}, RequestPermissionCode);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_RECORD_AUDIO) {
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(this, "Audio recorded successfully!", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Audio was not recorded", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    public void recordAudio(View v) {
+        AndroidAudioRecorder.with(this)
+                // Required
+                .setFilePath(AUDIO_FILE_PATH)
+                .setColor(ContextCompat.getColor(this, R.color.colorAccent))
+                .setRequestCode(REQUEST_RECORD_AUDIO)
+
+                // Optional
+                .setSource(AudioSource.MIC)
+                .setChannel(AudioChannel.STEREO)
+                .setSampleRate(AudioSampleRate.HZ_48000)
+                .setAutoStart(false)
+                .setKeepDisplayOn(true)
+
+                // Start recording
+                .record();
+    }
+
+    private DatePickerDialog.OnDateSetListener dpickerListener =
+            new DatePickerDialog.OnDateSetListener() {
+
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    yearX = year;
+                    monthX = month + 1;
+                    dayX = dayOfMonth;
+
+                    TextView date = (TextView) findViewById(R.id.form_dreams_date);
+                    date.setText(dayX + "/" + monthX + "/" + yearX);
+                }
+            };
+
+    public void showDatePickerDialog() {
+        Button btnSetDate = (Button) findViewById(R.id.form_dreams_btnSetDate);
+
+        btnSetDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(DIALOG_DATE_ID);
+            }
+        });
+    }
+
+    protected Dialog onCreateDialog(int id) {
+        if(id == DIALOG_DATE_ID) {
+            DatePickerDialog dpd;
+
+            if(dream == null)
+                dpd = new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
+            else
+                dpd = new DatePickerDialog(this, dpickerListener, dream.getYear(), dream.getMonth() - 1, dream.getDay());
+            dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+
+            return dpd;
+        }
+        return null;
     }
 
     @Override
@@ -377,12 +302,5 @@ public class FormDreamsActivity extends BaseActivity  {
                     dream.getTags().equals(dream2.getTags());
         }
         return false;
-    }
-
-    public boolean checkPermission() {
-        int write = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
-        int record = ContextCompat.checkSelfPermission(getApplicationContext(), RECORD_AUDIO);
-
-        return write == PackageManager.PERMISSION_GRANTED && record == PackageManager.PERMISSION_GRANTED;
     }
 }

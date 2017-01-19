@@ -118,30 +118,30 @@
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp">
 
-            <Button
-                android:id="@+id/form_dreams_btnPlay"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Play"
-                android:layout_weight="1"/>
+                android:paddingTop="15dp"
+                android:layout_weight="1">
 
-            <Button
-                android:id="@+id/form_dreams_btnRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Record"
-                android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/form_dreams_audio_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="record a audio"
+                    android:background="@null"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="20dp"/>
 
-            <Button
-                android:id="@+id/form_dreams_btnStop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stop"
-                android:layout_weight="1"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

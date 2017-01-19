@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.github.florent37\diagonallayout\1.0.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c5b52337c61f135bd7cd48bec49442699cdb37bd">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.florent37-diagonallayout-1.0.2_0ef6d5929211d6a916f60ff227caeccec2f9eba2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Meu computador\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_4011d69490c954c2f35ca22e6c90a75c801a5684\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.github.Cutta\TagView\1.3\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="78d8de6166454f30754fa34b76e6438a9b7a5bb4">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.Cutta-TagView-1.3_1e43b499a931f1774c8bb27092fe3360deb205f6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_9637f6b64d04f052b4e75624de7212c8081b5d4f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-25.0.1_c5a2a69613862693ba3b2e5a26f4b53b931bd0b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_bf916fdeda3cc21d5ce99541e9b1277909753862\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\de.hdodenhof-circleimageview-1.3.0_60f1b846381100c58639ad09199e854178936f8e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1dfb749c6d6d0ead88403d3c340ec1898f5d78f4">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_517f3559a91597cdf6cd28be7c07e309697c3532\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_e8bc3fa2dbb5470d00f0006fa922e43b3dd412d1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_b3ef73fd62632be66001887ca982e45ed729b310\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.0_5d1de2fa91e72e5c75578e209717ddd61671322b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_71ca22525e55784db7892a81d7342f71e992afb6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\design\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.0.0_4030993a66202f8c8d80213358a3637b921e1d7d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_48dabd76a18d94c2ca6b499ca7b23e7356f65fd8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.github.sundeepk\compact-calendar-view\1.9.5\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3aa4ce0dec0a6b60f7fab722828284ced8809f0e">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.sundeepk-compact-calendar-view-1.9.5_384498ec06af0863ab9b9a5f9b35106c46df8d53\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a8180ee54c027b1fb0c07b1845ceddb6fff5c962">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_46a6c2430555911d7fcf1c8c30fbf63cbd2d128a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_c920365aab891e0189168b6e4cdbe39d6695ed64\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.kailashdabhi\om-recorder\1.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="cc612fa2610b0741f55190e7bc73034144873adb">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.kailashdabhi-om-recorder-1.1.0_450abb3606d394dfabb44629f78056d43501f4e0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.0_f86ae0eaf4d13161397d8e51c3d4d854eca65d68\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.github.adrielcafe\AndroidAudioRecorder\0.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="166c64fdb3660b9d4def0f2697b2ad3b5d44150a">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.adrielcafe-AndroidAudioRecorder-0.2.0_a4ad8e4576da192aa42526ea730dab66bff19b25\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.github.jd-alexander\LikeButton\0.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="042cf6b3b9ef0ea3baacd9b27e4901680769cbc8">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.jd-alexander-LikeButton-0.2.0_e9c99e3c93471ca871ced2b9efefea43a7436698\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.cleveroad\audiovisualization\1.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3bfdddd4e47dab6e743f217d2ddde7e6cc5db0ee">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.cleveroad-audiovisualization-1.0.0_6e30a86df1499b5c6bdc881d1b43a8c40850a235\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.0_460b1e9ecfad3e85e6a40d0b50799e3caac9f8a5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.0_613e55d9cebb42a60f2863c5fadc5268c7d3c368\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.0_70eeb5d4004d0307539824ac8ea842c58bde0249\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.0_943cc67da4cca99455b331b6444482505f5bc168\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_4cfe920f2fff590fdb287219623aa894ddd8cdc9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.0_d344a051854d190b501d2e12222a78abc36cfd6c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0c6d948e6cb9ea6f535d175fb61ba2930719c0e9">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.0_5f3d9bc1e14f71b0d7919af885c01bc0b656997e\classes.dex" />
+    </item>
+
+</items>
