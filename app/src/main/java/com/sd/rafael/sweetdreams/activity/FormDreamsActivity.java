@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -29,8 +30,10 @@ import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 import cafe.adriel.androidaudiorecorder.AndroidAudioRecorder;
 import cafe.adriel.androidaudiorecorder.model.AudioChannel;
@@ -49,25 +52,30 @@ public class FormDreamsActivity extends BaseActivity  {
     int monthX;
     int dayX;
 
-    private Button audioRecord;
+    private Button audioRecorder;
 
     private final int DIALOG_DATE_ID = 0;
     private static final int REQUEST_RECORD_AUDIO = 0;
-    private static final String AUDIO_FILE_PATH =
-            Environment.getExternalStorageDirectory().getPath() + "/recorded_audio.wav";
+    private static String AUDIO_FILE_PATH;
+
+    String RandomAudioFileName = "ABCDEFGHIJKLMNOP";
+
+    Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_dreams);
 
+        AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName(5) + ".wav";
+
         final Calendar cal = Calendar.getInstance();
 
         toolbar = getSupportActionBar();
 
-        audioRecord = (Button) findViewById(R.id.form_dreams_audio_record);
+        audioRecorder = (Button) findViewById(R.id.form_dreams_audio_recorder);
 
-        audioRecord.setOnClickListener(new View.OnClickListener() {
+        audioRecorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 recordAudio(v);
@@ -133,6 +141,11 @@ public class FormDreamsActivity extends BaseActivity  {
 
         if (requestCode == REQUEST_RECORD_AUDIO) {
             if (resultCode == RESULT_OK) {
+                if(dream == null)
+                    dream = new Dream();
+
+                dream.setAudioPath(AUDIO_FILE_PATH);
+
                 Toast.makeText(this, "Audio recorded successfully!", Toast.LENGTH_SHORT).show();
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Audio was not recorded", Toast.LENGTH_SHORT).show();
@@ -209,6 +222,8 @@ public class FormDreamsActivity extends BaseActivity  {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Dream dream = helper.getDream();
+        dream.setAudioPath(AUDIO_FILE_PATH);
+
         Intent intentDream;
         switch (item.getItemId()) {
             case R.id.menu_form_confirm:
@@ -302,5 +317,19 @@ public class FormDreamsActivity extends BaseActivity  {
                     dream.getTags().equals(dream2.getTags());
         }
         return false;
+    }
+
+    public String CreateRandomAudioFileName(int size) {
+        StringBuilder stringBuilder = new StringBuilder(size);
+        int i = 0;
+
+        random = new Random();
+
+        while (i < size) {
+            stringBuilder.append(RandomAudioFileName.charAt(random.nextInt(RandomAudioFileName.length())));
+            i++;
+        }
+
+        return stringBuilder.toString();
     }
 }

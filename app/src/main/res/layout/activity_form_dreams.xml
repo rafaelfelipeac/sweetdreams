@@ -131,7 +131,7 @@
                 android:layout_weight="1">
 
                 <Button
-                    android:id="@+id/form_dreams_audio_record"
+                    android:id="@+id/form_dreams_audio_recorder"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:text="record a audio"

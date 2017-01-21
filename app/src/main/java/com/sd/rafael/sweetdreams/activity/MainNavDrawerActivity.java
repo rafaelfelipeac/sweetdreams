@@ -204,6 +204,7 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
     @Override
     public void getRecyclerViewAdapterPosition(int position) {
         Dream dream;
+        DreamDAO ddao = new DreamDAO(this);;
 
         if(newTextTag != null) {
             List<Dream> dreams = new DreamDAO(this).Read();
@@ -216,8 +217,16 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
             dream = dreamsWT.get(position);
         }
-        else
-            dream = new DreamDAO(this).Read().get(position);
+        else {
+            List<Dream> ddreams = ddao.Read();
+            dream = ddreams.get(position);
+        }
+
+
+
+
+
+            //dream = new DreamDAO(this).Read().get(position);
 
 
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);

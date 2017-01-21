@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.nfc.Tag;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.helper.DreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class DreamsActivity extends BaseActivity  {
@@ -38,6 +42,8 @@ public class DreamsActivity extends BaseActivity  {
     private TagView tagGroup;
     private ScrollView sv;
     private LikeButton likeButton;
+    private MediaPlayer mediaPlayer;
+    private Button audioPlay;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +60,20 @@ public class DreamsActivity extends BaseActivity  {
         sv = (ScrollView) findViewById(R.id.activity_dreams);
         tagGroup = (TagView) findViewById(R.id.tag_group);
         likeButton = (LikeButton) findViewById(R.id.favorite_dreams);
+        audioPlay = (Button) findViewById(R.id.form_dreams_audio_play);
 
         if(dream != null)
             helper.makeDream(dream);
+
+        audioPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dream.getAudioPath() == null || dream.getAudioPath().isEmpty())
+                    Snackbar.make(v, "Source file don't find.", Snackbar.LENGTH_SHORT).show();
+                else
+                    playAudio(v);
+            }
+        });
 
         likeButton.setOnLikeListener(new OnLikeListener() {
             @Override
@@ -136,5 +153,18 @@ public class DreamsActivity extends BaseActivity  {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void playAudio(View v) {
+
+        mediaPlayer = new MediaPlayer();
+
+        try {
+            mediaPlayer.setDataSource(dream.getAudioPath());
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
