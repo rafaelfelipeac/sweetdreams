@@ -8,7 +8,9 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
+import com.sd.rafael.sweetdreams.adapter.PagerAdapter;
 import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
@@ -66,6 +69,33 @@ public class FormDreamsActivity extends BaseActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_dreams);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.form_dreams_tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("Text"));
+        tabLayout.addTab(tabLayout.newTab().setText("Audio"));
+        tabLayout.setForegroundGravity(TabLayout.GRAVITY_FILL);
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.form_dreams_pager);
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName(5) + ".wav";
 

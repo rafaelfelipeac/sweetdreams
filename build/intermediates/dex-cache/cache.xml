@@ -12,15 +12,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Meu computador\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_4011d69490c954c2f35ca22e6c90a75c801a5684\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.github.Cutta\TagView\1.3\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -30,30 +21,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_9637f6b64d04f052b4e75624de7212c8081b5d4f\classes.dex" />
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.0_82a557d771b834123e4bf070ef5964bc4035ac29\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\jars\classes.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-25.0.1_c5a2a69613862693ba3b2e5a26f4b53b931bd0b3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_bf916fdeda3cc21d5ce99541e9b1277909753862\classes.dex" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.0_a63e157343354f70d93974ba514c78fa5d381464\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -70,62 +52,26 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="f988cc17d1e8aeffedfdc908cb620361839b57e8">
+        sha1="493d3dd3fe3ecd22456d114810a4b4db93fd145d">
         <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_517f3559a91597cdf6cd28be7c07e309697c3532\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_e8bc3fa2dbb5470d00f0006fa922e43b3dd412d1\classes.dex" />
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.0_17cd50218063c1de08ebb52391c4a5a3476f2dcd\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_b3ef73fd62632be66001887ca982e45ed729b310\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.0_5d1de2fa91e72e5c75578e209717ddd61671322b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_71ca22525e55784db7892a81d7342f71e992afb6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\design\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.0.0_4030993a66202f8c8d80213358a3637b921e1d7d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_48dabd76a18d94c2ca6b499ca7b23e7356f65fd8\classes.dex" />
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.0_a4062ac4160eb9edde025ea951e45e02c16af3aa\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -142,17 +88,8 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="a8180ee54c027b1fb0c07b1845ceddb6fff5c962">
+        sha1="5a260242bc057163ddd8593928fd1b91c19c2944">
         <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_46a6c2430555911d7fcf1c8c30fbf63cbd2d128a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_c920365aab891e0189168b6e4cdbe39d6695ed64\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -162,15 +99,6 @@
         revision="24.0.2"
         sha1="cc612fa2610b0741f55190e7bc73034144873adb">
         <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.kailashdabhi-om-recorder-1.1.0_450abb3606d394dfabb44629f78056d43501f4e0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.0_f86ae0eaf4d13161397d8e51c3d4d854eca65d68\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -192,6 +120,33 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7f2420506110902f033406b25697cf97ee8c38b2">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-25.1.0_7db3f0f13f6ca2f03b470ec12ad6e3c3c4890034\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.0_edf93ead1b93a35cda50090a869600c2affff3c4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.0_387ae12586e0ccb239e7e74586ddfeebc689ed4d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.cleveroad\audiovisualization\1.0.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -201,66 +156,66 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\classes.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.0_460b1e9ecfad3e85e6a40d0b50799e3caac9f8a5\classes.dex" />
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.1.0_b27a97954076d5a0879ea0f7634d1ef1cebbeef0\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\classes.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.0_613e55d9cebb42a60f2863c5fadc5268c7d3c368\classes.dex" />
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.1.0_9c728891a063ce872dad1a0bfaa0d6fe1f3c18e3\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\classes.jar"
+        jar="C:\Users\Meu computador\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.0_70eeb5d4004d0307539824ac8ea842c58bde0249\classes.dex" />
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.0_ed711002d090f128fc3a7b87044a788445288e88\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.0\jars\classes.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.0_943cc67da4cca99455b331b6444482505f5bc168\classes.dex" />
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.0_dc00fc3a36aa90f11d3d21fccb6ea01d78f417f1\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_4cfe920f2fff590fdb287219623aa894ddd8cdc9\classes.dex" />
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.0_7c14eda84e33c099febb13ea65895fa75ce958c6\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.0\jars\classes.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.0_d344a051854d190b501d2e12222a78abc36cfd6c\classes.dex" />
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.0_8310d057b5cfde5c999f54459e48b94fe0d83b9d\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.0\jars\classes.jar"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="0c6d948e6cb9ea6f535d175fb61ba2930719c0e9">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.0_5f3d9bc1e14f71b0d7919af885c01bc0b656997e\classes.dex" />
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.1.0_b658b8b9d1a3e2ee908c23cf60a9c30035433671\classes.dex" />
     </item>
 
 </items>
