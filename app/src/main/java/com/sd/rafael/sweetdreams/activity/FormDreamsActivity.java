@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,10 +68,14 @@ public class FormDreamsActivity extends BaseActivity  {
 
     Random random;
 
+    private RelativeLayout llAudio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_dreams);
+
+        llAudio = (RelativeLayout) LayoutInflater.from(getApplication()).inflate(R.layout.fragment_form_audio, null);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.form_dreams_tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Text"));
@@ -103,7 +110,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
         toolbar = getSupportActionBar();
 
-        audioRecorder = (Button) findViewById(R.id.form_dreams_audio_recorder);
+        audioRecorder = (Button) llAudio.findViewById(R.id.form_dreams_audio_recorder);
 
         audioRecorder.setOnClickListener(new View.OnClickListener() {
             @Override

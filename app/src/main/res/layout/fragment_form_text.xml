@@ -1,14 +1,21 @@
 <RelativeLayout
+    android:id="@+id/form_dreams_fragment_text"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TEXT"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <EditText
+            android:id="@+id/form_dreams_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/form_description"/>
+
+    </android.support.design.widget.TextInputLayout>
 
 </RelativeLayout>
 
