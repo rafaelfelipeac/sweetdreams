@@ -1,5 +1,5 @@
 <RelativeLayout
-    android:id="@+id/form_dreams_fragment_audio"
+    android:id="@+id/fragment_audio"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -26,7 +26,8 @@
                 android:background="@null"
                 android:textColor="@color/colorPrimary"
                 android:layout_gravity="center_horizontal"
-                android:paddingBottom="20dp"/>
+                android:paddingBottom="20dp"
+                android:onClick="recordAudio"/>
 
         </LinearLayout>
     </LinearLayout>

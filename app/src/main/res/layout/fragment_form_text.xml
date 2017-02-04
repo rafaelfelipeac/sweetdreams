@@ -1,5 +1,5 @@
 <RelativeLayout
-    android:id="@+id/form_dreams_fragment_text"
+    android:id="@+id/fragment_text"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">

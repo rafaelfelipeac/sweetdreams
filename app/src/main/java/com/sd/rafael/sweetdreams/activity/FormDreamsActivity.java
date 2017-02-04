@@ -4,11 +4,15 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -32,6 +36,7 @@ import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
+import com.sd.rafael.sweetdreams.activity.fragments.FormTextFragment;
 import com.sd.rafael.sweetdreams.adapter.PagerAdapter;
 import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
@@ -45,6 +50,9 @@ import cafe.adriel.androidaudiorecorder.AndroidAudioRecorder;
 import cafe.adriel.androidaudiorecorder.model.AudioChannel;
 import cafe.adriel.androidaudiorecorder.model.AudioSampleRate;
 import cafe.adriel.androidaudiorecorder.model.AudioSource;
+
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class FormDreamsActivity extends BaseActivity  {
 
@@ -64,11 +72,15 @@ public class FormDreamsActivity extends BaseActivity  {
     private static final int REQUEST_RECORD_AUDIO = 0;
     private static String AUDIO_FILE_PATH;
 
+    public static final int RequestPermissionCode = 1;
+
     String RandomAudioFileName = "ABCDEFGHIJKLMNOP";
 
     Random random;
 
     private RelativeLayout llAudio;
+
+    private View viewTextFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +143,9 @@ public class FormDreamsActivity extends BaseActivity  {
         TextView date = (TextView) findViewById(R.id.form_dreams_date);
         date.setText(dayX + "/" + (monthX+1) + "/" + yearX);
 
-        helper = new FormDreamsHelper(this);
+        View view = View.inflate(this, R.layout.fragment_form_text, null);
+
+        helper = new FormDreamsHelper(this, view);
 
         Intent intent = getIntent();
         dream = (Dream) intent.getSerializableExtra("dream");
@@ -167,9 +181,27 @@ public class FormDreamsActivity extends BaseActivity  {
                 }
                 else
                     Snackbar.make(sv, R.string.form_dreams_empty_tag, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case RequestPermissionCode:
+                if (grantResults.length > 0) {
+                    boolean StoragePermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean RecordPermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+                    if (StoragePermission && RecordPermission) {
+                        Toast.makeText(FormDreamsActivity.this, "Permission granted.", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(FormDreamsActivity.this,"Permission denied.", Toast.LENGTH_LONG).show();
+                    }
+                }
+                break;
+        }
     }
 
     @Override
@@ -191,21 +223,26 @@ public class FormDreamsActivity extends BaseActivity  {
     }
 
     public void recordAudio(View v) {
-        AndroidAudioRecorder.with(this)
-                // Required
-                .setFilePath(AUDIO_FILE_PATH)
-                .setColor(ContextCompat.getColor(this, R.color.colorAccent))
-                .setRequestCode(REQUEST_RECORD_AUDIO)
+        if(checkPermission()) {
+            AndroidAudioRecorder.with(this)
+                    // Required
+                    .setFilePath(AUDIO_FILE_PATH)
+                    .setColor(ContextCompat.getColor(this, R.color.colorAccent))
+                    .setRequestCode(REQUEST_RECORD_AUDIO)
 
-                // Optional
-                .setSource(AudioSource.MIC)
-                .setChannel(AudioChannel.STEREO)
-                .setSampleRate(AudioSampleRate.HZ_48000)
-                .setAutoStart(false)
-                .setKeepDisplayOn(true)
+                    // Optional
+                    .setSource(AudioSource.MIC)
+                    .setChannel(AudioChannel.STEREO)
+                    .setSampleRate(AudioSampleRate.HZ_48000)
+                    .setAutoStart(false)
+                    .setKeepDisplayOn(true)
 
-                // Start recording
-                .record();
+                    // Start recording
+                    .record();
+        }
+        else {
+            requestPermission();
+        }
     }
 
     private DatePickerDialog.OnDateSetListener dpickerListener =
@@ -335,6 +372,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
     public boolean emptyDream(int n) {
         Dream dream = helper.getDream();
+        dream.setDescription(getTextDescription());
 
         switch(n) {
             case 1:
@@ -368,5 +406,30 @@ public class FormDreamsActivity extends BaseActivity  {
         }
 
         return stringBuilder.toString();
+    }
+
+    public void getViewFromTextFragment(View view) {
+        this.viewTextFragment = view;
+    }
+
+    public void setTextDescription(String text) {
+        EditText description = (EditText) viewTextFragment.findViewById(R.id.form_dreams_description);
+        description.setText(text);
+    }
+
+    public String getTextDescription() {
+        EditText description = (EditText) viewTextFragment.findViewById(R.id.form_dreams_description);
+        return description.getText().toString();
+    }
+
+    public boolean checkPermission() {
+        int resultStorage = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
+        int resultAudio = ContextCompat.checkSelfPermission(getApplicationContext(), RECORD_AUDIO);
+
+        return resultStorage == PackageManager.PERMISSION_GRANTED && resultAudio == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(FormDreamsActivity.this, new String[]{WRITE_EXTERNAL_STORAGE, RECORD_AUDIO}, RequestPermissionCode);
     }
 }

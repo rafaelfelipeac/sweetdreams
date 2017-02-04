@@ -28,15 +28,11 @@ public class DreamsHelper implements OnLikeListener {
 
     private Dream dream;
 
-    private RelativeLayout llText;
-
     public DreamsHelper(DreamsActivity activity)  {
-
-        llText = (RelativeLayout) activity.findViewById(R.id.form_dreams_fragment_text);
 
         datetime = (TextView) activity.findViewById(R.id.dreams_datetime);
         title = (TextView) activity.findViewById(R.id.dreams_title);
-        description = (TextView) llText.findViewById(R.id.dreams_description);
+        description = (TextView) activity.findViewById(R.id.dreams_description);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group);
         likeButton = (LikeButton) activity.findViewById(R.id.favorite_dreams);
 

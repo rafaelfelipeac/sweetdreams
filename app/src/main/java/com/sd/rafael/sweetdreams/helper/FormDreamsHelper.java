@@ -2,13 +2,19 @@ package com.sd.rafael.sweetdreams.helper;
 
 
 import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
+import com.sd.rafael.sweetdreams.activity.BaseActivity;
 import com.sd.rafael.sweetdreams.activity.FormDreamsActivity;
 import com.sd.rafael.sweetdreams.R;
+import com.sd.rafael.sweetdreams.activity.fragments.FormTextFragment;
 import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.ArrayList;
@@ -18,19 +24,22 @@ import java.util.List;
  * Created by rafae on 22/10/2016.
  */
 
-public class FormDreamsHelper {
+public class FormDreamsHelper extends BaseActivity {
     private final EditText title;
-    private final EditText description;
+    private EditText description;
     private final TextView date;
 
     private TagView tagGroup;
 
+    View view;
+
     private Dream dream;
 
+    public FormDreamsHelper(FormDreamsActivity activity, View view) {
+        this.view = view;
 
-    public FormDreamsHelper(FormDreamsActivity activity) {
         title = (EditText) activity.findViewById(R.id.form_dreams_title);
-        description = (EditText) activity.findViewById(R.id.form_dreams_description);
+        description = (EditText) view.findViewById(R.id.form_dreams_description);
         date = (TextView) activity.findViewById(R.id.form_dreams_date);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group_form);
 
@@ -39,6 +48,7 @@ public class FormDreamsHelper {
 
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
+
         dream.setDescription(description.getText().toString());
 
         String[] arDate = date.getText().toString().split("/");
