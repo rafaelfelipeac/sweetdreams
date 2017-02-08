@@ -62,6 +62,9 @@ public class DreamsActivity extends BaseActivity  {
         likeButton = (LikeButton) findViewById(R.id.favorite_dreams);
         audioPlay = (Button) findViewById(R.id.form_dreams_audio_play);
 
+        if(dream.getAudioPath() == null || dream.getAudioPath().toString().isEmpty())
+            audioPlay.setVisibility(View.INVISIBLE);
+
         if(dream != null)
             helper.makeDream(dream);
 

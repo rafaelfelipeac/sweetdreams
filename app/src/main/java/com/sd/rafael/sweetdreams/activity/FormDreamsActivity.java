@@ -6,13 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -26,7 +24,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -36,12 +33,10 @@ import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
 import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
-import com.sd.rafael.sweetdreams.activity.fragments.FormTextFragment;
 import com.sd.rafael.sweetdreams.adapter.PagerAdapter;
 import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
@@ -81,6 +76,9 @@ public class FormDreamsActivity extends BaseActivity  {
     private RelativeLayout llAudio;
 
     private View viewTextFragment;
+
+    private boolean hasAudio = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,9 +141,7 @@ public class FormDreamsActivity extends BaseActivity  {
         TextView date = (TextView) findViewById(R.id.form_dreams_date);
         date.setText(dayX + "/" + (monthX+1) + "/" + yearX);
 
-        View view = View.inflate(this, R.layout.fragment_form_text, null);
-
-        helper = new FormDreamsHelper(this, view);
+        helper = new FormDreamsHelper(this);
 
         Intent intent = getIntent();
         dream = (Dream) intent.getSerializableExtra("dream");
@@ -213,10 +209,12 @@ public class FormDreamsActivity extends BaseActivity  {
                 if(dream == null)
                     dream = new Dream();
 
-                dream.setAudioPath(AUDIO_FILE_PATH);
+                hasAudio = true;
 
                 Toast.makeText(this, "Audio recorded successfully!", Toast.LENGTH_SHORT).show();
             } else if (resultCode == RESULT_CANCELED) {
+                hasAudio = false;
+
                 Toast.makeText(this, "Audio was not recorded", Toast.LENGTH_SHORT).show();
             }
         }
@@ -290,13 +288,17 @@ public class FormDreamsActivity extends BaseActivity  {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.form_confirm, menu);
 
+        // need be called when the activity loads
+        if(dream != null)
+            setTextDescription(dream.getDescription());
+
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Dream dream = helper.getDream();
-        dream.setAudioPath(AUDIO_FILE_PATH);
+        dream.setAudioPath((hasAudio) ? AUDIO_FILE_PATH : "");
 
         Intent intentDream;
         switch (item.getItemId()) {
@@ -378,7 +380,7 @@ public class FormDreamsActivity extends BaseActivity  {
             case 1:
                 return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0);
             case 2:
-                return (dream.getTitle().trim().length() == 0 || dream.getDescription().trim().length() == 0);
+                return (dream.getTitle().trim().length() == 0 || (dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0));
 
         }
         return false;

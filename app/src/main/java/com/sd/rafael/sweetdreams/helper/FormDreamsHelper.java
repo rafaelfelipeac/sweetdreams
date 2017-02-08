@@ -26,20 +26,16 @@ import java.util.List;
 
 public class FormDreamsHelper extends BaseActivity {
     private final EditText title;
-    private EditText description;
+    //private EditText description;
     private final TextView date;
 
     private TagView tagGroup;
 
-    View view;
-
     private Dream dream;
 
-    public FormDreamsHelper(FormDreamsActivity activity, View view) {
-        this.view = view;
-
+    public FormDreamsHelper(FormDreamsActivity activity) {
         title = (EditText) activity.findViewById(R.id.form_dreams_title);
-        description = (EditText) view.findViewById(R.id.form_dreams_description);
+        //description = (EditText) activity.findViewById(R.id.form_dreams_description);
         date = (TextView) activity.findViewById(R.id.form_dreams_date);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group_form);
 
@@ -49,7 +45,7 @@ public class FormDreamsHelper extends BaseActivity {
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
 
-        dream.setDescription(description.getText().toString());
+        //dream.setDescription(description.getText().toString());
 
         String[] arDate = date.getText().toString().split("/");
         dream.setDay(Integer.parseInt(arDate[0]));
@@ -70,7 +66,7 @@ public class FormDreamsHelper extends BaseActivity {
 
     public void makeDream(Dream dream) {
         title.setText(dream.getTitle());
-        description.setText(dream.getDescription());
+        //description.setText(dream.getDescription());
         date.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
 
         List<com.cunoraz.tagview.Tag> tags = new ArrayList<>(dream.tagConvertStringToArray().length);

@@ -21,8 +21,6 @@ public class FormTextFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //descSetText("passaro");
     }
 
     @Override
@@ -34,15 +32,5 @@ public class FormTextFragment extends Fragment {
         ((FormDreamsActivity)getActivity()).getViewFromTextFragment(view);
 
         return view;
-    }
-
-    public String descGetText() {
-        EditText description = (EditText) view.findViewById(R.id.form_dreams_description);
-        return description.getText().toString();
-    }
-
-    public void descSetText(String text) {
-        EditText description = (EditText) view.findViewById(R.id.form_dreams_description);
-        description.setText(text);
     }
 }
