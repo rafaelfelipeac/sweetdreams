@@ -107,6 +107,13 @@ public class DreamsActivity extends BaseActivity  {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+
+        stopAudio();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_dream, menu);
@@ -156,6 +163,12 @@ public class DreamsActivity extends BaseActivity  {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void stopAudio() {
+
+        if(mediaPlayer != null)
+            mediaPlayer.stop();
     }
 
     public void playAudio(View v) {
