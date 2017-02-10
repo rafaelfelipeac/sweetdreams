@@ -85,6 +85,8 @@ public class FormDreamsActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_dreams);
 
+        getSupportActionBar().setElevation(0);
+
         llAudio = (RelativeLayout) LayoutInflater.from(getApplication()).inflate(R.layout.fragment_form_audio, null);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.form_dreams_tab_layout);

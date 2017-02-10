@@ -1,80 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/form_dreams"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.sd.rafael.sweetdreams.activity.FormDreamsActivity"
     android:orientation="vertical">
 
-
     <LinearLayout
-        android:id="@+id/activity_form_dreams"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="15dp"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/form_dreams_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/form_date"
-                    android:textSize="18dp"
-                    android:layout_gravity="center_horizontal"/>
-
-                <Button
-                    android:id="@+id/form_dreams_btnSetDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:text="@string/form_change_date"
-                    android:background="@null"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_gravity="center_horizontal"
-                    android:paddingBottom="20dp"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/form_dreams_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/form_title"/>
-
-        </android.support.design.widget.TextInputLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <android.support.design.widget.TabLayout
-            android:layout_marginTop="30dp"
             android:id="@+id/form_dreams_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabSelectedTextColor="@color/colorPrimary"
-            app:tabTextColor="@color/colorPrimary"
-
-            android:elevation="6dp" />
+            app:tabBackground="@color/colorPrimary"
+            app:tabSelectedTextColor="#fff"
+            app:tabIndicatorColor="@color/colorAccent"
+            android:layout_marginBottom="10dp"
+            app:tabTextColor="#fff"
+            android:elevation="0dp"/>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/form_dreams_pager"
@@ -82,44 +30,102 @@
             android:layout_height="75dp" />
 
         <LinearLayout
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/activity_form_dreams"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/form_dreams_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/form_title"/>
+
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp">
 
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/form_tags">
+                    android:paddingTop="15dp"
+                    android:layout_weight="1">
 
-                    <EditText
-                        android:id="@+id/form_dreams_tag"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/form_dreams_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/form_date"
+                        android:textSize="18dp"
+                        android:layout_gravity="center_horizontal"/>
 
-                </android.support.design.widget.TextInputLayout>
+                    <Button
+                        android:id="@+id/form_dreams_btnSetDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:text="@string/form_change_date"
+                        android:background="@null"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingBottom="20dp"/>
 
-                <Button
-                    android:id="@+id/form_dreams_btnNewTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/form_add"/>
+                </LinearLayout>
+
             </LinearLayout>
 
-            <com.cunoraz.tagview.TagView
-                android:id="@+id/tag_group_form"
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/form_tags">
+
+                        <EditText
+                            android:id="@+id/form_dreams_tag"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/form_dreams_btnNewTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/form_add"/>
+                </LinearLayout>
+
+                <com.cunoraz.tagview.TagView
+                    android:id="@+id/tag_group_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
+
 </ScrollView>
