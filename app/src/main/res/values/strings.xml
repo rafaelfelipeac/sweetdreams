@@ -55,12 +55,14 @@
 
     <string name="dreams_favorite">Added to favorites.</string>
 
-    <string name="form_dreams_save">A dream must have a title and a description.</string>
+    <string name="form_dreams_save">A dream must have a title and a description (text or audio).</string>
     <string name="form_dreams_without_save">Leave without saving dream?</string>
     <string name="form_dreams_cancel">Cancel</string>
     <string name="form_dreams_exit">Exit</string>
     <string name="form_dreams_ok">OK</string>
     <string name="form_dreams_empty_tag">Empty tag.</string>
+    <string name="form_dreams_fragment_text">Text</string>
+    <string name="form_dreams_fragment_audio">Audio</string>
 
     <string name="dreams_cancel">Cancel</string>
     <string name="dreams_delete">Delete</string>

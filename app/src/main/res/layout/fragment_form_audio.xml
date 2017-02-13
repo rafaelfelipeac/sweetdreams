@@ -26,7 +26,7 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_gravity="center_horizontal"
                 android:paddingBottom="20dp"
-                android:onClick="recordAudio"/>
+                android:onClick="record"/>
 
         </LinearLayout>
     </LinearLayout>

@@ -90,8 +90,8 @@ public class FormDreamsActivity extends BaseActivity  {
         llAudio = (RelativeLayout) LayoutInflater.from(getApplication()).inflate(R.layout.fragment_form_audio, null);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.form_dreams_tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Text"));
-        tabLayout.addTab(tabLayout.newTab().setText("Audio"));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.form_dreams_fragment_text));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.form_dreams_fragment_audio));
         tabLayout.setForegroundGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.form_dreams_pager);
@@ -127,7 +127,7 @@ public class FormDreamsActivity extends BaseActivity  {
         audioRecorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recordAudio(v);
+                record(v);
             }
         });
 
@@ -192,7 +192,7 @@ public class FormDreamsActivity extends BaseActivity  {
                     boolean RecordPermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
 
                     if (StoragePermission && RecordPermission) {
-                        Toast.makeText(FormDreamsActivity.this, "Permission granted.", Toast.LENGTH_LONG).show();
+                        recordAudio();
                     }
                     else {
                         Toast.makeText(FormDreamsActivity.this,"Permission denied.", Toast.LENGTH_LONG).show();
@@ -222,27 +222,28 @@ public class FormDreamsActivity extends BaseActivity  {
         }
     }
 
-    public void recordAudio(View v) {
-        if(checkPermission()) {
-            AndroidAudioRecorder.with(this)
-                    // Required
-                    .setFilePath(AUDIO_FILE_PATH)
-                    .setColor(ContextCompat.getColor(this, R.color.colorAccent))
-                    .setRequestCode(REQUEST_RECORD_AUDIO)
-
-                    // Optional
-                    .setSource(AudioSource.MIC)
-                    .setChannel(AudioChannel.STEREO)
-                    .setSampleRate(AudioSampleRate.HZ_48000)
-                    .setAutoStart(false)
-                    .setKeepDisplayOn(true)
-
-                    // Start recording
-                    .record();
-        }
+    public void record(View v) {
+        if(checkPermission())
+            recordAudio();
         else {
             requestPermission();
         }
+    }
+
+    public void recordAudio() {
+        AndroidAudioRecorder.with(this)
+                // Required
+                .setFilePath(AUDIO_FILE_PATH)
+                .setColor(ContextCompat.getColor(this, R.color.colorAccent))
+                .setRequestCode(REQUEST_RECORD_AUDIO)
+                // Optional
+                .setSource(AudioSource.MIC)
+                .setChannel(AudioChannel.STEREO)
+                .setSampleRate(AudioSampleRate.HZ_48000)
+                .setAutoStart(false)
+                .setKeepDisplayOn(true)
+                // Start recording
+                .record();
     }
 
     private DatePickerDialog.OnDateSetListener dpickerListener =

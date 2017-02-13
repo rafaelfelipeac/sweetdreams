@@ -55,12 +55,14 @@
 
     <string name="dreams_favorite">Adicionado aos favoritos.</string>
 
-    <string name="form_dreams_save">Um sonho precisa ter um título e uma descrição.</string>
+    <string name="form_dreams_save">Um sonho precisa ter um título e uma descrição (texto ou áudio).</string>
     <string name="form_dreams_without_save">Sair sem salvar o sonho?</string>
     <string name="form_dreams_cancel">Cancelar</string>
     <string name="form_dreams_exit">Sair</string>
     <string name="form_dreams_ok">OK</string>
     <string name="form_dreams_empty_tag">Tag vazia.</string>
+    <string name="form_dreams_fragment_text">Texto</string>
+    <string name="form_dreams_fragment_audio">Áudio</string>
 
     <string name="dreams_cancel">Cancelar</string>
     <string name="dreams_delete">Excluir</string>
