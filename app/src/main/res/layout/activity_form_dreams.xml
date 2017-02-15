@@ -20,17 +20,16 @@
             app:tabBackground="@color/colorPrimary"
             app:tabSelectedTextColor="#fff"
             app:tabIndicatorColor="@color/colorAccent"
-            android:layout_marginBottom="10dp"
             app:tabTextColor="#fff"
             android:elevation="0dp"/>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/form_dreams_pager"
             android:layout_width="match_parent"
-            android:layout_height="75dp" />
+            android:layout_height="145dp" />
 
         <LinearLayout
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/activity_form_dreams"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -40,8 +39,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@color/colorPrimary">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/form_dreams_title"

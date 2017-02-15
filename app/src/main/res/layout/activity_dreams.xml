@@ -76,13 +76,6 @@
             android:text="@string/dreams_description"
             android:textSize="16sp"/>
 
-        <com.cunoraz.tagview.TagView
-            android:id="@+id/tag_group"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="30dp"/>
-
-
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -110,6 +103,11 @@
 
         </LinearLayout>
 
+        <com.cunoraz.tagview.TagView
+            android:id="@+id/tag_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp"/>
 
     </LinearLayout>
 </ScrollView>
