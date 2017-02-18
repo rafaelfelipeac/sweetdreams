@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             app:tabBackground="@color/colorPrimary"
             app:tabSelectedTextColor="#fff"
-            app:tabIndicatorColor="@color/colorAccent"
+            app:tabIndicatorColor="#FFF"
             app:tabTextColor="#fff"
             android:elevation="0dp"/>
 
@@ -29,7 +29,6 @@
             android:layout_height="145dp" />
 
         <LinearLayout
-            android:layout_marginTop="15dp"
             android:id="@+id/activity_form_dreams"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -53,13 +52,13 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp">
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp">
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="15dp"
                     android:layout_weight="1">
 
                     <TextView
@@ -83,6 +82,13 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginRight="-20dp"
+                android:layout_marginLeft="-20dp"
+                android:background="@color/colorAccent"/>
 
             <LinearLayout
                 android:layout_marginTop="15dp"
