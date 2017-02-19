@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="29d2322ea195dfb850ee010eac109fc815c34e94">
+        sha1="452d2572bf0f37a7142013d3cb94e99fb63c1dca">
         <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_517f3559a91597cdf6cd28be7c07e309697c3532\classes.dex" />
     </item>
     <item
@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="d9adf21d795259729161f40f37c7434074ca3daf">
+        sha1="70f46abf086de88d0a8eaac4a0d989e3f75c1e77">
         <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_46a6c2430555911d7fcf1c8c30fbf63cbd2d128a\classes.dex" />
     </item>
     <item
