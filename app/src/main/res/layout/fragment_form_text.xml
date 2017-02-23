@@ -17,8 +17,10 @@
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
             android:hint="@string/form_description"
+            android:lines="6"
             android:inputType="textMultiLine"
-            android:minLines="4"
+            android:minLines="5"
+            android:maxLines="8"
             android:gravity="top|left"
             android:scrollbars="vertical"/>
 

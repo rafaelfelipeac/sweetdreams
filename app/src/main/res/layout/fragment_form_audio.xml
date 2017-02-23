@@ -1,8 +1,8 @@
-<RelativeLayout
-    android:id="@+id/fragment_audio"
+<RelativeLayout android:id="@+id/fragment_audio"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -20,14 +20,15 @@
             <Button
                 android:id="@+id/form_dreams_audio_recorder"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="20dp"
                 android:text="record a audio"
-                android:background="@null"
                 android:textColor="@color/colorPrimary"
                 android:layout_gravity="center_horizontal"
-                android:paddingBottom="20dp"
-                android:onClick="record"/>
-
+                android:paddingBottom="0dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:onClick="record"
+                android:background="@drawable/white_blue_button"/>
         </LinearLayout>
     </LinearLayout>
 
