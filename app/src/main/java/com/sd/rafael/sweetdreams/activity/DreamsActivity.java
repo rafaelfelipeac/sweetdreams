@@ -50,6 +50,8 @@ public class DreamsActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dreams);
 
+        getSupportActionBar().setElevation(0);
+
         final DreamDAO dao = new DreamDAO(this);
 
         helper = new DreamsHelper(this);
