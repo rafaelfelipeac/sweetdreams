@@ -42,13 +42,17 @@
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:theme="@style/TextLabel">
+                        android:theme="@style/TextLabelWhite">
 
                         <EditText
                             android:id="@+id/form_dreams_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/form_title" />
+                            android:hint="@string/form_title"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:inputType="textMultiLine"
+                            android:scrollbars="vertical"/>
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -135,7 +139,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/form_tags"
-                        android:paddingRight="10dp">
+                        android:paddingRight="10dp"
+                        android:theme="@style/TextLabelBlue">
 
                         <EditText
                             android:id="@+id/form_dreams_tag"

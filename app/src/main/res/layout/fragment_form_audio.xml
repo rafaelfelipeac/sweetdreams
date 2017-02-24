@@ -14,7 +14,7 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="45dp"
+            android:paddingTop="55dp"
             android:layout_weight="1">
 
             <Button
@@ -24,7 +24,6 @@
                 android:text="record a audio"
                 android:textColor="@color/colorPrimary"
                 android:layout_gravity="center_horizontal"
-                android:paddingBottom="0dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:onClick="record"

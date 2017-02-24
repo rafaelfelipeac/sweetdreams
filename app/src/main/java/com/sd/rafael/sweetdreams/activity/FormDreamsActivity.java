@@ -213,11 +213,11 @@ public class FormDreamsActivity extends BaseActivity  {
 
                 hasAudio = true;
 
-                Toast.makeText(this, "Audio recorded successfully!", Toast.LENGTH_SHORT).show();
+                Snackbar.make(sv, "Audio recorded successfully.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             } else if (resultCode == RESULT_CANCELED) {
                 hasAudio = false;
 
-                Toast.makeText(this, "Audio was not recorded", Toast.LENGTH_SHORT).show();
+                Snackbar.make(sv, "Audio was not recorded.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         }
     }
