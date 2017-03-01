@@ -61,7 +61,8 @@ public class FormDreamsActivity extends BaseActivity  {
     int monthX;
     int dayX;
 
-    private Button audioRecorder;
+    private Button btnAudioRecorder;
+    private Button btnAudioDelete;
 
     private final int DIALOG_DATE_ID = 0;
     private static final int REQUEST_RECORD_AUDIO = 0;
@@ -122,9 +123,8 @@ public class FormDreamsActivity extends BaseActivity  {
 
         toolbar = getSupportActionBar();
 
-        audioRecorder = (Button) llAudio.findViewById(R.id.form_dreams_audio_recorder);
-
-        audioRecorder.setOnClickListener(new View.OnClickListener() {
+        btnAudioRecorder = (Button) llAudio.findViewById(R.id.form_dreams_audio_recorder);
+        btnAudioRecorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 record(v);
@@ -141,7 +141,7 @@ public class FormDreamsActivity extends BaseActivity  {
         showDatePickerDialog();
 
         TextView date = (TextView) findViewById(R.id.form_dreams_date);
-        date.setText(dayX + "/" + (monthX+1) + "/" + yearX);
+        date.setText(String.format("%02d", dayX) + "/" + String.format("%02d", monthX+1) + "/" + yearX);
 
         helper = new FormDreamsHelper(this);
 
@@ -151,6 +151,9 @@ public class FormDreamsActivity extends BaseActivity  {
         if(dream != null) {
             helper.makeDream(dream);
             toolbar.setTitle(R.string.form_edit_activity);
+
+            if(dream.getAudioPath() != null && dream.getAudioPath() != "")
+                hasAudio = true;
         }
         else
             toolbar.setTitle(R.string.form_activity);
@@ -162,6 +165,19 @@ public class FormDreamsActivity extends BaseActivity  {
                 view.remove(position);
             }
         });
+
+        btnAudioDelete = (Button) llAudio.findViewById(R.id.form_dreams_audio_delete);
+        btnAudioDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogAudioDelete();
+            }
+        });
+
+        if(hasAudio)
+            btnAudioDelete.setVisibility(View.VISIBLE);
+
+
 
         Button btnNewTag = (Button) findViewById(R.id.form_dreams_btnNewTag);
         btnNewTag.setOnClickListener(new View.OnClickListener() {
@@ -195,7 +211,7 @@ public class FormDreamsActivity extends BaseActivity  {
                         recordAudio();
                     }
                     else {
-                        Toast.makeText(FormDreamsActivity.this,"Permission denied.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(FormDreamsActivity.this, R.string.form_dreams_permission_denied, Toast.LENGTH_LONG).show();
                     }
                 }
                 break;
@@ -212,22 +228,26 @@ public class FormDreamsActivity extends BaseActivity  {
                     dream = new Dream();
 
                 hasAudio = true;
+                btnAudioDelete.setVisibility(View.VISIBLE);
 
-                Snackbar.make(sv, "Audio recorded successfully.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                Snackbar.make(sv, R.string.form_dreams_audio_record_success, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             } else if (resultCode == RESULT_CANCELED) {
                 hasAudio = false;
 
-                Snackbar.make(sv, "Audio was not recorded.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                Snackbar.make(sv, R.string.form_dreams_audio_record_failed, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         }
     }
 
     public void record(View v) {
-        if(checkPermission())
-            recordAudio();
-        else {
-            requestPermission();
+        if(checkPermission()) {
+            if (hasAudio)
+                showDialogAudioFileExistent();
+            else
+                recordAudio();
         }
+        else
+            requestPermission();
     }
 
     public void recordAudio() {
@@ -256,7 +276,7 @@ public class FormDreamsActivity extends BaseActivity  {
                     dayX = dayOfMonth;
 
                     TextView date = (TextView) findViewById(R.id.form_dreams_date);
-                    date.setText(dayX + "/" + monthX + "/" + yearX);
+                    date.setText(String.format("%02d", dayX) + "/" + String.format("%02d", monthX) + "/" + yearX);
                 }
             };
 
@@ -279,6 +299,7 @@ public class FormDreamsActivity extends BaseActivity  {
                 dpd = new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
             else
                 dpd = new DatePickerDialog(this, dpickerListener, dream.getYear(), dream.getMonth() - 1, dream.getDay());
+
             dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
 
             return dpd;
@@ -291,7 +312,6 @@ public class FormDreamsActivity extends BaseActivity  {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.form_confirm, menu);
 
-        // need be called when the activity loads
         if(dream != null)
             setTextDescription(dream.getDescription());
 
@@ -373,6 +393,38 @@ public class FormDreamsActivity extends BaseActivity  {
                     }
                 });
         alert.show();
+    }
+
+    private void showDialogAudioFileExistent() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
+        alert.setMessage(R.string.form_dreams_audio_file_exist).setCancelable(false)
+                .setNegativeButton(R.string.form_dreams_no, null)
+                .setPositiveButton(R.string.form_dreams_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        recordAudio();
+                    }
+                });
+        alert.show();
+    }
+
+    private void showDialogAudioDelete() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
+        alert.setMessage(R.string.form_dreams_audio_delete).setCancelable(true)
+                .setPositiveButton(R.string.form_dreams_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteAudio();
+                    }
+                });
+        alert.show();
+    }
+
+    private void deleteAudio() {
+        hasAudio = false;
+        dream.setAudioPath("");
+        AUDIO_FILE_PATH = "";
+        btnAudioDelete.setVisibility(View.INVISIBLE);
     }
 
     public boolean emptyDream(int n) {

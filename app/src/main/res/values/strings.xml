@@ -6,8 +6,6 @@
     <string name="action_edit">Edit</string>
     <string name="action_delete">Delete</string>
     <string name="action_search">search</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_nd">NDActivity</string>
 
     <string name="add">Add</string>
     <string name="calendar">Calendar</string>
@@ -29,7 +27,7 @@
     <string name="dreams_description">Description</string>
 
     <string name="form_date">00/00/00</string>
-    <string name="form_change_date">Set date</string>
+    <string name="form_change_date">Change date</string>
     <string name="form_title">Title</string>
     <string name="form_description">Description</string>
     <string name="form_tags">Tags</string>
@@ -42,14 +40,14 @@
     <string name="language_english">English</string>
 
     <string name="settings_language">Language</string>
-    <string name="settings_language_summary">Choose the language</string>
+    <string name="settings_language_summary">Change the language</string>
 
     <string name="favorite_activity">Favorites</string>
     <string name="form_activity">New Dream</string>
     <string name="form_edit_activity">Edit Dream</string>
     <string name="settings_activity">Settings</string>
     <string name="calendar_activity">Calendar</string>
-    <string name="calendar_without_dreams">No dreams registered on that day.</string>
+    <string name="calendar_without_dreams">No dreams registered on this day.</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_same_day">SameDayActivity</string>
 
@@ -68,7 +66,14 @@
     <string name="dreams_delete">Delete</string>
     <string name="dreams_delete_message">Delete dream?</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="form_dreams_permission_denied">Permission denied.</string>
+    <string name="form_dreams_audio_record_success">Audio recorded successfully.</string>
+    <string name="form_dreams_audio_record_failed">Audio was not recorded.</string>
+    <string name="form_dreams_audio_file_exist">"An audio file already exists. Do you want to overwrite it?"</string>
+    <string name="form_dreams_yes">Yes</string>
+    <string name="form_dreams_no">No</string>
+    <string name="form_dreams_audio_delete">Do you want to delete the audio?</string>
+
+
 
 </resources>

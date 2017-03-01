@@ -29,7 +29,7 @@
             android:paddingLeft="15dp"
             android:paddingTop="20dp"
             android:text="@string/list_date"
-            android:textColor="@color/cardview_light_background"/>
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/title"

@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/left_arrow"
-                android:textColor="#fff"
+                android:textColor="@color/white"
                 android:textSize="15dp"
                 android:background="@android:color/transparent"/>
 
@@ -36,7 +36,7 @@
                 android:id="@+id/textViewCalendar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="#fff"
+                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:paddingTop="20dp"
                 android:layout_weight="1"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/right_arrow"
-                android:textColor="#fff"
+                android:textColor="@color/white"
                 android:textSize="15dp"
                 android:background="@android:color/transparent"/>
         </LinearLayout>
@@ -61,10 +61,10 @@
             android:layout_height="250dp"
             app:compactCalendarTextSize="12sp"
             app:compactCalendarBackgroundColor="@color/colorAccent"
-            app:compactCalendarTextColor="#fff"
+            app:compactCalendarTextColor="@color/white"
             app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorPrimary"
             app:compactCalendarCurrentDayBackgroundColor="@color/colorPrimaryDark"
-            app:compactCalendarMultiEventIndicatorColor="#fff"/>
+            app:compactCalendarMultiEventIndicatorColor="@color/white"/>
 
     </LinearLayout>
 

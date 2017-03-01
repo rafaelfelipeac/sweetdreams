@@ -19,11 +19,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="TextLabelWhite" parent="TextAppearance.AppCompat">
-        <item name="android:textColorHint">#fff</item>
+        <item name="android:textColorHint">@color/white</item>
         <item name="android:textSize">20sp</item>
-        <item name="colorAccent">#fff</item>
-        <item name="colorControlNormal">#fff</item>
-        <item name="colorControlActivated">#fff</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
     </style>
 
     <style name="TextLabelBlue" parent="TextAppearance.AppCompat">
@@ -32,6 +32,5 @@
         <item name="colorControlNormal">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
-
 
 </resources>

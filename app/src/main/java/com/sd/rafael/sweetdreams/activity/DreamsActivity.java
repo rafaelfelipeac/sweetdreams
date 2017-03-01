@@ -20,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -44,7 +45,8 @@ public class DreamsActivity extends BaseActivity  {
     private LikeButton likeButton;
     private MediaPlayer mediaPlayer;
     private Button audioPlay;
-    
+    private LinearLayout playButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,20 +65,18 @@ public class DreamsActivity extends BaseActivity  {
         tagGroup = (TagView) findViewById(R.id.tag_group);
         likeButton = (LikeButton) findViewById(R.id.favorite_dreams);
         audioPlay = (Button) findViewById(R.id.form_dreams_audio_play);
-
-        if(dream.getAudioPath() == null || dream.getAudioPath().toString().isEmpty())
-            audioPlay.setVisibility(View.INVISIBLE);
+        playButton = (LinearLayout) findViewById(R.id.form_dreams_play_button);
 
         if(dream != null)
             helper.makeDream(dream);
 
+        if(!dream.getAudioPath().isEmpty())
+            playButton.setVisibility(View.VISIBLE);
+
         audioPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dream.getAudioPath() == null || dream.getAudioPath().isEmpty())
-                    Snackbar.make(v, "Source file don't find.", Snackbar.LENGTH_SHORT).show();
-                else
-                    playAudio(v);
+                playAudio(v);
             }
         });
 
@@ -144,7 +144,6 @@ public class DreamsActivity extends BaseActivity  {
                 break;
             case R.id.menu_dream_delete:
                 AlertDialog.Builder alert = new AlertDialog.Builder(DreamsActivity.this);
-                //alert.setMessage(" " + R.string.dreams_delete_message + " '" + dream.getTitle()+"'?").setCancelable(false)
                 alert.setMessage(R.string.dreams_delete_message).setCancelable(false)
                     .setNegativeButton(R.string.dreams_cancel , null)
                     .setPositiveButton(R.string.dreams_delete, new DialogInterface.OnClickListener() {

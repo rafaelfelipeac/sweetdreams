@@ -68,4 +68,13 @@
     <string name="dreams_delete">Excluir</string>
     <string name="dreams_delete_message">Excluir sonho?</string>
 
+    <string name="form_dreams_permission_denied">Permissão negada.</string>
+    <string name="form_dreams_audio_record_success">Áudio gravado com sucesso.</string>
+    <string name="form_dreams_audio_record_failed">Áudio não foi gravado.</string>
+    <string name="form_dreams_audio_file_exist">"Um áudio já existe. Deseja sobrescrever ele?"</string>
+    <string name="form_dreams_yes">Sim</string>
+    <string name="form_dreams_no">Não</string>
+    <string name="form_dreams_audio_delete">Deseja deletar o áudio?</string>
+
+
 </resources>

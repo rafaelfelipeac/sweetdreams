@@ -65,7 +65,7 @@ public class DreamsHelper implements OnLikeListener {
     public void makeDream(Dream dream) {
         title.setText(dream.getTitle());
         description.setText(dream.getDescription());
-        datetime.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
+        datetime.setText(String.format("%02d", dream.getDay()) + "/" + String.format("%02d", dream.getMonth()) + "/" + dream.getYear());
 
         likeButton.setLiked((dream.getFavorite()));
 

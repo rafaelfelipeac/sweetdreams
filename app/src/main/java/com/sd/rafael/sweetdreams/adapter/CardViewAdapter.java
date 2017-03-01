@@ -38,7 +38,8 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         viewHolder.title.setText(dreams[position].getTitle());
-        viewHolder.date.setText(dreams[position].getDay() + "/" + dreams[position].getMonth() + "/" + dreams[position].getYear());
+
+        viewHolder.date.setText(String.format("%02d", dreams[position].getDay()) + "/" + String.format("%02d", dreams[position].getMonth()) + "/" + dreams[position].getYear());
     }
 
     @Override

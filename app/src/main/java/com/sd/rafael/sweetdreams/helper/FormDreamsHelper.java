@@ -66,8 +66,7 @@ public class FormDreamsHelper extends BaseActivity {
 
     public void makeDream(Dream dream) {
         title.setText(dream.getTitle());
-        //description.setText(dream.getDescription());
-        date.setText(dream.getDay() + "/" + dream.getMonth() + "/" + dream.getYear());
+        date.setText(String.format("%02d", dream.getDay()) + "/" + String.format("%02d", dream.getMonth()) + "/" + dream.getYear());
 
         List<com.cunoraz.tagview.Tag> tags = new ArrayList<>(dream.tagConvertStringToArray().length);
         String[] lstTags = dream.tagConvertStringToArray();

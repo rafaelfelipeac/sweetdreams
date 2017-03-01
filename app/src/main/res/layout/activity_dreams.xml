@@ -65,10 +65,14 @@
                         android:layout_marginLeft="240dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="-25dp"
+                        android:layout_marginTop="-10dp"
                         app:icon_size="30dp"
                         app:anim_scale_factor="3"
-                        app:icon_type="heart" />
+                        app:icon_type="heart"
+                        app:circle_end_color="@color/red"
+                        app:circle_start_color="@color/red"
+                        app:dots_primary_color="@color/red"
+                        app:dots_secondary_color="@color/red"/>
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
@@ -77,14 +81,16 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
+                android:id="@+id/form_dreams_play_button"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:visibility="invisible">
 
                 <Button
                     android:id="@+id/form_dreams_audio_play"

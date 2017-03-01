@@ -14,7 +14,7 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="55dp"
+            android:paddingTop="30dp"
             android:layout_weight="1">
 
             <Button
@@ -28,6 +28,19 @@
                 android:paddingRight="10dp"
                 android:onClick="record"
                 android:background="@drawable/white_blue_button"/>
+
+            <Button
+                android:id="@+id/form_dreams_audio_delete"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="delete audio"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/white_red_button"
+                android:visibility="invisible"/>
         </LinearLayout>
     </LinearLayout>
 
