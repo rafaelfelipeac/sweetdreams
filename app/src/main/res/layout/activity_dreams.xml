@@ -97,7 +97,7 @@
                     android:id="@+id/form_dreams_audio_play"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:text="play the audio"
+                    android:text="@string/dreams_play_audio_button"
                     android:textColor="@color/colorPrimary"
                     android:background="@drawable/white_blue_button"
                     android:layout_gravity="center_horizontal"

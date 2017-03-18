@@ -74,6 +74,10 @@
     <string name="form_dreams_no">No</string>
     <string name="form_dreams_audio_delete">Do you want to delete the audio?</string>
 
+    <string name="dreams_play_audio_button">play the audio</string>
+
+    <string name="fragment_audio_record">record a audio</string>
+    <string name="fragment_audio_delete">delete the audio</string>
 
 
 </resources>
