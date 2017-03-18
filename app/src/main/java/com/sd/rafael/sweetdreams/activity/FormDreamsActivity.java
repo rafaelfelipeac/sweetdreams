@@ -152,7 +152,7 @@ public class FormDreamsActivity extends BaseActivity  {
             helper.makeDream(dream);
             toolbar.setTitle(R.string.form_edit_activity);
 
-            if(dream.getAudioPath() != null && dream.getAudioPath() != "")
+            if(!dream.getAudioPath().isEmpty())
                 hasAudio = true;
         }
         else
@@ -176,8 +176,6 @@ public class FormDreamsActivity extends BaseActivity  {
 
         if(hasAudio)
             btnAudioDelete.setVisibility(View.VISIBLE);
-
-
 
         Button btnNewTag = (Button) findViewById(R.id.form_dreams_btnNewTag);
         btnNewTag.setOnClickListener(new View.OnClickListener() {

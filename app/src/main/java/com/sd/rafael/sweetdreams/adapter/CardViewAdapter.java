@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sd.rafael.sweetdreams.R;
@@ -40,6 +41,8 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
         viewHolder.title.setText(dreams[position].getTitle());
 
         viewHolder.date.setText(String.format("%02d", dreams[position].getDay()) + "/" + String.format("%02d", dreams[position].getMonth()) + "/" + dreams[position].getYear());
+
+        viewHolder.image.setVisibility((!dreams[position].getAudioPath().isEmpty()) ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Override
@@ -51,6 +54,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
 
         public TextView title;
         public TextView date;
+        public ImageView image;
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
@@ -59,6 +63,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
 
             title = (TextView) itemLayoutView.findViewById(R.id.title);
             date = (TextView) itemLayoutView.findViewById(R.id.date);
+            image = (ImageView) itemLayoutView.findViewById(R.id.audio_icon);
         }
 
         @Override

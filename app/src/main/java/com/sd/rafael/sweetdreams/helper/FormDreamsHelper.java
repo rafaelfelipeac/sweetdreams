@@ -3,6 +3,7 @@ package com.sd.rafael.sweetdreams.helper;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +36,19 @@ public class FormDreamsHelper extends BaseActivity {
 
     public FormDreamsHelper(FormDreamsActivity activity) {
         title = (EditText) activity.findViewById(R.id.form_dreams_title);
-        //description = (EditText) activity.findViewById(R.id.form_dreams_description);
+
+        title.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (event.getAction() & MotionEvent.ACTION_MASK){
+                    case MotionEvent.ACTION_UP:
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                return false;
+            }
+        });
+
         date = (TextView) activity.findViewById(R.id.form_dreams_date);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group_form);
 
@@ -44,8 +57,6 @@ public class FormDreamsHelper extends BaseActivity {
 
     public Dream getDream() {
         dream.setTitle(title.getText().toString());
-
-        //dream.setDescription(description.getText().toString());
 
         String[] arDate = date.getText().toString().split("/");
         dream.setDay(Integer.parseInt(arDate[0]));
@@ -85,7 +96,4 @@ public class FormDreamsHelper extends BaseActivity {
 
         this.dream = dream;
     }
-
-
-
 }

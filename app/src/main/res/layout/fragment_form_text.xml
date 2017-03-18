@@ -2,7 +2,8 @@
     android:id="@+id/fragment_text"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
 
 
     <android.support.design.widget.TextInputLayout
@@ -17,6 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
             android:hint="@string/form_description"
             android:lines="6"
             android:inputType="textMultiLine"

@@ -6,7 +6,8 @@
     android:id="@+id/activity_dreams"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sd.rafael.sweetdreams.activity.DreamsActivity">
+    tools:context="com.sd.rafael.sweetdreams.activity.DreamsActivity"
+    android:background="#F5F5F5">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,11 +55,11 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginTop="50dp"
                         android:layout_marginBottom="40dp"
+                        android:layout_marginRight="10dp"
                         android:text="@string/dreams_title"
                         android:maxLines="3"
                         android:textSize="35sp"
                         android:textColor="#ddd"/>
-
 
                     <com.like.LikeButton
                         android:id="@+id/favorite_dreams"
