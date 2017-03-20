@@ -35,12 +35,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="@string/fragment_audio_delete"
-                android:textColor="@color/white"
+                android:textColor="@color/red"
                 android:layout_gravity="center_horizontal"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:background="@drawable/white_red_button"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
         </LinearLayout>
     </LinearLayout>
 

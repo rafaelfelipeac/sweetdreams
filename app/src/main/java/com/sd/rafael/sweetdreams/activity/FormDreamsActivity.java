@@ -61,16 +61,13 @@ public class FormDreamsActivity extends BaseActivity  {
     int monthX;
     int dayX;
 
-    private Button btnAudioRecorder;
-    private Button btnAudioDelete;
-
     private final int DIALOG_DATE_ID = 0;
     private static final int REQUEST_RECORD_AUDIO = 0;
     private static String AUDIO_FILE_PATH;
 
     public static final int RequestPermissionCode = 1;
 
-    String RandomAudioFileName = "ABCDEFGHIJKLMNOP";
+    String RandomAudioFileName = "abcdefghijklmnopqrstuvwxyz";
 
     Random random;
 
@@ -117,19 +114,11 @@ public class FormDreamsActivity extends BaseActivity  {
             }
         });
 
-        AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName(5) + ".wav";
+        AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName(10) + ".wav";
 
         final Calendar cal = Calendar.getInstance();
 
         toolbar = getSupportActionBar();
-
-        btnAudioRecorder = (Button) llAudio.findViewById(R.id.form_dreams_audio_recorder);
-        btnAudioRecorder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                record(v);
-            }
-        });
 
         sv = (ScrollView) findViewById(R.id.form_dreams);
         tagGroup = (TagView) findViewById(R.id.tag_group_form);
@@ -165,17 +154,6 @@ public class FormDreamsActivity extends BaseActivity  {
                 view.remove(position);
             }
         });
-
-        btnAudioDelete = (Button) llAudio.findViewById(R.id.form_dreams_audio_delete);
-        btnAudioDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialogAudioDelete();
-            }
-        });
-
-        if(hasAudio)
-            btnAudioDelete.setVisibility(View.VISIBLE);
 
         Button btnNewTag = (Button) findViewById(R.id.form_dreams_btnNewTag);
         btnNewTag.setOnClickListener(new View.OnClickListener() {
@@ -226,7 +204,6 @@ public class FormDreamsActivity extends BaseActivity  {
                     dream = new Dream();
 
                 hasAudio = true;
-                btnAudioDelete.setVisibility(View.VISIBLE);
 
                 Snackbar.make(sv, R.string.form_dreams_audio_record_success, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             } else if (resultCode == RESULT_CANCELED) {
@@ -250,17 +227,14 @@ public class FormDreamsActivity extends BaseActivity  {
 
     public void recordAudio() {
         AndroidAudioRecorder.with(this)
-                // Required
                 .setFilePath(AUDIO_FILE_PATH)
                 .setColor(ContextCompat.getColor(this, R.color.colorAccent))
                 .setRequestCode(REQUEST_RECORD_AUDIO)
-                // Optional
                 .setSource(AudioSource.MIC)
                 .setChannel(AudioChannel.STEREO)
                 .setSampleRate(AudioSampleRate.HZ_48000)
                 .setAutoStart(false)
                 .setKeepDisplayOn(true)
-                // Start recording
                 .record();
     }
 
@@ -412,17 +386,10 @@ public class FormDreamsActivity extends BaseActivity  {
                 .setPositiveButton(R.string.form_dreams_yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteAudio();
+
                     }
                 });
         alert.show();
-    }
-
-    private void deleteAudio() {
-        hasAudio = false;
-        dream.setAudioPath("");
-        AUDIO_FILE_PATH = "";
-        btnAudioDelete.setVisibility(View.INVISIBLE);
     }
 
     public boolean emptyDream(int n) {
@@ -431,7 +398,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
         switch(n) {
             case 1:
-                return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0);
+                return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
             case 2:
                 return (dream.getTitle().trim().length() == 0 || (dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0));
 

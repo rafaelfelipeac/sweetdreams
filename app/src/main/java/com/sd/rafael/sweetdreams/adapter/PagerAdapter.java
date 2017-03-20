@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.sd.rafael.sweetdreams.activity.fragments.FormAudioFragment;
-import com.sd.rafael.sweetdreams.activity.fragments.FormTextFragment;
+import com.sd.rafael.sweetdreams.fragments.FormAudioFragment;
+import com.sd.rafael.sweetdreams.fragments.FormTextFragment;
 
 /**
  * Created by Rafael Felipe on 25/01/2017.

@@ -2,12 +2,9 @@ package com.sd.rafael.sweetdreams.helper;
 
 
 import android.graphics.Color;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cunoraz.tagview.Tag;
@@ -15,7 +12,6 @@ import com.cunoraz.tagview.TagView;
 import com.sd.rafael.sweetdreams.activity.BaseActivity;
 import com.sd.rafael.sweetdreams.activity.FormDreamsActivity;
 import com.sd.rafael.sweetdreams.R;
-import com.sd.rafael.sweetdreams.activity.fragments.FormTextFragment;
 import com.sd.rafael.sweetdreams.models.Dream;
 
 import java.util.ArrayList;
