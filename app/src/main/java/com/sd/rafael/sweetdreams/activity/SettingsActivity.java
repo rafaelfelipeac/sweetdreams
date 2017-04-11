@@ -28,6 +28,8 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
+
+
         Resources res = getResources();
         Configuration config = res.getConfiguration();
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());

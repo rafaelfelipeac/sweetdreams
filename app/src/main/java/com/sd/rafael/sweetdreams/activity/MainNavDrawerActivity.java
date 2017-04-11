@@ -222,13 +222,6 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             dream = ddreams.get(position);
         }
 
-
-
-
-
-            //dream = new DreamDAO(this).Read().get(position);
-
-
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
         startActivity(intentDreamsActivity);

@@ -41,7 +41,9 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
         Intent intent = getIntent();
         dreams = (List<Dream>) intent.getSerializableExtra("dreams");
         Dream dayDream = dreams.get(0);
-        String date = dayDream.getDay() + "/" + dayDream.getMonth() + "/" + dayDream.getYear();
+
+        //date.setText(String.format("%02d", dayX) + "/" + String.format("%02d", monthX+1) + "/" + yearX);
+        String date = (String.format("%02d", dayDream.getDay()) + "/" + (String.format("%02d", dayDream.getMonth()))) + "/" + dayDream.getYear();
         toolbar.setTitle(date);
 
         loadList();
