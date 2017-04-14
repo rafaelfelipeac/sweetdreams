@@ -135,12 +135,12 @@ public class DreamsActivity extends BaseActivity  {
         {
             case android.R.id.home:
                 finish();
+                overridePendingTransition(0, 0);
                 return true;
             case R.id.menu_dream_edit:
                 Intent intentForm = new Intent(DreamsActivity.this, FormDreamsActivity.class);
                 intentForm.putExtra("dream", dream);
-                startActivity(intentForm);
-                finish();
+                startActivity(intentForm.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 break;
             case R.id.menu_dream_delete:
                 AlertDialog.Builder alert = new AlertDialog.Builder(DreamsActivity.this);
@@ -155,8 +155,7 @@ public class DreamsActivity extends BaseActivity  {
                         dao.Remove(dream);
                         dao.close();
                         Intent intentMain = new Intent(DreamsActivity.this, MainNavDrawerActivity.class);
-                        startActivity(intentMain);
-                        finish();
+                        startActivity(intentMain.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     }
                 });
 

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.sd.rafael.sweetdreams.R;
@@ -61,11 +62,22 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
 
         Intent intentDreamsActivity = new Intent(SameDayActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
-        startActivity(intentDreamsActivity);
+        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
     }
 
     private void loadList() {
         mAdapter = new CardViewAdapter(dreams, this);
         listDreams.setAdapter(mAdapter);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(0, 0);
+                return true;
+        }
+
+        return false;
     }
 }

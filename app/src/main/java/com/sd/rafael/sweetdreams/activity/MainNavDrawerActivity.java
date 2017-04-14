@@ -77,7 +77,7 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             @Override
             public void onClick(View view) {
                 Intent intentForm = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
-                startActivity(intentForm);
+                startActivity(intentForm.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             }
         });
 
@@ -173,6 +173,7 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
         return super.onOptionsItemSelected(item);
     }
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -180,24 +181,23 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
         if (id == R.id.nav_add) {
             Intent intentAdd = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
-            startActivity(intentAdd);
+            startActivity(intentAdd.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
         }
         if(id == R.id.nav_calendar) {
             Intent intentCalendar = new Intent(MainNavDrawerActivity.this, CalendarActivity.class);
-            startActivity(intentCalendar);
+            startActivity(intentCalendar.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
         }
         if(id == R.id.nav_favorite) {
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, FavoriteActivity.class);
-            startActivity(intentFavorite);
+            startActivity(intentFavorite.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
         }
         if(id == R.id.nav_settings) {
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
-            startActivity(intentFavorite);
-            finish();
+            startActivity(intentFavorite.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -224,7 +224,7 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
-        startActivity(intentDreamsActivity);
+        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
     }
 
     public String[] convertStringToArray(String str) {

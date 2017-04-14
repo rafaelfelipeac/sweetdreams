@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -102,12 +103,12 @@ public class CalendarActivity extends BaseActivity {
                     if(dreamsSameDay.size() > 1) {
                         intentDreamsActivity = new Intent(CalendarActivity.this, SameDayActivity.class);
                         intentDreamsActivity.putExtra("dreams", dreamsSameDay);
-                        startActivity(intentDreamsActivity);
+                        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     }
                     else {
                         intentDreamsActivity = new Intent(CalendarActivity.this, DreamsActivity.class);
                         intentDreamsActivity.putExtra("dream", dreamsSameDay.get(0));
-                        startActivity(intentDreamsActivity);
+                        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     }
                 }
                 else Snackbar.make(calendar, R.string.calendar_without_dreams, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
@@ -119,6 +120,8 @@ public class CalendarActivity extends BaseActivity {
                 textView.setText(dateFormatForMonth.format(firstDayOfNewMonth));
             }
         });
+
+
 
         btnPreviousMonth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,5 +137,15 @@ public class CalendarActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(0, 0);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

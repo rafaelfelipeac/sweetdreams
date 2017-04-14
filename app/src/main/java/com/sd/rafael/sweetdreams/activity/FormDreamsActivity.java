@@ -197,6 +197,7 @@ public class FormDreamsActivity extends BaseActivity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        overridePendingTransition(0, 0);
 
         if (requestCode == REQUEST_RECORD_AUDIO) {
             if (resultCode == RESULT_OK) {
@@ -236,6 +237,8 @@ public class FormDreamsActivity extends BaseActivity  {
                 .setAutoStart(false)
                 .setKeepDisplayOn(true)
                 .record();
+        overridePendingTransition(0, 0);
+
     }
 
     private DatePickerDialog.OnDateSetListener dpickerListener =
@@ -319,9 +322,8 @@ public class FormDreamsActivity extends BaseActivity  {
                     dao.close();
                     intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
                     intentDream.putExtra("dream", dream);
-                    startActivity(intentDream);
-
-                    finish();
+                    startActivity(intentDream.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    overridePendingTransition(0, 0);
                 }
                 break;
             case android.R.id.home:
@@ -336,17 +338,21 @@ public class FormDreamsActivity extends BaseActivity  {
                 }
 
                 if(emptyDream(1) || ((compareDreams(originalDream, dream)))) {
-                    if(dream.getId() == null)
+                    if(dream.getId() == null) {
                         intentDream = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
-                    else
+                    }
+                    else {
                         intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                    }
+
 
                     intentDream.putExtra("dream", originalDream);
-                    startActivity(intentDream);
-                    finish();
+                    startActivity(intentDream.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    overridePendingTransition(0, 0);
                 }
                 else
                     showDialogExitSave();
+
 
                 return true;
         }
@@ -361,7 +367,9 @@ public class FormDreamsActivity extends BaseActivity  {
                 .setPositiveButton(R.string.form_dreams_exit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(intentA);
+                        startActivity(intentA.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        finish();
+                        overridePendingTransition(0, 0);
                     }
                 });
         alert.show();

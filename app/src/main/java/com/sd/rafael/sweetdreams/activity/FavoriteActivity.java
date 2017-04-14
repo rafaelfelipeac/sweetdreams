@@ -67,7 +67,7 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
 
         Intent intentDreamsActivity = new Intent(FavoriteActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
-        startActivity(intentDreamsActivity);
+        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
     }
 
     private void loadListFavorite() {
@@ -81,5 +81,15 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
 
         mAdapter = new CardViewAdapter(dreamsFavorite, this);
         listDreams.setAdapter(mAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(0, 0);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

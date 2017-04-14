@@ -57,7 +57,8 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intentMain = new Intent(SettingsActivity.this, MainNavDrawerActivity.class);
-                startActivity(intentMain);
+                startActivity(intentMain.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                overridePendingTransition(0, 0);
                 return true;
         }
 
@@ -69,7 +70,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         super.onBackPressed();
 
         Intent intentMain = new Intent(SettingsActivity.this, MainNavDrawerActivity.class);
-        startActivity(intentMain);
+        startActivity(intentMain.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
     }
 
     @Override
@@ -77,7 +78,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         if(s.equals("language")) {
             Intent intent = getIntent();
             finish();
-            startActivity(intent);
+            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
         }
     }
 
