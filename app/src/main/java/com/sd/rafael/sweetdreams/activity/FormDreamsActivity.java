@@ -197,7 +197,7 @@ public class FormDreamsActivity extends BaseActivity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        overridePendingTransition(0, 0);
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
 
         if (requestCode == REQUEST_RECORD_AUDIO) {
             if (resultCode == RESULT_OK) {
@@ -237,7 +237,7 @@ public class FormDreamsActivity extends BaseActivity  {
                 .setAutoStart(false)
                 .setKeepDisplayOn(true)
                 .record();
-        overridePendingTransition(0, 0);
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
 
     }
 
@@ -322,8 +322,9 @@ public class FormDreamsActivity extends BaseActivity  {
                     dao.close();
                     intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
                     intentDream.putExtra("dream", dream);
-                    startActivity(intentDream.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                    overridePendingTransition(0, 0);
+                    startActivity(intentDream);
+                    finish();
+                    overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 }
                 break;
             case android.R.id.home:
@@ -347,8 +348,8 @@ public class FormDreamsActivity extends BaseActivity  {
 
 
                     intentDream.putExtra("dream", originalDream);
-                    startActivity(intentDream.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                    overridePendingTransition(0, 0);
+                    startActivity(intentDream);
+                    overridePendingTransition(0, R.xml.fade_out);
                 }
                 else
                     showDialogExitSave();
@@ -367,9 +368,8 @@ public class FormDreamsActivity extends BaseActivity  {
                 .setPositiveButton(R.string.form_dreams_exit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(intentA.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        finish();
-                        overridePendingTransition(0, 0);
+                        startActivity(intentA);
+                        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                     }
                 });
         alert.show();

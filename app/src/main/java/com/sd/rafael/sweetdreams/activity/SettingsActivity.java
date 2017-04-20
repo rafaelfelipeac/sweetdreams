@@ -57,8 +57,8 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intentMain = new Intent(SettingsActivity.this, MainNavDrawerActivity.class);
-                startActivity(intentMain.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                overridePendingTransition(0, 0);
+                startActivity(intentMain);
+                overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 return true;
         }
 

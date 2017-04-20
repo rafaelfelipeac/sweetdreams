@@ -103,12 +103,14 @@ public class CalendarActivity extends BaseActivity {
                     if(dreamsSameDay.size() > 1) {
                         intentDreamsActivity = new Intent(CalendarActivity.this, SameDayActivity.class);
                         intentDreamsActivity.putExtra("dreams", dreamsSameDay);
-                        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(intentDreamsActivity);
+                        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                     }
                     else {
                         intentDreamsActivity = new Intent(CalendarActivity.this, DreamsActivity.class);
                         intentDreamsActivity.putExtra("dream", dreamsSameDay.get(0));
-                        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(intentDreamsActivity);
+                        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                     }
                 }
                 else Snackbar.make(calendar, R.string.calendar_without_dreams, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
@@ -144,7 +146,7 @@ public class CalendarActivity extends BaseActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                overridePendingTransition(0, 0);
+                overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         return super.onOptionsItemSelected(item);
     }

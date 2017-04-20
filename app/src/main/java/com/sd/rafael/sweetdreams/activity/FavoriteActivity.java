@@ -67,7 +67,8 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
 
         Intent intentDreamsActivity = new Intent(FavoriteActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
-        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+        startActivity(intentDreamsActivity);
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
     private void loadListFavorite() {
@@ -88,7 +89,7 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                overridePendingTransition(0, 0);
+                overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         return super.onOptionsItemSelected(item);
     }

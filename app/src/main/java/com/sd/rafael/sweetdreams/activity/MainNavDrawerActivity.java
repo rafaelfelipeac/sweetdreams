@@ -77,7 +77,8 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             @Override
             public void onClick(View view) {
                 Intent intentForm = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
-                startActivity(intentForm.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                startActivity(intentForm);
+                overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
             }
         });
 
@@ -181,19 +182,23 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
         if (id == R.id.nav_add) {
             Intent intentAdd = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
-            startActivity(intentAdd.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            startActivity(intentAdd);
+            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         if(id == R.id.nav_calendar) {
             Intent intentCalendar = new Intent(MainNavDrawerActivity.this, CalendarActivity.class);
-            startActivity(intentCalendar.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            startActivity(intentCalendar);
+            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         if(id == R.id.nav_favorite) {
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, FavoriteActivity.class);
-            startActivity(intentFavorite.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            startActivity(intentFavorite);
+            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         if(id == R.id.nav_settings) {
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
-            startActivity(intentFavorite.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            startActivity(intentFavorite);
+            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
 
         //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -224,7 +229,8 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
-        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+        startActivity(intentDreamsActivity);
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
     public String[] convertStringToArray(String str) {

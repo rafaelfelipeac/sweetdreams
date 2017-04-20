@@ -62,7 +62,8 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
 
         Intent intentDreamsActivity = new Intent(SameDayActivity.this, DreamsActivity.class);
         intentDreamsActivity.putExtra("dream", dream);
-        startActivity(intentDreamsActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+        startActivity(intentDreamsActivity);
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
     private void loadList() {
@@ -74,7 +75,7 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                overridePendingTransition(0, 0);
+                overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 return true;
         }
 
