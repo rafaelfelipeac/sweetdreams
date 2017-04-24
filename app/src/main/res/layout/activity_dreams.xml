@@ -39,14 +39,26 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:textSize="12dp"/>
+
+                    <TextView
                         android:id="@+id/dreams_datetime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:textSize="20dp"
                         android:text="@string/dreams_date" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Title"
+                        android:textSize="12dp"
+                        android:layout_marginTop="45dp" />
 
                     <TextView
                         android:id="@+id/dreams_title"
@@ -108,6 +120,13 @@
         </LinearLayout>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_marginLeft="14dp"
+            android:textSize="12dp"/>
+
+        <TextView
             android:id="@+id/dreams_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,12 +135,22 @@
             android:text="@string/dreams_description"
             android:textSize="16sp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tags"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="20dp"
+            android:textSize="12dp"/>
+
         <com.cunoraz.tagview.TagView
             android:id="@+id/tag_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="30dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="30dp"/>
 
     </LinearLayout>
 </ScrollView>

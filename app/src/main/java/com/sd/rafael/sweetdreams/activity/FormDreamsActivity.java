@@ -322,8 +322,8 @@ public class FormDreamsActivity extends BaseActivity  {
                     dao.close();
                     intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
                     intentDream.putExtra("dream", dream);
-                    startActivity(intentDream);
                     finish();
+                    startActivity(intentDream);
                     overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 }
                 break;
@@ -348,6 +348,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
 
                     intentDream.putExtra("dream", originalDream);
+                    finish();
                     startActivity(intentDream);
                     overridePendingTransition(0, R.xml.fade_out);
                 }
@@ -398,6 +399,12 @@ public class FormDreamsActivity extends BaseActivity  {
                     }
                 });
         alert.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
     public boolean emptyDream(int n) {

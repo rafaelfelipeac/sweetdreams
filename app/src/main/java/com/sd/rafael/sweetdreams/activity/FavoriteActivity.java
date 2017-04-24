@@ -85,6 +85,12 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

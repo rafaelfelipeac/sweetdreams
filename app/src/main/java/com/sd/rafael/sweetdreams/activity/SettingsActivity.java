@@ -70,7 +70,8 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         super.onBackPressed();
 
         Intent intentMain = new Intent(SettingsActivity.this, MainNavDrawerActivity.class);
-        startActivity(intentMain.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+        startActivity(intentMain);
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);;
     }
 
     @Override
@@ -78,7 +79,8 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         if(s.equals("language")) {
             Intent intent = getIntent();
             finish();
-            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            startActivity(intent);
+            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
     }
 

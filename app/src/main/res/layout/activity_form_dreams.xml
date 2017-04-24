@@ -110,41 +110,42 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/form_dreams_pager"
             android:layout_width="match_parent"
-            android:layout_height="160dp" />
+            android:layout_height="130dp" />
 
         <LinearLayout
             android:id="@+id/activity_form_dreams"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="20dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp">
 
                     <android.support.design.widget.TextInputLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/form_tags"
-                        android:paddingRight="10dp"
+                        android:paddingRight="5dp"
                         android:theme="@style/TextLabelBlue">
 
                         <EditText
                             android:id="@+id/form_dreams_tag"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="0dp"/>
 
                     </android.support.design.widget.TextInputLayout>
 

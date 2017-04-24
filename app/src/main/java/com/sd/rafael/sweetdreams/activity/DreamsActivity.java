@@ -126,6 +126,7 @@ public class DreamsActivity extends BaseActivity  {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
     @Override
@@ -141,6 +142,7 @@ public class DreamsActivity extends BaseActivity  {
                 Intent intentForm = new Intent(DreamsActivity.this, FormDreamsActivity.class);
                 intentForm.putExtra("dream", dream);
                 startActivity(intentForm);
+                finish();
                 overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 break;
             case R.id.menu_dream_delete:

@@ -123,8 +123,6 @@ public class CalendarActivity extends BaseActivity {
             }
         });
 
-
-
         btnPreviousMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +136,12 @@ public class CalendarActivity extends BaseActivity {
                 calendar.showNextMonth();
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
     @Override

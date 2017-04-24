@@ -57,6 +57,12 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
+    }
+
+    @Override
     public void getRecyclerViewAdapterPosition(int position) {
         Dream dream = dreams.get(position);
 
