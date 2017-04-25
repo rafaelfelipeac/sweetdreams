@@ -1,6 +1,7 @@
 package com.sd.rafael.sweetdreams.helper;
 
 import android.graphics.Color;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class DreamsHelper implements OnLikeListener {
     private TextView description;
     private TagView tagGroup;
     private LikeButton likeButton;
+    private TextView tagTitle;
 
     private Dream dream;
 
@@ -35,6 +37,7 @@ public class DreamsHelper implements OnLikeListener {
         description = (TextView) activity.findViewById(R.id.dreams_description);
         tagGroup = (TagView) activity.findViewById(R.id.tag_group);
         likeButton = (LikeButton) activity.findViewById(R.id.favorite_dreams);
+        tagTitle = (TextView) activity.findViewById(R.id.dreams_activity_tag_title);
 
         dream = new Dream();
     }
@@ -74,6 +77,7 @@ public class DreamsHelper implements OnLikeListener {
 
         for(String s : lstTags) {
             if(!s.equals("")) {
+                tagTitle.setVisibility(View.VISIBLE);
                 com.cunoraz.tagview.Tag tag = new com.cunoraz.tagview.Tag(s);
                 tag.radius = 10f;
                 tag.layoutColor = Color.rgb(95, 170, 223);

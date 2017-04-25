@@ -81,5 +81,10 @@
     <string name="fragment_audio_record">Gravar um áudio</string>
     <string name="fragment_audio_delete">Deletar o áudio</string>
 
+    <string name="dreams_activity_label_date">Data</string>
+    <string name="dreams_activity_label_title">Título</string>
+    <string name="dreams_activity_label_description">Descrição</string>
+    <string name="dreams_activity_label_tags">Tags</string>
+
 
 </resources>

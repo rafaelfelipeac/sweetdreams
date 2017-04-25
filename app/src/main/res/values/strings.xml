@@ -79,5 +79,9 @@
     <string name="fragment_audio_record">record an audio</string>
     <string name="fragment_audio_delete">delete the audio</string>
 
+    <string name="dreams_activity_label_date">Date</string>
+    <string name="dreams_activity_label_title">Title</string>
+    <string name="dreams_activity_label_description">Description</string>
+    <string name="dreams_activity_label_tags">Tags</string>
 
 </resources>
