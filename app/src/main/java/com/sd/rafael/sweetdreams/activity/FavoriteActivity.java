@@ -87,6 +87,8 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(FavoriteActivity.this, MainNavDrawerActivity.class);
+        startActivity(intent);
         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
@@ -94,7 +96,9 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                //finish();
+                Intent intent = new Intent(FavoriteActivity.this, MainNavDrawerActivity.class);
+                startActivity(intent);
                 overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         return super.onOptionsItemSelected(item);

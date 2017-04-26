@@ -10,6 +10,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatDelegate;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 
@@ -27,8 +29,6 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         android.support.v7.app.ActionBar actionBar = getDelegate().getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-
-
 
         Resources res = getResources();
         Configuration config = res.getConfiguration();
@@ -84,11 +84,9 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         }
     }
 
-    public static class MyPreferenceFragment extends PreferenceFragment
-    {
+    public static class MyPreferenceFragment extends PreferenceFragment {
         @Override
-        public void onCreate(final Bundle savedInstanceState)
-        {
+        public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.app_preferences);
         }

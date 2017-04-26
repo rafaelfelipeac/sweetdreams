@@ -141,6 +141,8 @@ public class CalendarActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(CalendarActivity.this, MainNavDrawerActivity.class);
+        startActivity(intent);
         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
@@ -148,7 +150,9 @@ public class CalendarActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                //finish();
+                Intent intent = new Intent(CalendarActivity.this, MainNavDrawerActivity.class);
+                startActivity(intent);
                 overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         return super.onOptionsItemSelected(item);

@@ -2,6 +2,7 @@ package com.sd.rafael.sweetdreams.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
@@ -9,15 +10,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.sd.rafael.sweetdreams.DAO.DreamDAO;
 import com.sd.rafael.sweetdreams.R;
 import com.sd.rafael.sweetdreams.RecyclerViewClickPosition;
 import com.sd.rafael.sweetdreams.adapter.CardViewAdapter;
 import com.sd.rafael.sweetdreams.models.Dream;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class SameDayActivity extends BaseActivity implements RecyclerViewClickPosition {
 
@@ -26,6 +34,7 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Dream> dreams;
     private ActionBar toolbar;
+    private Dream dream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +50,10 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
 
         Intent intent = getIntent();
         dreams = (List<Dream>) intent.getSerializableExtra("dreams");
-        Dream dayDream = dreams.get(0);
+        dream = dreams.get(0);
 
         //date.setText(String.format("%02d", dayX) + "/" + String.format("%02d", monthX+1) + "/" + yearX);
-        String date = (String.format("%02d", dayDream.getDay()) + "/" + (String.format("%02d", dayDream.getMonth()))) + "/" + dayDream.getYear();
+        String date = (String.format("%02d", dream.getDay()) + "/" + (String.format("%02d", dream.getMonth()))) + "/" + dream.getYear();
         toolbar.setTitle(date);
 
         loadList();
@@ -53,6 +62,14 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
     @Override
     protected void onResume() {
         super.onResume();
+
+        dreams = new ArrayList<>();
+        DreamDAO dao = new DreamDAO(this);
+        for(Dream d : dao.Read()) {
+            if(d.getDay() == dream.getDay() && d.getMonth() == dream.getMonth() && d.getYear() == dream.getYear())
+                dreams.add(d);
+        }
+
         loadList();
     }
 
@@ -60,6 +77,14 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.sameday_add, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -83,6 +108,11 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
                 finish();
                 overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 return true;
+            case R.id.menu_sameday_add:
+                Intent intentForm = new Intent(SameDayActivity.this, FormDreamsActivity.class);
+                intentForm.putExtra("dreamDay", dream);
+                startActivity(intentForm);
+                overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
 
         return false;

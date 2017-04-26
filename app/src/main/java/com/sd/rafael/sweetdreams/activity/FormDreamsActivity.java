@@ -53,6 +53,8 @@ public class FormDreamsActivity extends BaseActivity  {
 
     private FormDreamsHelper helper;
     private Dream dream;
+    private Dream dreamDay;
+    private Dream dreamAux;
     private TagView tagGroup;
     private ScrollView sv;
     private ActionBar toolbar;
@@ -136,6 +138,10 @@ public class FormDreamsActivity extends BaseActivity  {
 
         Intent intent = getIntent();
         dream = (Dream) intent.getSerializableExtra("dream");
+
+        dreamDay = (Dream) intent.getSerializableExtra("dreamDay");
+        if(dreamDay != null)
+            onCreateDialog(DIALOG_DATE_ID);
 
         if(dream != null) {
             helper.makeDream(dream);
@@ -270,7 +276,18 @@ public class FormDreamsActivity extends BaseActivity  {
         if(id == DIALOG_DATE_ID) {
             DatePickerDialog dpd;
 
-            if(dream == null)
+            if(dreamDay != null) {
+                TextView date = (TextView) findViewById(R.id.form_dreams_date);
+                date.setText(String.format("%02d", dreamDay.getDay()) + "/" + String.format("%02d", dreamDay.getMonth()) + "/" + dreamDay.getYear());
+                dpd = new DatePickerDialog(this, dpickerListener, dreamDay.getYear(), dreamDay.getMonth() - 1, dreamDay.getDay());
+                dreamAux = dreamDay;
+                dreamDay = null;
+            }
+            else if(dream == null && dreamAux != null) {
+                dpd = new DatePickerDialog(this, dpickerListener, dreamAux.getYear(), dreamAux.getMonth() - 1, dreamAux.getDay());
+                dreamAux = null;
+            }
+            else if(dream == null)
                 dpd = new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
             else
                 dpd = new DatePickerDialog(this, dpickerListener, dream.getYear(), dream.getMonth() - 1, dream.getDay());
@@ -348,7 +365,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
 
                     intentDream.putExtra("dream", originalDream);
-                    finish();
+                    //finish();
                     startActivity(intentDream);
                     overridePendingTransition(0, R.xml.fade_out);
                 }

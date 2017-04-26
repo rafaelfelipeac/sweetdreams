@@ -218,10 +218,14 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
             startActivity(intentFavorite);
             overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
+
         }
 
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        finish();
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         //drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawers();
         return true;
     }
 
