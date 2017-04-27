@@ -112,6 +112,39 @@
             android:layout_height="130dp" />
 
         <LinearLayout
+            android:id="@+id/form_dreams_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <Button
+                android:id="@+id/form_dreams_audio_delete"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="@string/fragment_audio_delete"
+                android:textColor="@color/red"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/white_red_button"
+                android:visibility="invisible"/>
+
+            <Button
+                android:id="@+id/form_dreams_audio_play"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="@string/dreams_play_audio_button"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/white_blue_button"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/activity_form_dreams"
             android:orientation="vertical"
             android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -24,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -37,6 +39,7 @@ import com.sd.rafael.sweetdreams.adapter.PagerAdapter;
 import com.sd.rafael.sweetdreams.helper.FormDreamsHelper;
 import com.sd.rafael.sweetdreams.models.Dream;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
@@ -79,6 +82,15 @@ public class FormDreamsActivity extends BaseActivity  {
 
     private boolean hasAudio = false;
 
+    private Button btnPlayAudio;
+    private Button btnDeleteAudio;
+
+    private LinearLayout llButtons;
+
+    private MediaPlayer mediaPlayer;
+
+    private String lastPathAudio;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +129,7 @@ public class FormDreamsActivity extends BaseActivity  {
         });
 
         AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName(10) + ".wav";
+        lastPathAudio = "";
 
         final Calendar cal = Calendar.getInstance();
 
@@ -147,8 +160,11 @@ public class FormDreamsActivity extends BaseActivity  {
             helper.makeDream(dream);
             toolbar.setTitle(R.string.form_edit_activity);
 
-            if(!dream.getAudioPath().isEmpty())
+            if(!dream.getAudioPath().isEmpty()) {
                 hasAudio = true;
+                lastPathAudio = dream.getAudioPath();
+                makePlayDeleteButtons();
+            }
         }
         else
             toolbar.setTitle(R.string.form_activity);
@@ -210,7 +226,11 @@ public class FormDreamsActivity extends BaseActivity  {
                 if(dream == null)
                     dream = new Dream();
 
+                dream.setAudioPath(AUDIO_FILE_PATH);
+
                 hasAudio = true;
+
+                makePlayDeleteButtons();
 
                 Snackbar.make(sv, R.string.form_dreams_audio_record_success, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             } else if (resultCode == RESULT_CANCELED) {
@@ -219,6 +239,39 @@ public class FormDreamsActivity extends BaseActivity  {
                 Snackbar.make(sv, R.string.form_dreams_audio_record_failed, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         }
+    }
+
+    public void makePlayDeleteButtons() {
+        llButtons = (LinearLayout) findViewById(R.id.form_dreams_buttons);
+        llButtons.getLayoutParams().height = 250;
+        llButtons.requestLayout();
+
+        btnPlayAudio = (Button) findViewById(R.id.form_dreams_audio_play);
+        btnDeleteAudio = (Button) findViewById(R.id.form_dreams_audio_delete);
+
+        btnPlayAudio.setVisibility(View.VISIBLE);
+        btnDeleteAudio.setVisibility(View.VISIBLE);
+
+        btnPlayAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playAudio(v);
+            }
+        });
+
+        btnDeleteAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogAudioDelete();
+            }
+        });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        stopAudio();
     }
 
     public void record(View v) {
@@ -313,7 +366,13 @@ public class FormDreamsActivity extends BaseActivity  {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Dream dream = helper.getDream();
-        dream.setAudioPath((hasAudio) ? AUDIO_FILE_PATH : "");
+
+        if(hasAudio && !lastPathAudio.equals(""))
+            dream.setAudioPath(lastPathAudio);
+        else if(hasAudio)
+            dream.setAudioPath(AUDIO_FILE_PATH);
+
+
 
         Intent intentDream;
         switch (item.getItemId()) {
@@ -363,10 +422,9 @@ public class FormDreamsActivity extends BaseActivity  {
                         intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
                     }
 
-
                     intentDream.putExtra("dream", originalDream);
-                    //finish();
                     startActivity(intentDream);
+                    finish();
                     overridePendingTransition(0, R.xml.fade_out);
                 }
                 else
@@ -401,6 +459,7 @@ public class FormDreamsActivity extends BaseActivity  {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         recordAudio();
+                        lastPathAudio = AUDIO_FILE_PATH;
                     }
                 });
         alert.show();
@@ -409,10 +468,18 @@ public class FormDreamsActivity extends BaseActivity  {
     private void showDialogAudioDelete() {
         AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
         alert.setMessage(R.string.form_dreams_audio_delete).setCancelable(true)
+                .setNegativeButton(R.string.form_dreams_no, null)
                 .setPositiveButton(R.string.form_dreams_yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        dream.setAudioPath("");
+                        hasAudio = false;
 
+                        llButtons.getLayoutParams().height = 0;
+                        llButtons.requestLayout();
+
+                        btnDeleteAudio.setVisibility(View.INVISIBLE);
+                        btnPlayAudio.setVisibility(View.INVISIBLE);
                     }
                 });
         alert.show();
@@ -426,13 +493,15 @@ public class FormDreamsActivity extends BaseActivity  {
 
     public boolean emptyDream(int n) {
         Dream dream = helper.getDream();
+        if(dream.getAudioPath() == null)
+            dream.setAudioPath("");
         dream.setDescription(getTextDescription());
 
         switch(n) {
             case 1:
                 return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
             case 2:
-                return (dream.getTitle().trim().length() == 0 || (dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0));
+                return (dream.getTitle().trim().length() == 0 || dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
 
         }
         return false;
@@ -485,5 +554,24 @@ public class FormDreamsActivity extends BaseActivity  {
 
     private void requestPermission() {
         ActivityCompat.requestPermissions(FormDreamsActivity.this, new String[]{WRITE_EXTERNAL_STORAGE, RECORD_AUDIO}, RequestPermissionCode);
+    }
+
+    public void stopAudio() {
+
+        if(mediaPlayer != null)
+            mediaPlayer.stop();
+    }
+
+    public void playAudio(View v) {
+
+        mediaPlayer = new MediaPlayer();
+
+        try {
+            mediaPlayer.setDataSource(dream.getAudioPath());
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
