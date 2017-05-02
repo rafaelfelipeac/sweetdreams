@@ -169,6 +169,8 @@ public class FormDreamsActivity extends BaseActivity  {
         else
             toolbar.setTitle(R.string.form_activity);
 
+        mediaPlayer = new MediaPlayer();
+
         tagGroup.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
 
             @Override
@@ -178,6 +180,7 @@ public class FormDreamsActivity extends BaseActivity  {
         });
 
         Button btnNewTag = (Button) findViewById(R.id.form_dreams_btnNewTag);
+        btnNewTag.setBackgroundResource(R.drawable.buttonwhite);
         btnNewTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,12 +236,15 @@ public class FormDreamsActivity extends BaseActivity  {
                 makePlayDeleteButtons();
 
                 Snackbar.make(sv, R.string.form_dreams_audio_record_success, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
             } else if (resultCode == RESULT_CANCELED) {
                 hasAudio = false;
 
                 Snackbar.make(sv, R.string.form_dreams_audio_record_failed, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         }
+
+
     }
 
     public void makePlayDeleteButtons() {
@@ -249,13 +255,19 @@ public class FormDreamsActivity extends BaseActivity  {
         btnPlayAudio = (Button) findViewById(R.id.form_dreams_audio_play);
         btnDeleteAudio = (Button) findViewById(R.id.form_dreams_audio_delete);
 
+        btnPlayAudio.setBackgroundResource(R.drawable.buttonwhite);
+        btnDeleteAudio.setBackgroundResource(R.drawable.buttonwhite);
+
+
         btnPlayAudio.setVisibility(View.VISIBLE);
         btnDeleteAudio.setVisibility(View.VISIBLE);
 
         btnPlayAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playAudio(v);
+                if(!mediaPlayer.isPlaying()) {
+                    playAudio(v);
+                }
             }
         });
 
@@ -297,7 +309,6 @@ public class FormDreamsActivity extends BaseActivity  {
                 .setKeepDisplayOn(true)
                 .record();
         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
-
     }
 
     private DatePickerDialog.OnDateSetListener dpickerListener =
@@ -316,6 +327,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
     public void showDatePickerDialog() {
         Button btnSetDate = (Button) findViewById(R.id.form_dreams_btnSetDate);
+        btnSetDate.setBackgroundResource(R.drawable.buttonblue);
 
         btnSetDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -563,7 +575,6 @@ public class FormDreamsActivity extends BaseActivity  {
     }
 
     public void playAudio(View v) {
-
         mediaPlayer = new MediaPlayer();
 
         try {

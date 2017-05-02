@@ -67,6 +67,10 @@ public class DreamsActivity extends BaseActivity  {
         audioPlay = (Button) findViewById(R.id.form_dreams_audio_play);
         playButton = (LinearLayout) findViewById(R.id.form_dreams_play_button);
 
+        audioPlay.setBackgroundResource(R.drawable.buttonwhite);
+
+        mediaPlayer = new MediaPlayer();
+
         if(dream != null)
             helper.makeDream(dream);
 
@@ -76,7 +80,9 @@ public class DreamsActivity extends BaseActivity  {
         audioPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playAudio(v);
+                if(!mediaPlayer.isPlaying()) {
+                    playAudio(v);
+                }
             }
         });
 

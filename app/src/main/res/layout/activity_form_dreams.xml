@@ -83,11 +83,11 @@
 
                     <Button
                         android:id="@+id/form_dreams_btnSetDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
                         android:text="@string/form_change_date"
+                        android:textColor="@drawable/buttonbluetextcolor"
                         android:background="@drawable/blue_white_button"
-                        android:textColor="@color/white"
                         android:layout_gravity="center_horizontal"
                         android:paddingBottom="0dp"
                         android:paddingLeft="10dp"
@@ -115,40 +115,45 @@
             android:id="@+id/form_dreams_buttons"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal">
+
             <Button
                 android:id="@+id/form_dreams_audio_delete"
                 android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
                 android:text="@string/fragment_audio_delete"
-                android:textColor="@color/red"
+                android:textColor="@drawable/buttonwhitetextcolor"
                 android:layout_gravity="center_horizontal"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:background="@drawable/white_red_button"
-                android:visibility="invisible"/>
+                android:background="@drawable/white_blue_button"
+                android:visibility="invisible"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/form_dreams_audio_play"
                 android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
                 android:text="@string/dreams_play_audio_button"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@drawable/buttonwhitetextcolor"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:background="@drawable/white_blue_button"
-                android:visibility="invisible"/>
+                android:visibility="invisible"
+                android:stateListAnimator="@null"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activity_form_dreams"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -185,16 +190,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:paddingTop="20dp">
+                        android:layout_marginTop="5dp">
 
                         <Button
                             android:paddingEnd="10dp"
+                            android:layout_marginTop="5dp"
                             android:id="@+id/form_dreams_btnNewTag"
                             android:layout_width="wrap_content"
-                            android:layout_height="20dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center_horizontal"
-                            android:textColor="@color/colorPrimary"
                             android:text="@string/form_add"
+                            android:textColor="@drawable/buttonwhitetextcolor"
                             android:paddingBottom="0dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
