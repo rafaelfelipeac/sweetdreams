@@ -82,6 +82,7 @@ public class DreamsActivity extends BaseActivity  {
             public void onClick(View v) {
                 if(!mediaPlayer.isPlaying()) {
                     playAudio(v);
+                    audioPlay.setClickable(false);
                 }
             }
         });
@@ -192,5 +193,13 @@ public class DreamsActivity extends BaseActivity  {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                audioPlay.setClickable(true);
+            }
+        });
+
     }
 }

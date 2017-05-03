@@ -267,6 +267,7 @@ public class FormDreamsActivity extends BaseActivity  {
             public void onClick(View v) {
                 if(!mediaPlayer.isPlaying()) {
                     playAudio(v);
+                    btnPlayAudio.setClickable(false);
                 }
             }
         });
@@ -584,5 +585,12 @@ public class FormDreamsActivity extends BaseActivity  {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                btnPlayAudio.setClickable(true);
+            }
+        });
     }
 }
