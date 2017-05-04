@@ -69,7 +69,7 @@
     <string name="form_dreams_permission_denied">Permission denied.</string>
     <string name="form_dreams_audio_record_success">Audio recorded successfully.</string>
     <string name="form_dreams_audio_record_failed">Audio was not recorded.</string>
-    <string name="form_dreams_audio_file_exist">"An audio file already exists. Do you want to overwrite it?"</string>
+    <string name="form_dreams_audio_file_exist">An audio file already exists. Do you want to replace it?</string>
     <string name="form_dreams_yes">Yes</string>
     <string name="form_dreams_no">No</string>
     <string name="form_dreams_audio_delete">Do you want to delete the audio?</string>

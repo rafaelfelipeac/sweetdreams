@@ -46,6 +46,7 @@ public class DreamsActivity extends BaseActivity  {
     private MediaPlayer mediaPlayer;
     private Button audioPlay;
     private LinearLayout playButton;
+    private LinearLayout llplayButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class DreamsActivity extends BaseActivity  {
         likeButton = (LikeButton) findViewById(R.id.favorite_dreams);
         audioPlay = (Button) findViewById(R.id.form_dreams_audio_play);
         playButton = (LinearLayout) findViewById(R.id.form_dreams_play_button);
+        llplayButton = (LinearLayout) findViewById(R.id.form_dreams_ll_play_audio);
 
         audioPlay.setBackgroundResource(R.drawable.buttonwhite);
 
@@ -74,8 +76,11 @@ public class DreamsActivity extends BaseActivity  {
         if(dream != null)
             helper.makeDream(dream);
 
-        if(!dream.getAudioPath().isEmpty())
+        if(!dream.getAudioPath().isEmpty()) {
             playButton.setVisibility(View.VISIBLE);
+            llplayButton.getLayoutParams().height = 100;
+        }
+
 
         audioPlay.setOnClickListener(new View.OnClickListener() {
             @Override
