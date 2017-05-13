@@ -1,3 +1,3 @@
-# sweet-dreams
+# sweetdreams
 
-dream journal app
+Sweetdreams is a android app for dream journal.
