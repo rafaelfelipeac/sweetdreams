@@ -6,8 +6,6 @@
     <string name="action_edit">Editar</string>
     <string name="action_delete">Deletar</string>
     <string name="action_search">pesquisar</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_nd">NDActivity</string>
 
     <string name="add">Adicionar</string>
     <string name="calendar">Calendário</string>
