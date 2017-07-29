@@ -8,23 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.rafaelfelipeac.sweetdreams.DAO.DreamDAO;
 import com.rafaelfelipeac.sweetdreams.R;
 import com.rafaelfelipeac.sweetdreams.RecyclerViewClickPosition;
 import com.rafaelfelipeac.sweetdreams.adapter.CardViewAdapter;
 import com.rafaelfelipeac.sweetdreams.models.Dream;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SameDayActivity extends BaseActivity implements RecyclerViewClickPosition {
 
     @BindView(R.id.recyclerview_same_day)
-    private RecyclerView listDreams;
+    RecyclerView listDreams;
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -40,7 +37,6 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
         ButterKnife.bind(this);
 
         toolbar = getSupportActionBar();
-
 
         listDreams.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);

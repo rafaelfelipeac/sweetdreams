@@ -12,18 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-
-import com.cunoraz.tagview.TagView;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.rafaelfelipeac.sweetdreams.DAO.DreamDAO;
 import com.rafaelfelipeac.sweetdreams.R;
 import com.rafaelfelipeac.sweetdreams.helper.DreamsHelper;
 import com.rafaelfelipeac.sweetdreams.models.Dream;
-
 import java.io.IOException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -34,15 +29,14 @@ public class DreamsActivity extends BaseActivity  {
     private Dream dream;
     private MediaPlayer mediaPlayer;
 
-
     @BindView(R.id.favorite_dreams)
-    private LikeButton likeButton;
+    LikeButton likeButton;
     @BindView(R.id.form_dreams_audio_play)
-    private Button audioPlay;
+    Button audioPlay;
     @BindView(R.id.form_dreams_play_button)
-    private LinearLayout playButton;
+    LinearLayout playButton;
     @BindView(R.id.form_dreams_ll_play_audio)
-    private LinearLayout llplayButton;
+    LinearLayout llplayButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +105,6 @@ public class DreamsActivity extends BaseActivity  {
     @Override
     protected void onStop() {
         super.onStop();
-
         stopAudio();
     }
 
@@ -170,13 +163,11 @@ public class DreamsActivity extends BaseActivity  {
     }
 
     public void stopAudio() {
-
         if(mediaPlayer != null)
             mediaPlayer.stop();
     }
 
     public void playAudio() {
-
         mediaPlayer = new MediaPlayer();
 
         try {

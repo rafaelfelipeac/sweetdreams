@@ -25,15 +25,31 @@ import com.rafaelfelipeac.sweetdreams.models.Dream;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class MainNavDrawerActivity extends BaseActivity
 implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPosition {
 
     private String separator = ",";
-    private FloatingActionButton fabBtn;
-    private RecyclerView listDreams;
+
+    @BindView(R.id.fab)
+    FloatingActionButton fabBtn;
+    @BindView(R.id.recyclerview)
+    RecyclerView listDreams;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
     private String newTextTag;
 
     @Override
@@ -41,7 +57,8 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nav_drawer);
 
-        listDreams = (RecyclerView)findViewById(R.id.recyclerview);
+        ButterKnife.bind(this);
+
         listDreams.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         listDreams.setLayoutManager(mLayoutManager);
@@ -64,24 +81,10 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             }
         });
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentForm = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
-                startActivity(intentForm);
-                overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
-            }
-        });
-
-        fabBtn = (FloatingActionButton)findViewById(R.id.fab);
 
         registerForContextMenu(listDreams);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
 
@@ -104,10 +107,15 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @OnClick(R.id.fab)
+    public void fabBtnClick() {
+        Intent intentForm = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
+        startActivity(intentForm);
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
+    }
 
     private void loadList() {
         DreamDAO dao = new DreamDAO(this);
@@ -124,7 +132,6 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -213,13 +220,10 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
             startActivity(intentFavorite);
             overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
-
         }
 
         finish();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //drawer.closeDrawer(GravityCompat.START);
         drawer.closeDrawers();
         return true;
     }

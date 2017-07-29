@@ -70,13 +70,9 @@ public class FormDreamsActivity extends BaseActivity  {
     public static final int RequestPermissionCode = 1;
 
     String RandomAudioFileName = "abcdefghijklmnopqrstuvwxyz";
-
     Random random;
-
     private boolean hasAudio = false;
-
     private MediaPlayer mediaPlayer;
-
     private String lastPathAudio;
 
 
@@ -128,13 +124,9 @@ public class FormDreamsActivity extends BaseActivity  {
         AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName(10) + ".wav";
         lastPathAudio = "";
 
-
-
         setDate();
 
         showDatePickerDialog();
-
-
 
         helper = new FormDreamsHelper(this);
 
@@ -298,7 +290,6 @@ public class FormDreamsActivity extends BaseActivity  {
     @Override
     protected void onStop() {
         super.onStop();
-
         stopAudio();
     }
 
@@ -524,7 +515,6 @@ public class FormDreamsActivity extends BaseActivity  {
                 return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
             case 2:
                 return (dream.getTitle().trim().length() == 0 || dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
-
         }
         return false;
     }

@@ -17,38 +17,40 @@ import com.rafaelfelipeac.sweetdreams.models.Dream;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnTouch;
+
 /**
  * Created by Rafael Cordeiro on 22/10/2016.
  */
 
 public class FormDreamsHelper extends BaseActivity {
-    private final EditText title;
-    //private EditText description;
-    private final TextView date;
-
-    private TagView tagGroup;
+    @BindView(R.id.form_dreams_title)
+    EditText title;
+    @BindView(R.id.form_dreams_date)
+    TextView date;
+    @BindView(R.id.tag_group_form)
+    TagView tagGroup;
 
     private Dream dream;
 
     public FormDreamsHelper(FormDreamsActivity activity) {
-        title = (EditText) activity.findViewById(R.id.form_dreams_title);
 
-        title.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                switch (event.getAction() & MotionEvent.ACTION_MASK){
-                    case MotionEvent.ACTION_UP:
-                        v.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                }
-                return false;
-            }
-        });
-
-        date = (TextView) activity.findViewById(R.id.form_dreams_date);
-        tagGroup = (TagView) activity.findViewById(R.id.tag_group_form);
+        ButterKnife.bind(this, activity);
 
         dream = new Dream();
+    }
+
+    @OnTouch(R.id.form_dreams_title)
+    public boolean titleTouch(View v, MotionEvent event) {
+        v.getParent().requestDisallowInterceptTouchEvent(true);
+        switch (event.getAction() & MotionEvent.ACTION_MASK){
+            case MotionEvent.ACTION_UP:
+                v.getParent().requestDisallowInterceptTouchEvent(false);
+                break;
+        }
+        return false;
     }
 
     public Dream getDream() {

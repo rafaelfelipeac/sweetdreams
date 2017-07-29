@@ -14,29 +14,31 @@ import com.rafaelfelipeac.sweetdreams.models.Dream;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Rafael Cordeiro on 28/10/2016.
  */
 
 public class DreamsHelper implements OnLikeListener {
+    @BindView(R.id.dreams_datetime)
     private TextView datetime;
+    @BindView(R.id.dreams_title)
     private TextView title;
+    @BindView(R.id.form_dreams_description)
     private TextView description;
+    @BindView(R.id.tag_group)
     private TagView tagGroup;
+    @BindView(R.id.favorite_dreams)
     private LikeButton likeButton;
+    @BindView(R.id.dreams_activity_tag_title)
     private TextView tagTitle;
 
     private Dream dream;
 
     public DreamsHelper(DreamsActivity activity)  {
-
-        datetime = (TextView) activity.findViewById(R.id.dreams_datetime);
-        title = (TextView) activity.findViewById(R.id.dreams_title);
-        description = (TextView) activity.findViewById(R.id.dreams_description);
-        tagGroup = (TagView) activity.findViewById(R.id.tag_group);
-        likeButton = (LikeButton) activity.findViewById(R.id.favorite_dreams);
-        tagTitle = (TextView) activity.findViewById(R.id.dreams_activity_tag_title);
-
+        ButterKnife.bind(this, activity);
         dream = new Dream();
     }
 
