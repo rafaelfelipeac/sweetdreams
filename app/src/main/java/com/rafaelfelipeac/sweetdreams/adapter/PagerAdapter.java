@@ -8,7 +8,7 @@ import com.rafaelfelipeac.sweetdreams.fragments.FormAudioFragment;
 import com.rafaelfelipeac.sweetdreams.fragments.FormTextFragment;
 
 /**
- * Created by Rafael Felipe on 25/01/2017.
+ * Created by Rafael Cordeiro on 25/01/2017.
  */
 
 public class PagerAdapter extends FragmentStatePagerAdapter {

@@ -14,25 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.FormDreamsActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.FormDreamsActivity"
             android:label="@string/form_activity"
             android:windowSoftInputMode="stateHidden"
-            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activity.DreamsActivity">
+            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activities.DreamsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rafaelfelipeac.sweetdreams.activity.DreamsActivity" />
+                android:value="com.rafaelfelipeac.sweetdreams.activities.DreamsActivity" />
         </activity>
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.DreamsActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.DreamsActivity"
             android:label=""
             android:launchMode="singleTask"
-            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity">
+            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity" />
+                android:value="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity" />
         </activity>
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
@@ -43,40 +43,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.SettingsActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.SettingsActivity"
             android:label="@string/settings_activity"
-            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity">
+            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity" />
+                android:value="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity" />
         </activity>
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.CalendarActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.CalendarActivity"
             android:label="@string/calendar_activity"
-            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity">
+            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity" />
+                android:value="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity" />
         </activity>
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.FavoriteActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.FavoriteActivity"
             android:label="@string/favorite_activity"
-            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity">
+            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rafaelfelipeac.sweetdreams.activity.MainNavDrawerActivity" />
+                android:value="com.rafaelfelipeac.sweetdreams.activities.MainNavDrawerActivity" />
         </activity>
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.BaseActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.rafaelfelipeac.sweetdreams.activity.SameDayActivity"
+            android:name="com.rafaelfelipeac.sweetdreams.activities.SameDayActivity"
             android:label=""
-            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activity.CalendarActivity">
+            android:parentActivityName="com.rafaelfelipeac.sweetdreams.activities.CalendarActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rafaelfelipeac.sweetdreams.activity.CalendarActivity" />
+                android:value="com.rafaelfelipeac.sweetdreams.activities.CalendarActivity" />
         </activity>
     </application>
 

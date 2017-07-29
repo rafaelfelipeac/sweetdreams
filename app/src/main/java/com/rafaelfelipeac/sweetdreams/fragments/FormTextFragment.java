@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.rafaelfelipeac.sweetdreams.R;
-import com.rafaelfelipeac.sweetdreams.activity.FormDreamsActivity;
+import com.rafaelfelipeac.sweetdreams.activities.FormDreamsActivity;
 
 public class FormTextFragment extends Fragment {
 

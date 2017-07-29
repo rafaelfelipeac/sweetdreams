@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.rafaelfelipeac.sweetdreams.activity.BaseActivity">
+    tools:context="com.rafaelfelipeac.sweetdreams.activities.BaseActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

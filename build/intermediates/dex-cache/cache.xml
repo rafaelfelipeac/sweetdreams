@@ -2,202 +2,58 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\c90ff6d32b23fe0dd38948c088e3241b72c72d05\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="cc612fa2610b0741f55190e7bc73034144873adb">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_0b5aead77c24fe27d0c2b96c59bbcc727b172af5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\c03ee23135699b933bfc283fa4eb365bd95e6568\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_e8cc1085c195626a63d76e5d5e58ce3d5631ec19.jar" />
-    </item>
-    <item
         is-multidex="true"
-        jar="C:\Projects\Sweetdreams\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Meu computador\.android\build-cache\c9ed93ab585c9c44605c39f2b949d681d070cf71\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="bb2b4b2bdb559a5b325c70104884a6a361c8ea69">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_517f3559a91597cdf6cd28be7c07e309697c3532\classes.dex" />
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_216116cc2cf5e07c4157264c69e11874bcae66d2\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\c03ee23135699b933bfc283fa4eb365bd95e6568\output\jars\classes.jar"
+        jar="C:\Users\Meu computador\.android\build-cache\b6b3bb76048b09524dd7b98322a4e5ecc769be80\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e8cc1085c195626a63d76e5d5e58ce3d5631ec19\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\170042adaccef15d6a40693913da98b9b5692fba\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3bfdddd4e47dab6e743f217d2ddde7e6cc5db0ee">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_8f686e6d59d9ca00e3bf9a94cf304d77cbd8cbcc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\5dc25528fbdd0813a9910e787502f88e5d6bea87\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_9cfbe8e31606ce11a9adef4eeb08c486fd1314cc.jar" />
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a2b58efba4d93b45108e8b4f142ff3b0aab64544\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\5dc25528fbdd0813a9910e787502f88e5d6bea87\output\jars\classes.jar"
+        jar="C:\Users\Meu computador\.android\build-cache\181ef2818b574407bb0f0ce4013ae8e875799a8f\output\jars\classes.jar"
         jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9cfbe8e31606ce11a9adef4eeb08c486fd1314cc\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\6e37272d56139f5b602beead55cfe81148c8b8cd\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="042cf6b3b9ef0ea3baacd9b27e4901680769cbc8">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_8b1ba0f3b7f6c460075855f3906687465211ad80.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\9313f154b4adadf1bbc643128a7b9221fef65055\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_02561721fcd789d41e2f77a77575f9747be4e763\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\6dec8c6854274008b7a923953e85a16f970876a4\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="166c64fdb3660b9d4def0f2697b2ad3b5d44150a">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_55de2cbc6f8e75fed665b90a0faec403156de7ee.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\9313f154b4adadf1bbc643128a7b9221fef65055\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_02561721fcd789d41e2f77a77575f9747be4e763.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\57ba080b50c2e266eceaf0ef6eb0282c8b099b20\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_5d5e424f9a96d5e432ad38fb77a6aa6be0385677.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\57ba080b50c2e266eceaf0ef6eb0282c8b099b20\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5d5e424f9a96d5e432ad38fb77a6aa6be0385677\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\5135c33d79345cc4871adcfedb40f37d8c566400\output\jars\classes.jar"
-        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_7ed566f678e722fb9659dd90367566e665408fea.jar" />
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fba736e785b06b702ffb2e4348379df9a8764ea3\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\086452d62d890d2d01f6efa5f786657767b96322\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f01e071ae726f3ea6ca3dfe74750bd736394ebf9\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\086452d62d890d2d01f6efa5f786657767b96322\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_f01e071ae726f3ea6ca3dfe74750bd736394ebf9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\0ead78ce805c1b30ebc60a4db0fb29f5fd21c0e9\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3aa4ce0dec0a6b60f7fab722828284ced8809f0e">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_84178824f17caee6a58872fc5c317991e641f11d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\fd7c4b3b1192e3d244be019790206bf726057b66\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_e8c7255f8e366f9ae655f99f1efb0d667021a59e.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\9f212918c975a71685e13021f395679074683e91\output\jars\classes.jar"
+        jar="C:\Users\Meu computador\.android\build-cache\c8b02fba36bf5a04e202a4cf77c6a9adcea74ee1\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_25f4c7f5cd06220882cdde779c934cdf3f443771\classes.dex" />
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6e2fe513fccf53e938fe011433e16cc999a8f141\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\87d547e33f15667bcb06165f0086c4cca2a3b63f\output\jars\classes.jar"
+        jar="C:\Users\Meu computador\.android\build-cache\e8d11a10bd1a8f78855800c3acf058d09bd87729\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_edd76ed7b93f3f079b1282b7f83c266f0aae3fbd\classes.dex" />
+        sha1="0b7d39c161cecdb6c2b52a1cdc71faf0ffd4626e">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0d2306838d049abfdd081e473a156285cdff6a42\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\f4d9f8d1ed6d8c32446ddeb915831a2e98928151\output\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\01a07a1303a5c2b8bca19e5deab6a8521a1037de\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_88e939fb422f8d7853bcfda51c5694b8d91c01e3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\87d547e33f15667bcb06165f0086c4cca2a3b63f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_edd76ed7b93f3f079b1282b7f83c266f0aae3fbd.jar" />
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b4d3497123904e54f6fe56c66dd383e6792e019c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -205,134 +61,107 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_46a6c2430555911d7fcf1c8c30fbf63cbd2d128a\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\9f212918c975a71685e13021f395679074683e91\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_25f4c7f5cd06220882cdde779c934cdf3f443771.jar" />
-    </item>
-    <item
         is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\f4d9f8d1ed6d8c32446ddeb915831a2e98928151\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_88e939fb422f8d7853bcfda51c5694b8d91c01e3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\5135c33d79345cc4871adcfedb40f37d8c566400\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7ed566f678e722fb9659dd90367566e665408fea\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\83d4023b1bb1a26e37247c8b5ef5730c04473e27\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_3b4f7100d8b4f4abd7d66e6fcb1bcc64b9b12e22.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\010f97a3f4e77d2ddce26943da55acf1fefc239c\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="7f2420506110902f033406b25697cf97ee8c38b2">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_627476eac47b80c2a5cb06179f2a0b941c0753df.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\83d4023b1bb1a26e37247c8b5ef5730c04473e27\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3b4f7100d8b4f4abd7d66e6fcb1bcc64b9b12e22\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\010f97a3f4e77d2ddce26943da55acf1fefc239c\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="7f2420506110902f033406b25697cf97ee8c38b2">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_627476eac47b80c2a5cb06179f2a0b941c0753df\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\368e4030e604771a46d3660e4f3c4196e390a4b9\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_357f1460cc429199db0a7e8508832902ff7e4e1e\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\79448759e3b6cf42d99bac591413aba0830a1009\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="78d8de6166454f30754fa34b76e6438a9b7a5bb4">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_a39d273ebf97a15e9e5d8531aa83e6372c20d5f7.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Meu computador\.android\build-cache\bb5046ae82586577cb20c692e21d9518f043e5e3\output\jars\classes.jar"
+        jar="C:\Users\Meu computador\.android\build-cache\ba3c18c79b40606659408f58eed88502e41f9476\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ae5f79574733c129f2c2c535508dd645b6401843\classes.dex" />
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_03fcbc1bf932a9f086e681ad5b13f98ccaa59672\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\59b3f37bf3df74227f6bb7b04aa4f1df254721c4\output\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Projects\Sweetdreams\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="c5b52337c61f135bd7cd48bec49442699cdb37bd">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_634a9a62d474666c7c9d267cbb1b97877d04637b.jar" />
+        sha1="aa21160343ddd13a6574301a59197d5e3716fb7d">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_517f3559a91597cdf6cd28be7c07e309697c3532\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\368e4030e604771a46d3660e4f3c4196e390a4b9\output\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\917943a4d3041b70686324aafd3ca1ea27df0d76\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_357f1460cc429199db0a7e8508832902ff7e4e1e.jar" />
+        sha1="93c10d68ab5ea070f15782ae6d3a28d1f1d8f45e">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_163982b1d7624f63c1700456a8a4db2846246ff6\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\.android\build-cache\bb5046ae82586577cb20c692e21d9518f043e5e3\output\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\914eebfd0ce99ddcfbc933d1663e0a73cff7b5aa\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\classes_ae5f79574733c129f2c2c535508dd645b6401843.jar" />
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a7735eef8c792327b06a4b02117358fef43903bc\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Meu computador\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\2f6f445c829ca9a72e5e6f3404405cce70ced8fa\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_ed711002d090f128fc3a7b87044a788445288e88.jar" />
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cdbaea1a68491ad5b131ac1515bc201c9eac8a29\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\3a29e613c3dd1bd6ea03873b135bcc4ed99b4e88\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_732c030e811de232e3d6ac0cef4c0d7471a3ffd3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.0\support-annotations-25.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd84903d2e1af25a6081ef9038ad863cb14ca3a0">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.0_ced53534f39b563e23f3ea1fff8f988cc2eef87b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.7.0\2637055420a2da406e3ea9920c2ff4aafd38c970\butterknife-annotations-8.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2637055420a2da406e3ea9920c2ff4aafd38c970">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-annotations-8.7.0_749c3e257eb383227e2e3016e27bbf4b8f3dd5b5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\6c042a2b41074fc07d364508873c67dc04d73a43\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4e1fcfdd3889e2a6c751bd50fae639237feb0f81\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\bbfcb109ce8cf28d031d2408fe9695380aaf2bae\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7f2420506110902f033406b25697cf97ee8c38b2">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5fcdd893d149f650c29e60d4d0c9fb3a81667f65\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Meu computador\.android\build-cache\bbdc91dd4ef3c4171fd136cfc179ce53307a46f0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Projects\Sweetdreams\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_08bab75d4c866975f079af41eafc9973184c91f3\classes.dex" />
     </item>
 
 </items>

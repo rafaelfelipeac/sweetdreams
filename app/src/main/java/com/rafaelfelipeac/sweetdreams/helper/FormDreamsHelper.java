@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
-import com.rafaelfelipeac.sweetdreams.activity.BaseActivity;
-import com.rafaelfelipeac.sweetdreams.activity.FormDreamsActivity;
+import com.rafaelfelipeac.sweetdreams.activities.BaseActivity;
+import com.rafaelfelipeac.sweetdreams.activities.FormDreamsActivity;
 import com.rafaelfelipeac.sweetdreams.R;
 import com.rafaelfelipeac.sweetdreams.models.Dream;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by rafae on 22/10/2016.
+ * Created by Rafael Cordeiro on 22/10/2016.
  */
 
 public class FormDreamsHelper extends BaseActivity {

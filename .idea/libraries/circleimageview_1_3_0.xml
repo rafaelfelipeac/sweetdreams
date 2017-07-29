@@ -4,8 +4,8 @@
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.3.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.3.0/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.3.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/fd7c4b3b1192e3d244be019790206bf726057b66/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/fd7c4b3b1192e3d244be019790206bf726057b66/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

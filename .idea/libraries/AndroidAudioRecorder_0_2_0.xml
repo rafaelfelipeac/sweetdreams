@@ -1,10 +1,13 @@
 <component name="libraryTable">
   <library name="AndroidAudioRecorder-0.2.0">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.adrielcafe/AndroidAudioRecorder/0.2.0/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.adrielcafe/AndroidAudioRecorder/0.2.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/6dec8c6854274008b7a923953e85a16f970876a4/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/6dec8c6854274008b7a923953e85a16f970876a4/output/res" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.android/build-cache/6dec8c6854274008b7a923953e85a16f970876a4/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/6dec8c6854274008b7a923953e85a16f970876a4/output/jars/classes.jar!/" />
+    </SOURCES>
   </library>
 </component>

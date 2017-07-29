@@ -1,7 +1,7 @@
 package com.rafaelfelipeac.sweetdreams;
 
 /**
- * Created by rafae on 01/11/2016.
+ * Created by Rafael Cordeiro on 01/11/2016.
  */
 
 public interface RecyclerViewClickPosition {

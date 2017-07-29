@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.cunoraz.tagview.TagView;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
-import com.rafaelfelipeac.sweetdreams.activity.DreamsActivity;
+import com.rafaelfelipeac.sweetdreams.activities.DreamsActivity;
 import com.rafaelfelipeac.sweetdreams.R;
 import com.rafaelfelipeac.sweetdreams.models.Dream;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by rafae on 28/10/2016.
+ * Created by Rafael Cordeiro on 28/10/2016.
  */
 
 public class DreamsHelper implements OnLikeListener {

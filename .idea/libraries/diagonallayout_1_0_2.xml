@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="diagonallayout-1.0.2">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.florent37/diagonallayout/1.0.2/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.florent37/diagonallayout/1.0.2/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/59b3f37bf3df74227f6bb7b04aa4f1df254721c4/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/59b3f37bf3df74227f6bb7b04aa4f1df254721c4/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

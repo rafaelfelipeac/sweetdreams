@@ -3,7 +3,7 @@ package com.rafaelfelipeac.sweetdreams.models;
 import java.io.Serializable;
 
 /**
- * Created by rafae on 22/10/2016.
+ * Created by Rafael Cordeiro on 22/10/2016.
  */
 
 public class Dream implements Serializable{
