@@ -28,6 +28,7 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
     private List<Dream> dreams;
     private ActionBar toolbar;
     private Dream dream;
+    private DreamDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,9 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
         mLayoutManager = new LinearLayoutManager(this);
         listDreams.setLayoutManager(mLayoutManager);
 
-        Intent intent = getIntent();
-        dreams = (List<Dream>) intent.getSerializableExtra("dreams");
+        dao = new DreamDAO(this);
+
+        dreams = (List<Dream>) getIntent().getSerializableExtra("dreams");
         dream = dreams.get(0);
 
         String date = (String.format("%02d", dream.getDay()) + "/" + (String.format("%02d", dream.getMonth()))) + "/" + dream.getYear();
@@ -57,13 +59,16 @@ public class SameDayActivity extends BaseActivity implements RecyclerViewClickPo
         super.onResume();
 
         dreams = new ArrayList<>();
-        DreamDAO dao = new DreamDAO(this);
-        for(Dream d : dao.Read()) {
-            if(d.getDay() == dream.getDay() && d.getMonth() == dream.getMonth() && d.getYear() == dream.getYear())
-                dreams.add(d);
+        for(Dream day : dao.Read()) {
+            if(isSameday(day))
+                dreams.add(day);
         }
 
         loadList();
+    }
+
+    private boolean isSameday(Dream day) {
+        return day.getDay() == dream.getDay() && day.getMonth() == dream.getMonth() && day.getYear() == dream.getYear();
     }
 
     @Override

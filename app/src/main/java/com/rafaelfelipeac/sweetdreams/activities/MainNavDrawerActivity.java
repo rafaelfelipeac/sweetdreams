@@ -2,6 +2,7 @@ package com.rafaelfelipeac.sweetdreams.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,6 +47,8 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    private DreamDAO dao;
+    private List<Dream> dreams;
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -63,8 +66,45 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
         mLayoutManager = new LinearLayoutManager(this);
         listDreams.setLayoutManager(mLayoutManager);
 
-        loadList();
+        dao = new DreamDAO(this);
 
+        loadList();
+        scrollPositionListener();
+
+        setSupportActionBar(toolbar);
+        registerForContextMenu(listDreams);
+
+        ActionBarDrawerToggle toggle = setNavigationDrawer();
+
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @NonNull
+    private ActionBarDrawerToggle setNavigationDrawer() {
+        return new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+                @Override
+                public void onDrawerClosed(View view) {
+                    super.onDrawerClosed(view);
+                }
+
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+                }
+
+                @Override
+                public void onDrawerSlide(View drawerView, float slideOffset) {
+                    super.onDrawerSlide(drawerView, 0);
+                }
+            };
+    }
+
+    private void scrollPositionListener() {
         listDreams.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -80,34 +120,6 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
-
-        setSupportActionBar(toolbar);
-
-        registerForContextMenu(listDreams);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-
-            @Override
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                super.onDrawerSlide(drawerView, 0);
-            }
-        };
-
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @OnClick(R.id.fab)
@@ -118,8 +130,7 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
     }
 
     private void loadList() {
-        DreamDAO dao = new DreamDAO(this);
-        List<Dream> dreams = dao.Read();
+        dreams = dao.Read();
         mAdapter = new CardViewAdapter(dreams, this);
         listDreams.setAdapter(mAdapter);
     }
@@ -161,7 +172,6 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
                 cleanList();
                 newTextTag = newText;
                 loadListWithTags(newText);
-
                 return false;
             }
         });
@@ -204,24 +214,21 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
         if (id == R.id.nav_add) {
             Intent intentAdd = new Intent(MainNavDrawerActivity.this, FormDreamsActivity.class);
             startActivity(intentAdd);
-            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         if(id == R.id.nav_calendar) {
             Intent intentCalendar = new Intent(MainNavDrawerActivity.this, CalendarActivity.class);
             startActivity(intentCalendar);
-            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         if(id == R.id.nav_favorite) {
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, FavoriteActivity.class);
             startActivity(intentFavorite);
-            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
         if(id == R.id.nav_settings) {
             Intent intentFavorite = new Intent(MainNavDrawerActivity.this, SettingsActivity.class);
             startActivity(intentFavorite);
-            overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         }
 
+        overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
         finish();
 
         drawer.closeDrawers();

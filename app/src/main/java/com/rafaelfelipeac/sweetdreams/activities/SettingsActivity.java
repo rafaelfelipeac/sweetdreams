@@ -9,10 +9,9 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.MenuItem;
-
-
 import com.rafaelfelipeac.sweetdreams.R;
 import java.util.Locale;
 
@@ -31,6 +30,18 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         Resources res = getResources();
         Configuration config = res.getConfiguration();
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        setLanguage(actionBar, config, SP);
+
+        res.updateConfiguration(config, res.getDisplayMetrics());
+
+        getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    private void setLanguage(ActionBar actionBar, Configuration config, SharedPreferences SP) {
         String locale = SP.getString("language", "en");
 
         switch (locale) {
@@ -43,12 +54,6 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
                 actionBar.setTitle("Settings");
                 break;
         }
-        res.updateConfiguration(config, res.getDisplayMetrics());
-
-        getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

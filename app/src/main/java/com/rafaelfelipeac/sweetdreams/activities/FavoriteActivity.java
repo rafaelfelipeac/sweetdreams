@@ -26,7 +26,8 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
+    private DreamDAO dao;
+    private List<Dream> dreams;
     private ActionBar toolbar;
 
     @Override
@@ -43,6 +44,9 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
         mLayoutManager = new LinearLayoutManager(this);
         listDreams.setLayoutManager(mLayoutManager);
 
+        dao = new DreamDAO(this);
+        dreams = dao.Read();
+
         loadListFavorite();
     }
 
@@ -54,13 +58,7 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
 
     @Override
     public void getRecyclerViewAdapterPosition(int position) {
-        DreamDAO dao = new DreamDAO(this);
-        List<Dream> dreams = dao.Read();
-        List<Dream> dreamsFavorite = new ArrayList<>(dreams.size());
-
-        for(Dream dream : dreams)
-            if(dream.getFavorite())
-                dreamsFavorite.add(dream);
+        List<Dream> dreamsFavorite = getDreamsFavorite();
 
         Dream dream = dreamsFavorite.get(position);
 
@@ -71,16 +69,20 @@ public class FavoriteActivity extends BaseActivity  implements RecyclerViewClick
     }
 
     private void loadListFavorite() {
-        DreamDAO dao = new DreamDAO(this);
-        List<Dream> dreams = dao.Read();
+        List<Dream> dreamsFavorite = getDreamsFavorite();
+
+        mAdapter = new CardViewAdapter(dreamsFavorite, this);
+        listDreams.setAdapter(mAdapter);
+    }
+
+    private List<Dream> getDreamsFavorite() {
         List<Dream> dreamsFavorite = new ArrayList<>(dreams.size());
 
         for(Dream dream : dreams)
             if(dream.getFavorite())
                 dreamsFavorite.add(dream);
 
-        mAdapter = new CardViewAdapter(dreamsFavorite, this);
-        listDreams.setAdapter(mAdapter);
+        return dreamsFavorite;
     }
 
     @Override

@@ -52,7 +52,6 @@ import static android.Manifest.permission.RECORD_AUDIO;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class FormDreamsActivity extends BaseActivity  {
-
     private FormDreamsHelper helper;
 
     private Dream dream;
@@ -129,14 +128,31 @@ public class FormDreamsActivity extends BaseActivity  {
         showDatePickerDialog();
 
         helper = new FormDreamsHelper(this);
+        dream = (Dream) getIntent().getSerializableExtra("dream");
+        dreamDay = (Dream) getIntent().getSerializableExtra("dreamDay");
+        mediaPlayer = new MediaPlayer();
 
-        Intent intent = getIntent();
-        dream = (Dream) intent.getSerializableExtra("dream");
-
-        dreamDay = (Dream) intent.getSerializableExtra("dreamDay");
         if(dreamDay != null)
             onCreateDialog(DIALOG_DATE_ID);
 
+        newOrEditDream();
+
+        setTags();
+    }
+
+    private void setTags() {
+        tagGroup.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
+
+            @Override
+            public void onTagDeleted(final TagView view, Tag tag, final int position) {
+                view.remove(position);
+            }
+        });
+
+        btnNewTag.setBackgroundResource(R.drawable.buttonwhite);
+    }
+
+    private void newOrEditDream() {
         if(dream != null) {
             helper.makeDream(dream);
             toolbar.setTitle(R.string.form_edit_activity);
@@ -149,22 +165,10 @@ public class FormDreamsActivity extends BaseActivity  {
         }
         else
             toolbar.setTitle(R.string.form_activity);
-
-        mediaPlayer = new MediaPlayer();
-
-        tagGroup.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
-
-            @Override
-            public void onTagDeleted(final TagView view, com.cunoraz.tagview.Tag tag, final int position) {
-                view.remove(position);
-            }
-        });
-
-        btnNewTag.setBackgroundResource(R.drawable.buttonwhite);
     }
 
     private void setDate() {
-        final Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
 
         yearX = (cal.get(Calendar.YEAR));
         monthX = (cal.get(Calendar.MONTH));
@@ -228,7 +232,7 @@ public class FormDreamsActivity extends BaseActivity  {
                         recordAudio();
                     }
                     else {
-                        Toast.makeText(FormDreamsActivity.this, R.string.form_dreams_permission_denied, Toast.LENGTH_LONG).show();
+                        Snackbar.make(sv, R.string.form_dreams_permission_denied, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     }
                 }
                 break;
@@ -246,21 +250,16 @@ public class FormDreamsActivity extends BaseActivity  {
                     dream = new Dream();
 
                 dream.setAudioPath(AUDIO_FILE_PATH);
-
                 hasAudio = true;
-
                 makePlayDeleteButtons();
 
                 Snackbar.make(sv, R.string.form_dreams_audio_record_success, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
             } else if (resultCode == RESULT_CANCELED) {
                 hasAudio = false;
 
                 Snackbar.make(sv, R.string.form_dreams_audio_record_failed, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         }
-
-
     }
 
     public void makePlayDeleteButtons() {
@@ -318,18 +317,16 @@ public class FormDreamsActivity extends BaseActivity  {
         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
-    private DatePickerDialog.OnDateSetListener dpickerListener =
-            new DatePickerDialog.OnDateSetListener() {
+    private DatePickerDialog.OnDateSetListener dpickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            yearX = year;
+            monthX = month + 1;
+            dayX = dayOfMonth;
 
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    yearX = year;
-                    monthX = month + 1;
-                    dayX = dayOfMonth;
-
-                    date.setText(String.format("%02d", dayX) + "/" + String.format("%02d", monthX) + "/" + yearX);
-                }
-            };
+            date.setText(String.format("%02d", dayX) + "/" + String.format("%02d", monthX) + "/" + yearX);
+        }
+    };
 
     public void showDatePickerDialog() {
         btnSetDate.setBackgroundResource(R.drawable.buttonblue);
@@ -450,17 +447,19 @@ public class FormDreamsActivity extends BaseActivity  {
     }
 
     private void showDialogExitSave() {
-        final Intent intentA = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
-        AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
-        alert.setMessage(R.string.form_dreams_without_save).setCancelable(false)
+        final Intent intent = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this)
+                .setMessage(R.string.form_dreams_without_save).setCancelable(false)
                 .setNegativeButton(R.string.form_dreams_cancel, null)
                 .setPositiveButton(R.string.form_dreams_exit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(intentA);
+                        startActivity(intent);
                         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                     }
                 });
+
         alert.show();
     }
 
@@ -506,6 +505,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
     public boolean emptyDream(int n) {
         Dream dream = helper.getDream();
+
         if(dream.getAudioPath() == null)
             dream.setAudioPath("");
         dream.setDescription(getTextDescription());
@@ -519,12 +519,11 @@ public class FormDreamsActivity extends BaseActivity  {
         return false;
     }
 
-    public boolean compareDreams(Dream dream, Dream dream2) {
-        if(dream.getTitle() != null) {
-
-            return dream.getTitle().equals(dream2.getTitle()) &&
-                    dream.getDescription().equals(dream2.getDescription()) &&
-                    dream.getTags().equals(dream2.getTags());
+    public boolean compareDreams(Dream dreamA, Dream dreamB) {
+        if(dreamA.getTitle() != null) {
+            return dreamA.getTitle().equals(dreamB.getTitle()) &&
+                    dreamA.getDescription().equals(dreamB.getDescription()) &&
+                    dreamA.getTags().equals(dreamB.getTags());
         }
         return false;
     }
@@ -545,7 +544,6 @@ public class FormDreamsActivity extends BaseActivity  {
 
     public void getViewFromTextFragment(View view) {
         this.viewTextFragment = view;
-
         description = (EditText) viewTextFragment.findViewById(R.id.form_dreams_description);
     }
 
@@ -569,7 +567,6 @@ public class FormDreamsActivity extends BaseActivity  {
     }
 
     public void stopAudio() {
-
         if(mediaPlayer != null)
             mediaPlayer.stop();
     }

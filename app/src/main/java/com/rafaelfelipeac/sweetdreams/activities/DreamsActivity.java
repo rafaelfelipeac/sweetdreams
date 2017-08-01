@@ -28,6 +28,7 @@ public class DreamsActivity extends BaseActivity  {
     private DreamsHelper helper;
     private Dream dream;
     private MediaPlayer mediaPlayer;
+    private DreamDAO dao;
 
     @BindView(R.id.favorite_dreams)
     LikeButton likeButton;
@@ -47,15 +48,10 @@ public class DreamsActivity extends BaseActivity  {
 
         getSupportActionBar().setElevation(0);
 
-        final DreamDAO dao = new DreamDAO(this);
-
+        dao = new DreamDAO(this);
         helper = new DreamsHelper(this);
-
-        Intent intent = getIntent();
-        dream = (Dream) intent.getSerializableExtra("dream");
-
+        dream = (Dream) getIntent().getSerializableExtra("dream");
         audioPlay.setBackgroundResource(R.drawable.buttonwhite);
-
         mediaPlayer = new MediaPlayer();
 
         if(dream != null)
@@ -66,32 +62,33 @@ public class DreamsActivity extends BaseActivity  {
             llplayButton.getLayoutParams().height = 100;
         }
 
+        likeButtonListener();
+    }
+
+    private void likeButtonListener() {
         likeButton.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {
                 dream.setFavorite(true);
                 Snackbar.make(findViewById(R.id.activity_dreams), R.string.dreams_favorite, Snackbar.LENGTH_SHORT).show();
-
-                if(dream.getId() == null) {
-                    dao.Remove(dream);
-                    dao.Insert(dream);
-                }
-                else
-                    dao.Update(dream);
+                updateFavoriteDream();
             }
 
             @Override
             public void unLiked(LikeButton likeButton) {
                 dream.setFavorite(false);
-
-                if(dream.getId() == null) {
-                    dao.Remove(dream);
-                    dao.Insert(dream);
-                }
-                else
-                    dao.Update(dream);
+                updateFavoriteDream();
             }
         });
+    }
+
+    private void updateFavoriteDream() {
+        if(dream.getId() == null) {
+            dao.Remove(dream);
+            dao.Insert(dream);
+        }
+        else
+            dao.Update(dream);
     }
 
     @OnClick(R.id.form_dreams_audio_play)
@@ -125,8 +122,8 @@ public class DreamsActivity extends BaseActivity  {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Dream dream = helper.getDream();
-        switch (item.getItemId())
-        {
+
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
@@ -139,15 +136,13 @@ public class DreamsActivity extends BaseActivity  {
                 overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 break;
             case R.id.menu_dream_delete:
-                AlertDialog.Builder alert = new AlertDialog.Builder(DreamsActivity.this);
-                alert.setMessage(R.string.dreams_delete_message).setCancelable(false)
+                AlertDialog.Builder alert = new AlertDialog.Builder(DreamsActivity.this)
+                    .setMessage(R.string.dreams_delete_message).setCancelable(false)
                     .setNegativeButton(R.string.dreams_cancel , null)
                     .setPositiveButton(R.string.dreams_delete, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                         Dream dream = helper.getDream();
-                        DreamDAO dao = new DreamDAO(DreamsActivity.this);
-                        dao.Read();
                         dao.Remove(dream);
                         dao.close();
                         Intent intentMain = new Intent(DreamsActivity.this, MainNavDrawerActivity.class);
@@ -155,7 +150,6 @@ public class DreamsActivity extends BaseActivity  {
                         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                     }
                 });
-
                 alert.show();
                 break;
         }
@@ -184,6 +178,5 @@ public class DreamsActivity extends BaseActivity  {
                 audioPlay.setClickable(true);
             }
         });
-
     }
 }
