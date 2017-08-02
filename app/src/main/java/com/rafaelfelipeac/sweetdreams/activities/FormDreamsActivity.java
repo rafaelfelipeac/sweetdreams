@@ -524,7 +524,7 @@ public class FormDreamsActivity extends BaseActivity  {
     }
 
     public boolean compareDreams(Dream dreamA, Dream dreamB) {
-        if(dreamA.getTitle() != null) {
+        if(dreamA != null && dreamB != null) {
             return dreamA.getTitle().equals(dreamB.getTitle()) &&
                     dreamA.getDescription().equals(dreamB.getDescription()) &&
                     dreamA.getTags().equals(dreamB.getTags());
