@@ -29,7 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.cunoraz.tagview.Tag;
 import com.cunoraz.tagview.TagView;
 import com.rafaelfelipeac.sweetdreams.DAO.DreamDAO;
@@ -38,7 +38,9 @@ import com.rafaelfelipeac.sweetdreams.adapter.PagerAdapter;
 import com.rafaelfelipeac.sweetdreams.helper.FormDreamsHelper;
 import com.rafaelfelipeac.sweetdreams.models.Dream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import butterknife.BindView;
@@ -55,8 +57,7 @@ public class FormDreamsActivity extends BaseActivity  {
     private FormDreamsHelper helper;
 
     private Dream dream;
-    private Dream dreamDay;
-    private Dream dreamAux;
+    private DreamDAO dao;
 
     int yearX;
     int monthX;
@@ -68,11 +69,9 @@ public class FormDreamsActivity extends BaseActivity  {
 
     public static final int RequestPermissionCode = 1;
 
-    String RandomAudioFileName = "abcdefghijklmnopqrstuvwxyz";
-    Random random;
     private boolean hasAudio = false;
     private MediaPlayer mediaPlayer;
-    private String lastPathAudio;
+    private String lastAudioPath;
 
 
     @BindView(R.id.tag_group_form)
@@ -116,23 +115,21 @@ public class FormDreamsActivity extends BaseActivity  {
 
         llAudio = (RelativeLayout) LayoutInflater.from(getApplication()).inflate(R.layout.fragment_form_audio, null);
 
+        dao = new DreamDAO(this);
+
+        AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName() + ".wav";
+        lastAudioPath = "";
+
         setTabs();
-
         setPager();
-
-        AUDIO_FILE_PATH =  Environment.getExternalStorageDirectory().getPath() + "/" + CreateRandomAudioFileName(10) + ".wav";
-        lastPathAudio = "";
-
         setDate();
-
         showDatePickerDialog();
 
         helper = new FormDreamsHelper(this);
         dream = (Dream) getIntent().getSerializableExtra("dream");
-        dreamDay = (Dream) getIntent().getSerializableExtra("dreamDay");
         mediaPlayer = new MediaPlayer();
 
-        if(dreamDay != null)
+        if(getIntent().getSerializableExtra("dreamDay") != null)
             onCreateDialog(DIALOG_DATE_ID);
 
         newOrEditDream();
@@ -159,7 +156,7 @@ public class FormDreamsActivity extends BaseActivity  {
 
             if(!dream.getAudioPath().isEmpty()) {
                 hasAudio = true;
-                lastPathAudio = dream.getAudioPath();
+                lastAudioPath = dream.getAudioPath();
                 makePlayDeleteButtons();
             }
         }
@@ -225,10 +222,7 @@ public class FormDreamsActivity extends BaseActivity  {
         switch (requestCode) {
             case RequestPermissionCode:
                 if (grantResults.length > 0) {
-                    boolean StoragePermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean RecordPermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-
-                    if (StoragePermission && RecordPermission) {
+                    if (havePermissions(grantResults)) {
                         recordAudio();
                     }
                     else {
@@ -237,6 +231,10 @@ public class FormDreamsActivity extends BaseActivity  {
                 }
                 break;
         }
+    }
+
+    public boolean havePermissions(int [] grantResults) {
+        return grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED;
     }
 
     @Override
@@ -317,7 +315,7 @@ public class FormDreamsActivity extends BaseActivity  {
         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
-    private DatePickerDialog.OnDateSetListener dpickerListener = new DatePickerDialog.OnDateSetListener() {
+    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             yearX = year;
@@ -341,20 +339,19 @@ public class FormDreamsActivity extends BaseActivity  {
         if(id == DIALOG_DATE_ID) {
             DatePickerDialog dpd;
 
-            if(dreamDay != null) {
+            if(getIntent().getSerializableExtra("dreamDay") != null) {
+                Dream dreamDay = (Dream) getIntent().getSerializableExtra("dreamDay");
                 date.setText(String.format("%02d", dreamDay.getDay()) + "/" + String.format("%02d", dreamDay.getMonth()) + "/" + dreamDay.getYear());
-                dpd = new DatePickerDialog(this, dpickerListener, dreamDay.getYear(), dreamDay.getMonth() - 1, dreamDay.getDay());
-                dreamAux = dreamDay;
-                dreamDay = null;
-            }
-            else if(dream == null && dreamAux != null) {
-                dpd = new DatePickerDialog(this, dpickerListener, dreamAux.getYear(), dreamAux.getMonth() - 1, dreamAux.getDay());
-                dreamAux = null;
+                dpd = new DatePickerDialog(this, datePickerListener, dreamDay.getYear(), dreamDay.getMonth() - 1, dreamDay.getDay());
+                dream = new Dream();
+                dream.setDay(dreamDay.getDay());
+                dream.setMonth(dreamDay.getMonth());
+                dream.setYear(dreamDay.getYear());
             }
             else if(dream == null)
-                dpd = new DatePickerDialog(this, dpickerListener, yearX, monthX, dayX);
+                dpd = new DatePickerDialog(this, datePickerListener, yearX, monthX, dayX);
             else
-                dpd = new DatePickerDialog(this, dpickerListener, dream.getYear(), dream.getMonth() - 1, dream.getDay());
+                dpd = new DatePickerDialog(this, datePickerListener, dream.getYear(), dream.getMonth() - 1, dream.getDay());
 
             dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
 
@@ -378,72 +375,80 @@ public class FormDreamsActivity extends BaseActivity  {
     public boolean onOptionsItemSelected(MenuItem item) {
         Dream dream = helper.getDream();
 
-        if(hasAudio && !lastPathAudio.equals(""))
-            dream.setAudioPath(lastPathAudio);
-        else if(hasAudio)
-            dream.setAudioPath(AUDIO_FILE_PATH);
+        setAudioPath(dream);
 
-        Intent intentDream;
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.menu_form_confirm:
                 if(emptyDream(2)) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this);
-                    alert.setMessage(R.string.form_dreams_save)
-                            .setCancelable(false)
-                            .setPositiveButton(R.string.form_dreams_ok, null);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(FormDreamsActivity.this)
+                        .setMessage(R.string.form_dreams_save)
+                        .setCancelable(false)
+                        .setPositiveButton(R.string.form_dreams_ok, null);
                     alert.show();
                 }
                 else {
-                    DreamDAO dao = new DreamDAO(FormDreamsActivity.this);
-
                     if(dream.getId() != null)
                         dao.Update(dream);
                     else {
                         dao.Insert(dream);
-
                         List<Dream> lst = dao.Read();
-                        dream = lst.get(lst.size()-1);
+                        dream = dao.Read().get(lst.size()-1);
                     }
 
-                    dao.close();
-                    intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
-                    intentDream.putExtra("dream", dream);
+                    intent = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                    intent.putExtra("dream", dream);
                     finish();
-                    startActivity(intentDream);
+                    startActivity(intent);
                     overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
                 }
                 break;
             case android.R.id.home:
-                DreamDAO dao = new DreamDAO(this);
-                List<Dream> dreams = dao.Read();
-                Dream originalDream = new Dream();
-                if(this.dream != null) {
-                    for(Dream d : dreams) {
-                        if(d.getId().equals(this.dream.getId()))
-                            originalDream = d;
-                    }
-                }
+                Dream originalDream =  getOriginalDream();
 
                 if(emptyDream(1) || ((compareDreams(originalDream, dream)))) {
                     if(dream.getId() == null) {
-                        intentDream = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
+                        intent = new Intent(FormDreamsActivity.this, MainNavDrawerActivity.class);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(0, R.xml.fade_out);
                     }
                     else {
-                        intentDream = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                        intent = new Intent(FormDreamsActivity.this, DreamsActivity.class);
+                        intent.putExtra("dream", originalDream);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(0, R.xml.fade_out);
                     }
 
-                    intentDream.putExtra("dream", originalDream);
-                    startActivity(intentDream);
-                    finish();
-                    overridePendingTransition(0, R.xml.fade_out);
+
                 }
                 else
                     showDialogExitSave();
 
-
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private Dream getOriginalDream() {
+        List<Dream> dreams = dao.Read();
+
+        if(this.dream != null) {
+            for(Dream d : dreams) {
+                if(d.getId().equals(this.dream.getId()))
+                    return d;
+            }
+        }
+
+        return null;
+    }
+
+    private void setAudioPath(Dream dream) {
+        if(hasAudio && !lastAudioPath.equals(""))
+            dream.setAudioPath(lastAudioPath);
+        else if(hasAudio)
+            dream.setAudioPath(AUDIO_FILE_PATH);
     }
 
     private void showDialogExitSave() {
@@ -471,7 +476,7 @@ public class FormDreamsActivity extends BaseActivity  {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         recordAudio();
-                        lastPathAudio = AUDIO_FILE_PATH;
+                        lastAudioPath = AUDIO_FILE_PATH;
                     }
                 });
         alert.show();
@@ -504,18 +509,17 @@ public class FormDreamsActivity extends BaseActivity  {
     }
 
     public boolean emptyDream(int n) {
-        Dream dream = helper.getDream();
+        // 1 for a empty dream
+        // 2 for a dream with no title or description (text or audio)
 
-        if(dream.getAudioPath() == null)
-            dream.setAudioPath("");
+        Dream dream = helper.getDream();
         dream.setDescription(getTextDescription());
 
-        switch(n) {
-            case 1:
-                return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
-            case 2:
-                return (dream.getTitle().trim().length() == 0 || dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
-        }
+        if(n == 1)
+            return (dream.getTitle().trim().length() == 0 && dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0);
+        if(n == 2)
+            return (dream.getTitle().trim().length() == 0 || (dream.getDescription().trim().length() == 0 && dream.getAudioPath().trim().length() == 0));
+
         return false;
     }
 
@@ -528,18 +532,8 @@ public class FormDreamsActivity extends BaseActivity  {
         return false;
     }
 
-    public String CreateRandomAudioFileName(int size) {
-        StringBuilder stringBuilder = new StringBuilder(size);
-        int i = 0;
-
-        random = new Random();
-
-        while (i < size) {
-            stringBuilder.append(RandomAudioFileName.charAt(random.nextInt(RandomAudioFileName.length())));
-            i++;
-        }
-
-        return stringBuilder.toString();
+    public String CreateRandomAudioFileName() {
+        return new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()).toString();
     }
 
     public void getViewFromTextFragment(View view) {

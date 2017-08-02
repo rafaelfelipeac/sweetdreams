@@ -69,6 +69,4 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
             mPositionInterface.getRecyclerViewAdapterPosition(this.getLayoutPosition());
         }
     }
-
-
 }

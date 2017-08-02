@@ -155,11 +155,17 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
+
         MenuItem item = menu.findItem(R.id.menuSearch);
+        searchElementListeners(item);
+
+        return true;
+    }
+
+    private void searchElementListeners(MenuItem item) {
         SearchView searchView = (SearchView) item.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
             @Override
             public boolean onQueryTextSubmit(String query) {
                 fabBtn.hide();
@@ -191,8 +197,6 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
                 return false;
             }
         });
-
-        return true;
     }
 
     @Override
@@ -238,10 +242,9 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
     @Override
     public void getRecyclerViewAdapterPosition(int position) {
         Dream dream;
-        DreamDAO ddao = new DreamDAO(this);;
 
         if(newTextTag != null) {
-            List<Dream> dreams = new DreamDAO(this).Read();
+            List<Dream> dreams = dao.Read();
             List<Dream> dreamsWT = new ArrayList<>();
 
             for(Dream d : dreams) {
@@ -252,8 +255,7 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
             dream = dreamsWT.get(position);
         }
         else {
-            List<Dream> ddreams = ddao.Read();
-            dream = ddreams.get(position);
+            dream = dao.Read().get(position);
         }
 
         Intent intentDreamsActivity = new Intent(MainNavDrawerActivity.this, DreamsActivity.class);
@@ -262,38 +264,30 @@ implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickPos
         overridePendingTransition(R.xml.fade_in, R.xml.fade_out);
     }
 
-    public String[] convertStringToArray(String str) {
-        String[] array = str.split(separator);
-        return array;
-    }
-
     private void loadListWithTags(String query) {
-        DreamDAO dao = new DreamDAO(this);
-        List<Dream> lst = dao.Read();
-        dao.close();
+        String tagUser = query.toLowerCase().replace(" ", "");
+        List<Dream> dreams = dao.Read();
+        List<Dream> dreamsWT = new ArrayList<>();
 
-        List<Dream> dreams = new ArrayList<>();
-
-        for(Dream dream : lst) {
-            String[] tag = convertStringToArray(dream.getTags());
+        for(Dream dream : dreams) {
+            String[] tag = dream.tagConvertStringToArray();
 
             for(int i = 0; i < tag.length; i++)
                 tag[i].replace(" ", "");
 
             for(String str: tag) {
-                if(str != "") {
-                    String tagUser = query.toLowerCase().replace(" ", "");
+                if(!str.equals("")) {
                     str = str.toLowerCase().replaceAll(" ", "");
 
                     if (str.startsWith(tagUser)) {
-                        dreams.add(dream);
+                        dreamsWT.add(dream);
                         break;
                     }
                 }
             }
         }
 
-        mAdapter = new CardViewAdapter(dreams, this);
+        mAdapter = new CardViewAdapter(dreamsWT, this);
         listDreams.setAdapter(mAdapter);
     }
 

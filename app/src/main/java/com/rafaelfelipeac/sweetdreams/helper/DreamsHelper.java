@@ -23,17 +23,17 @@ import butterknife.ButterKnife;
 
 public class DreamsHelper implements OnLikeListener {
     @BindView(R.id.dreams_datetime)
-    private TextView datetime;
+    TextView datetime;
     @BindView(R.id.dreams_title)
-    private TextView title;
-    @BindView(R.id.form_dreams_description)
-    private TextView description;
+    TextView title;
+    @BindView(R.id.dreams_description)
+    TextView description;
     @BindView(R.id.tag_group)
-    private TagView tagGroup;
+    TagView tagGroup;
     @BindView(R.id.favorite_dreams)
-    private LikeButton likeButton;
+    LikeButton likeButton;
     @BindView(R.id.dreams_activity_tag_title)
-    private TextView tagTitle;
+    TextView tagTitle;
 
     private Dream dream;
 
@@ -57,7 +57,7 @@ public class DreamsHelper implements OnLikeListener {
         String lstTags = "";
 
         for(com.cunoraz.tagview.Tag tag : tags) {
-           lstTags += tag.text + ", ";
+           lstTags += tag.text + ",";
         }
 
         dream.setTags(lstTags);

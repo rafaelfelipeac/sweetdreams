@@ -1,7 +1,9 @@
 package com.rafaelfelipeac.sweetdreams.helper;
 
 
+import android.app.Activity;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -36,9 +38,7 @@ public class FormDreamsHelper extends BaseActivity {
     private Dream dream;
 
     public FormDreamsHelper(FormDreamsActivity activity) {
-
         ButterKnife.bind(this, activity);
-
         dream = new Dream();
     }
 
@@ -65,7 +65,7 @@ public class FormDreamsHelper extends BaseActivity {
         String lstTags = "";
 
         for(com.cunoraz.tagview.Tag tag : tags) {
-            lstTags += tag.text + ", ";
+            lstTags += tag.text + ",";
         }
 
         dream.setTags(lstTags);
