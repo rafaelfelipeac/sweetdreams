@@ -206,6 +206,7 @@ public class FormDreamsActivity extends BaseActivity  {
     @OnClick(R.id.form_dreams_btnNewTag)
     public void newTagClick() {
         if(!newTag.getText().toString().isEmpty() && newTag.getText().toString().trim().length() > 0) {
+            whiteSpacesInTag();
             com.cunoraz.tagview.Tag tag = new Tag(newTag.getText().toString());
             tag.radius = 10f;
             tag.layoutColor = Color.rgb(95, 170, 223);
@@ -215,6 +216,13 @@ public class FormDreamsActivity extends BaseActivity  {
         }
         else
             Snackbar.make(sv, R.string.form_dreams_empty_tag, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+    }
+
+    private void whiteSpacesInTag() {
+        while (newTag.getText().toString().contains("  "))
+            newTag.setText(newTag.getText().toString().replaceAll("  ", " "));
+        if(newTag.getText().toString().toCharArray()[newTag.getText().length() - 1] == ' ')
+            newTag.setText(newTag.getText().toString().substring(0, newTag.getText().length() - 1));
     }
 
     @Override
