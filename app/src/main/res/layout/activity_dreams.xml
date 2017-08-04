@@ -6,7 +6,7 @@
     android:id="@+id/activity_dreams"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rafaelfelipeac.sweetdreams.activity.DreamsActivity"
+    tools:context="com.rafaelfelipeac.sweetdreams.activities.DreamsActivity"
     android:background="#F5F5F5">
 
     <LinearLayout

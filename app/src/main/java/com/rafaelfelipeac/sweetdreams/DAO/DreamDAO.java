@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by rafae on 22/10/2016.
+ * Created by Rafael Cordeiro on 22/10/2016.
  */
 
 public class DreamDAO extends SQLiteOpenHelper {

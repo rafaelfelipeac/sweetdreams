@@ -3,7 +3,7 @@ package com.rafaelfelipeac.sweetdreams.models;
 import java.io.Serializable;
 
 /**
- * Created by rafae on 22/10/2016.
+ * Created by Rafael Cordeiro on 22/10/2016.
  */
 
 public class Dream implements Serializable{
@@ -15,6 +15,16 @@ public class Dream implements Serializable{
     private int month;
     private int year;
     private boolean favorite;
+    private String audioPath;
+
+    private String separator = ",";
+
+    public Dream() {
+        title = "";
+        description = "";
+        tags = "";
+        audioPath = "";
+    }
 
     public String getAudioPath() {
         return audioPath;
@@ -23,10 +33,6 @@ public class Dream implements Serializable{
     public void setAudioPath(String audioPath) {
         this.audioPath = audioPath;
     }
-
-    private String audioPath;
-
-    private String separator = ", ";
 
     public boolean getFavorite() {
         return favorite;
@@ -95,22 +101,5 @@ public class Dream implements Serializable{
     public String[] tagConvertStringToArray() {
         String[] array = getTags().split(separator);
         return array;
-    }
-
-    public String tagConvertArrayToString(String[] array) {;
-        String s = "";
-
-        for(int i = 0; i< array.length; i++) {
-            if(array[i] != null && array[i] != "null") {
-                if(array[i].endsWith(" "))
-                    array[i] = array[i].substring(0, array[i].length() -1);
-
-                s += array[i];
-                if(i < array.length -1)
-                    s += separator;
-            }
-        }
-
-        return s;
     }
 }

@@ -7,36 +7,38 @@ import android.widget.TextView;
 import com.cunoraz.tagview.TagView;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
-import com.rafaelfelipeac.sweetdreams.activity.DreamsActivity;
+import com.rafaelfelipeac.sweetdreams.activities.DreamsActivity;
 import com.rafaelfelipeac.sweetdreams.R;
 import com.rafaelfelipeac.sweetdreams.models.Dream;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
- * Created by rafae on 28/10/2016.
+ * Created by Rafael Cordeiro on 28/10/2016.
  */
 
 public class DreamsHelper implements OnLikeListener {
-    private TextView datetime;
-    private TextView title;
-    private TextView description;
-    private TagView tagGroup;
-    private LikeButton likeButton;
-    private TextView tagTitle;
+    @BindView(R.id.dreams_datetime)
+    TextView datetime;
+    @BindView(R.id.dreams_title)
+    TextView title;
+    @BindView(R.id.dreams_description)
+    TextView description;
+    @BindView(R.id.tag_group)
+    TagView tagGroup;
+    @BindView(R.id.favorite_dreams)
+    LikeButton likeButton;
+    @BindView(R.id.dreams_activity_tag_title)
+    TextView tagTitle;
 
     private Dream dream;
 
     public DreamsHelper(DreamsActivity activity)  {
-
-        datetime = (TextView) activity.findViewById(R.id.dreams_datetime);
-        title = (TextView) activity.findViewById(R.id.dreams_title);
-        description = (TextView) activity.findViewById(R.id.dreams_description);
-        tagGroup = (TagView) activity.findViewById(R.id.tag_group);
-        likeButton = (LikeButton) activity.findViewById(R.id.favorite_dreams);
-        tagTitle = (TextView) activity.findViewById(R.id.dreams_activity_tag_title);
-
+        ButterKnife.bind(this, activity);
         dream = new Dream();
     }
 
@@ -55,7 +57,7 @@ public class DreamsHelper implements OnLikeListener {
         String lstTags = "";
 
         for(com.cunoraz.tagview.Tag tag : tags) {
-           lstTags += tag.text + ", ";
+           lstTags += tag.text + ",";
         }
 
         dream.setTags(lstTags);
