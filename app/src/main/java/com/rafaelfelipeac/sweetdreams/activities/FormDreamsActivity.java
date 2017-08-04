@@ -17,6 +17,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -96,6 +99,8 @@ public class FormDreamsActivity extends BaseActivity  {
     TextView date;
     @BindView(R.id.form_dreams_btnSetDate)
     Button btnSetDate;
+    @BindView(R.id.form_dreams_maxLength)
+    TextView maxLength;
 
 
     private ActionBar toolbar;
@@ -146,7 +151,29 @@ public class FormDreamsActivity extends BaseActivity  {
             }
         });
 
+        newTag.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String actual = maxLength.getText().toString().substring(2, maxLength.length());
+                String countS = (s.length() < 10) ? 0 + "" + s.length() : s.length() + "";
+                maxLength.setText(countS + actual);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         btnNewTag.setBackgroundResource(R.drawable.buttonwhite);
+
+        int maxLength = 20;
+        newTag.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(maxLength)});
     }
 
     private void newOrEditDream() {
@@ -214,8 +241,10 @@ public class FormDreamsActivity extends BaseActivity  {
             newTag.setText("");
             tagGroup.addTag(tag);
         }
-        else
+        else {
             Snackbar.make(sv, R.string.form_dreams_empty_tag, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            newTag.setText("");
+        }
     }
 
     private void whiteSpacesInTag() {
